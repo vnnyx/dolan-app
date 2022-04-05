@@ -39,8 +39,27 @@ class AdminDashboard extends Controller
     }
 
     public function edit(Request $request, $id){
-        $note = Note::find($id);
-        $note->update($request->all());
-        return redirect()->route('admin.index');
+        $field = $request->validate([
+            'title' => 'required',
+            'message' => 'required'
+        ]);
+
+        $note = Note::findOrFail($id);
+        $note->update([
+            'username'=> 'nindra',
+            'title' => $field['title'],
+            'message' => $field['message']
+        ]);
+
+        if ($note){
+            return redirect()->route('admin.index')->with(['success'=>'New note has been create']);
+        }else{
+            return redirect()->back()->withInput()->with(['error'=>'some problem']);
+        }
+    }
+
+    public function update($id){
+        $note = Note::findOrFail($id);
+        return view('modal', compact('note'));
     }
 }

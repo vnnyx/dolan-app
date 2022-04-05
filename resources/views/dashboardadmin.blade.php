@@ -133,6 +133,7 @@
             <hr>
             @foreach($note as $notes)
             <div class="row mb-3">
+{{--                <a data-toggle="modal" data-target="#modal-note-{{ $notes->id }}"></a>--}}
                 <div class="box col" data-toggle="modal" data-target="#modal-note">
                     <h1 class="jdl-note">{{ $notes->title }}</h1>
                     <p class="desc">{{ $notes->message }}</p>
@@ -167,6 +168,8 @@
         </div>
     </div>
 </div>
+
+{{--Modal Update--}}
 <div class="modal fade" id="modal-note" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -178,7 +181,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.edit', $note->id) }}" method="post">
+                <form action="{{ route('admin.edit', $notes->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     <h1 style="color: #B9B9B9;">Judul Catatan</h1>
