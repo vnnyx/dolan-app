@@ -133,7 +133,7 @@
             <hr>
             @foreach($note as $notes)
             <div class="row mb-3">
-                <div class="box col" data-toggle="modal" data-target="#modal-note">
+                <div class="box col" data-toggle="modal" data-target="#modal-note" data-val="{{$notes->id}}" >
                     <h1 class="jdl-note">{{ $notes->title }}</h1>
                     <p class="desc">{{ $notes->message }}</p>
                     <h6 class="adm-name">{{ $notes->username }}</h6>
@@ -178,7 +178,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.edit', $note->id) }}" method="post">
+                <form method="post">
                     @csrf
                     @method('PUT')
                     <h1 style="color: #B9B9B9;">Judul Catatan</h1>
@@ -197,10 +197,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+<script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
         let navbarState = true;
@@ -220,6 +222,17 @@
             $(this).addClass('act')
         });
     });
+
+
+    $('#modal-note').on('show.bs.modal', function (event) {
+        var myVal = $(event.relatedTarget).data('val');
+        $(".modal-body #notes").val(myVal);
+
+        $.get(`{{route('admin.edit',2)}}`, function(data, status){
+            console.log(data)
+        });
+    });
+
 </script>
 <!-- <script src="api-consume.js">
     $(document).ready(function() {

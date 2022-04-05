@@ -38,9 +38,15 @@ class AdminDashboard extends Controller
         }
     }
 
-    public function edit(Request $request, $id){
+    public function edit($id) {
         $note = Note::find($id);
-        $note->update($request->all());
-        return redirect()->route('admin.index');
+        
+        return redirect()->route('admin.index', compact('note'));
     }
+
+    // public function edit(Request $request, $id){
+    //     $note = Note::find($id);
+    //     $note->update($request->all());
+    //     return redirect()->route('admin.index');
+    // }
 }
