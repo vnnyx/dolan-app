@@ -11,7 +11,7 @@ class AdminDashboard extends Controller
 {
     public function index(){
         $count = DB::table('notes')->count();
-        $note = Note::all();
+        $note = Note::orderBy('id', 'DESC')->get();
         return view('dashboardadmin', compact('note','count'));
     }
 
@@ -38,28 +38,29 @@ class AdminDashboard extends Controller
         }
     }
 
-    public function edit(Request $request, $id){
-        $field = $request->validate([
-            'title' => 'required',
-            'message' => 'required'
-        ]);
+     public function update(Request $request, $id){
+         $field = $request->validate([
+             'title' => 'required',
+             'message' => 'required'
+         ]);
 
-        $note = Note::findOrFail($id);
-        $note->update([
-            'username'=> 'nindra',
-            'title' => $field['title'],
-            'message' => $field['message']
-        ]);
+         $note = Note::find($id);
 
-        if ($note){
-            return redirect()->route('admin.index')->with(['success'=>'New note has been create']);
-        }else{
-            return redirect()->back()->withInput()->with(['error'=>'some problem']);
-        }
-    }
+         $note->update([
+             'username'=> 'nindra',
+             'title' => $field['title'],
+             'message' => $field['message']
+         ]);
 
-    public function update($id){
-        $note = Note::findOrFail($id);
-        return view('modal', compact('note'));
+         if ($note){
+             return redirect()->route('admin.index')->with(['success'=>'Note has been updated']);
+         }else{
+             return redirect()->back()->withInput()->with(['error'=>'some problem']);
+         }
+     }
+
+    public function destroy($id){
+        Note::destroy($id);
+        return redirect()->route('admin.index')->with(['success'=>'Note has been deleted']);
     }
 }

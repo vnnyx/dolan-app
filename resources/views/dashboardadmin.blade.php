@@ -132,14 +132,14 @@
             <i class='bx bx-plus-circle' data-toggle="modal" data-target="#exampleModal"></i>
             <hr>
             @foreach($note as $notes)
-            <div class="row mb-3">
-{{--                <a data-toggle="modal" data-target="#modal-note-{{ $notes->id }}"></a>--}}
-                <div class="box col" data-toggle="modal" data-target="#modal-note">
-                    <h1 class="jdl-note">{{ $notes->title }}</h1>
-                    <p class="desc">{{ $notes->message }}</p>
-                    <h6 class="adm-name">{{ $notes->username }}</h6>
-                </div>
-            </div>
+                    <div class="row mb-3">
+                        <div class="box col" data-toggle="modal" data-target="#modal-note{{$notes->id}}">
+                            <h1 class="jdl-note">{{ $notes->title }}</h1>
+                            <p class="desc">{{ $notes->message }}</p>
+                            <h6 class="adm-name">{{ $notes->username }}</h6>
+                        </div>
+                    </div>
+                @include('modal.modalupdate')
             @endforeach
         </div>
     </div>
@@ -159,39 +159,15 @@
                 <form action="{{ route('admin.store') }}" method="post">
                     @csrf
                     <h1 style="color: #B9B9B9;">Judul Catatan</h1>
-                    <input type="text" id="notes" name="title" placeholder="Update Konten, Wisata, dll" style="border-radius: 8px;">
+                    <input type="text" id="notes" name="title" placeholder="Update Konten, Wisata, dll"
+                           style="border-radius: 8px;">
                     <h1 style="color: #B9B9B9;">Isi Catatan</h1>
-                    <textarea name="message" id="isi" placeholder="Tulis apa aja deh disini buat admin yang lain biar bisa koordinasi" style="border-radius: 8px;"></textarea>
-                    <button type="submit" class="btn justify-content-center w-100 py-3 text-white" style="background-color: #02182B;border-radius: 8px;">Buat Catatan</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-{{--Modal Update--}}
-<div class="modal fade" id="modal-note" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tulis Catatan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('admin.edit', $notes->id) }}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <h1 style="color: #B9B9B9;">Judul Catatan</h1>
-                    <input type="text" id="notes" placeholder="Update Konten, Wisata, dll" style="border-radius: 8px;">
-                    <h1 style="color: #B9B9B9;">Isi Catatan</h1>
-                    <textarea name="" id="isi" placeholder="Tulis apa aja deh disini buat admin yang lain biar bisa koordinasi" style="border-radius: 8px;"></textarea>
-                    <div class="modal-footer" style="border: none;">
-                        <button type="submit" class="btn py-3 text-white" style="background-color: #02182B;border-radius: 8px;">Simpan</button>
-                        <button type="button" class="btn py-3">Hapus</button>
-                    </div>
+                    <textarea name="message" id="isi"
+                              placeholder="Tulis apa aja deh disini buat admin yang lain biar bisa koordinasi"
+                              style="border-radius: 8px;"></textarea>
+                    <button type="submit" class="btn justify-content-center w-100 py-3 text-white"
+                            style="background-color: #02182B;border-radius: 8px;">Buat Catatan
+                    </button>
                 </form>
             </div>
         </div>
@@ -200,10 +176,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+<script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
         let navbarState = true;
@@ -213,7 +191,7 @@
             if (navbarState) {
                 $('#left').removeClass('col-lg-6').addClass('col-lg-7')
                 navbarState = false;
-            }else{
+            } else {
                 $('#left').removeClass('col-lg-7').addClass('col-lg-6')
                 navbarState = true;
             }
@@ -224,21 +202,6 @@
         });
     });
 </script>
-<!-- <script src="api-consume.js">
-    $(document).ready(function() {
-        $.ajax({
-            type: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            url: "http://localhost:8800/api/hello/test",
-            success: function (data) {
-                var users = JSON.parse(JSON.stringify(data));
-                $("#data").replaceWith('<a >'+users+'</a>')
-            }
-        });
-    });
-</script> -->
 </body>
 
 </html>
