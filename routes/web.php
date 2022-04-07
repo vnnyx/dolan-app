@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\noteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('dash-admn');
+// });
+// Route::resource('note', noteController::class);
+Route::get('/dash-admn', [noteController::class , 'index']);
+Route::post('create', [noteController::class , 'create']);

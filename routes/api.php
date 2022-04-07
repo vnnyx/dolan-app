@@ -20,7 +20,7 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 
 Route::middleware('Auth:sanctum')->group(function () {
-    Route::post('/dashboard/catatan', [AdminDashboardController::class, 'createNote']);
+    Route::post('catatan', [AdminDashboardController::class, 'createNote']);
     Route::get('/dashboard/catatan', [AdminDashboardController::class, 'index']);
     Route::put('/dashboard/catatan/{id}', [AdminDashboardController::class, 'updateNote']);
     Route::delete('/dashboard/catatan/{id}', [AdminDashboardController::class, 'deleteNote']);

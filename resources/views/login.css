@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+}
+
+#kol1 {
+    width: 50%;
+    height: 100%;
+}
+#kol1 h3 {
+    position: relative;
+    top: 140px;
+    left: 177px;
+    font-size: bold;
+    font-size: 40px;
+}
+.head-c{
+    position: relative;
+    top: 100px;
+    left: 37%;
+}
+#kol1 .tulisan {
+    font-weight: 900;
+}
+.daftar{
+    position: relative;
+    top: 390px;
+    font-size: 20px;
+}
+.daftar a{
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+}
+/* =================================================== */
+#kol2 {
+    width: 50%;
+}
+.form-control {
+    position: relative;
+    top: 200px;
+    width: 308px;
+    height: 62px;
+    border-radius: 8px;
+    background-color: #FFF;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .2);
+}
+.form-control::placeholder {
+    color: #B0B0B0;
+}
+.btn {
+    position: relative;
+    left: 15%;
+    top: 270px;
+    width: 305px;
+    height: 57px;
+    background-color: #02182B;
+    color: white;
+}
+.btn:hover {
+    color: #fff;
+}
+.sandi {
+    position: relative;
+    top: 175px;
+    left: 430px;
+    color: #B0B0B0;
+    font-size: 13px;
+    text-decoration: none;
+}
+.eye {
+    position: absolute;
+    top: 395px;
+    left: 495px;
+    color: #000;
+    z-index: 2222 !important;
+}
+#hide1 {
+    display: none;
+}
+label, #envelope{
+    position: absolute;
+    font-size: 25px;
+    top: 159px;
+    left: 125px;
+    z-index: 111;
+}
+#lock{
+    position: absolute;
+    top: 235px;
+    left: 125px;
+}

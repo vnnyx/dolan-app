@@ -1,0 +1,343 @@
+/*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #FBFBFB;
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+#sidebar {
+    position: fixed;
+    min-height: 100vh;
+    min-width: 300px;
+    max-width: 300px;
+    background: #02182B;
+    color: #fff;
+    transition: all 0.4s ease-in;
+}
+
+#sidebar.active {
+    margin-left: -170px;
+    transition: all .4s ease-out;
+}
+#sidebar.active .navbar-btn{
+    left: 40px;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px 36px;
+}
+.act{
+    color: #DF9506;
+}
+#sidebar ul li a {
+    padding: 10px 36px;
+    margin-left: 50px;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: block;
+}
+#sidebar.active ul li a{
+    visibility: hidden;
+    transition: all 0s ease;
+}
+#sidebar.active i{
+    /* margin-left: 100px; */
+    display: show;
+    transition: all 0s ease;
+}
+#sidebar ul li a:hover {
+    color: #DF9506;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    position: relative;
+    left: 310px;
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+#sidebarCollapse {
+    position: relative;
+    top: 5px;
+    left: 70px;
+    width: 40px;
+    height: 40px;
+    background-color: #02182B;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#sidebarCollapse span {
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+    display: block;
+    background: #555;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
+}
+
+#sidebarCollapse span:first-of-type {
+    transform: rotate(45deg) translate(2px, 2px);
+}
+#sidebarCollapse span:nth-of-type(2) {
+    opacity: 0;
+}
+#sidebarCollapse span:last-of-type {
+    transform: rotate(-45deg) translate(1px, -1px);
+}
+#sidebarCollapse.active span {
+    transform: none;
+    opacity: 1;
+    margin: 5px auto;
+}
+#sidebar i{
+    position: relative;
+    top: 45px;
+    left: 40px;
+    font-size: 1.5em;
+}
+#sidebar.active i{
+    position: relative;
+    left: 215px;
+}
+#sidebar .hov:hover{
+    color: #DF9506;
+    -webkit-transform: scale(1.10);
+    transform: scale(1.10);
+}
+#content .judul{
+    margin-left: 10px;
+    font-size: 56px;
+    letter-spacing: -3px;
+    font-weight: bold;
+}
+#sidebar.active ~ #content .judul{
+    position: relative;
+    left: -140px;
+}
+/* 
+----------------------------------------------
+    Konten Kiri
+----------------------------------------------
+*/
+#content .cont-l{
+    background-color: #FFFFFF;
+    height: 100%;
+    width: 10px;
+    margin-top: 40px;
+    margin-left: 30px;
+    border-radius: 10px;
+}
+#sidebar.active ~ #content .cont-l
+{
+    position: relative;
+    background-color: #FFFFFF;
+    left: -150px;
+    /* min-width: 1200px;
+    max-width: 1200px; */
+    transition: all .4 ease;
+}
+#content .cont-l h4{
+    margin-top: 24px;
+    font-size: 26px;
+    font-weight: bold;
+}
+#content .cont-l .tanggal{
+    font-size: 20px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    color: #B9B9B9;
+}
+#content .cont-l .item{
+    position: relative;
+    height: 150px;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 0 1px #000;
+    -o-box-shadow: 0 0 1px #000;
+    -moz-box-shadow: 0 0 1px #000;
+    -ms-box-shadow: 0 0 1px #000;
+    box-shadow: 0 0 1px #000;
+}
+#sidebar.active ~ #content .cont-l .item{
+    /* min-width: 750px;
+    max-width: 750px; */
+    height: 150px;
+}
+#content .cont-l .item .nama-wisata{
+    margin-left: 15px;
+    font-size: 24px;
+    margin-top: 32px;
+    color: #02182B;
+    font-weight: bold;
+}
+#content .cont-l .item .lokasi{
+    margin-top: -10px;
+    margin-left: 15px;
+    font-size: 16px;
+    color: #B9B9B9;
+}
+#content .cont-l .row{
+    width: 95%;
+}
+#content .cont-l .btn
+{
+    position: absolute;
+    top: 35%;
+    left: 490px;
+    height: 50px;
+    border-radius: 6px;
+    background-color: #555;
+    font-weight: bold;
+    font-size: 20px;
+}
+#sidebar.active ~ #content .cont-l .btn
+{
+    left: 75%;
+    transition: all .4 ease;
+}
+#content .cont-l h4, hr, .tanggal{
+    margin-left: 24px;
+}
+
+/* 
+------------------------------------------------------
+    Konten Kanan
+------------------------------------------------------
+*/
+#content .cont-r{
+    background-color: #FFFFFF;
+    margin-top: 40px;
+    margin-left: 30px;
+    border-radius: 10px;
+}
+#sidebar.active ~ #content .cont-r{
+    left: -150px;
+}
+#content .cont-r .catatan{
+    margin-top: 24px;
+    margin-left: 15px;
+    font-size: 26px;
+    font-weight: bold;
+}
+#content .cont-r i{
+    position: absolute;
+    left: 320px;
+    top: 27px;
+    font-size: 30px;
+}
+#content .cont-r hr{
+    margin-left: 17px;
+}
+#content .cont-r .row{
+    width: 93%;
+    padding: 5px;
+    margin-left: 17px;
+}
+#content .cont-r .box{
+    border: 1px solid;
+    border-color: aqua;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#content .cont-r .box .jdl-note{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 16px;
+}
+#content .cont-r .box .desc{
+    color: #DF9506;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+#content .cont-r .box .adm-name{
+    color: #B9B9B9;
+    margin-bottom: 10px;
+}
+.modal-body #notes{
+    /* border: none;
+    outline: none; */
+    width: 100%;
+    padding: 10px;
+}
+.modal-body #isi{
+    width: 100%;
+    padding: 10px;
+    min-height: 120px;
+    max-height: 120px;
+}
+.modal-body h1{
+    font-size: 20px;
+    font-weight: 500;
+}
+.modal-body #notes, #isi{
+    margin-bottom: 20px;
+}
+.modal-title{
+    font-weight: 900;
+}
+.modal{
+    margin-top: 7%;
+}
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+/* @media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+        transform: rotateY(90deg);
+    }
+    #sidebar.active {
+        margin-left: 0;
+        transform: none;
+    }
+    #sidebarCollapse span:first-of-type,
+    #sidebarCollapse span:nth-of-type(2),
+    #sidebarCollapse span:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
+    #sidebarCollapse.active span {
+        margin: 0 auto;
+    }
+    #sidebarCollapse.active span:first-of-type {
+        transform: rotate(45deg) translate(2px, 2px);
+    }
+    #sidebarCollapse.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+    #sidebarCollapse.active span:last-of-type {
+        transform: rotate(-45deg) translate(1px, -1px);
+    }
+
+} */
