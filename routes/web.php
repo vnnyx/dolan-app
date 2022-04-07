@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\noteController;
 
@@ -14,9 +15,12 @@ use App\Http\Controllers\noteController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('dash-admn');
-// });
-// Route::resource('note', noteController::class);
-Route::get('/dash-admn', [noteController::class , 'index']);
-Route::post('create', [noteController::class , 'create']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('admin', AdminDashboard::class);

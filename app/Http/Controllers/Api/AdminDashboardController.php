@@ -21,6 +21,7 @@ class AdminDashboardController extends Controller
         ]);
 
         Note::create([
+            'username'=> auth()->user()->username,
             'title' => $field['title'],
             'message' => $field['message']
         ]);
