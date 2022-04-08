@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\noteController;
+use App\Http\Controllers\PengelolaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admin', AdminDashboardController::class);
+Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin', 'Auth']], (function (){
+    Route::get('/dashboard', [AdminDashboardController::class, 'index']);
+    Route::post('/note', [AdminDashboardController::class, 'store']);
+    Route::put('/note/{id}', [AdminDashboardController::class, 'update']);
+}));
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
 
-Route::resource('login', LoginController::class);
+Route::get('/register', [PengelolaController::class, 'register']);

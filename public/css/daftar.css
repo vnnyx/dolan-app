@@ -25,13 +25,13 @@ body {
 #kol1 .tulisan {
     font-weight: 900;
 }
-.daftar{
+.login{
     position: relative;
     top: 380px;
     left: 240px;
     font-size: 20px;
 }
-.daftar a{
+.login a{
     font-weight: 700;
     text-decoration: none;
     color: #000;

@@ -14,7 +14,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/daftar.css') }}">
   <title>RPL PROJECT</title>
 </head>
 
@@ -25,25 +25,24 @@
         <img class="img-head" src="{{ asset('image/Dolan.png') }}" alt="">
         <p class="tulisan">Pemilik Wisata</p>
       </div>
-      <form action="/login" method="post">
-          @csrf
+      <form>
         <div class="mb-3">
           <label for="email"><i class='bx bx-envelope' id="envelope"></i></label>
-          <input type="text" name="email" class="form-control mx-auto" id="email" style="padding-left: 50px;" placeholder="E-mail">
+          <input type="text" class="form-control mx-auto" id="email" style="padding-left: 50px;" placeholder="E-mail">
           <div id="emailHelp" class="form-text"></div>
         </div>
         <div class="mb-3">
           <label for="password"><i class='bx bx-lock-alt' id="lock"></i></label>
-          <input type="password" class="form-control mx-auto" style="padding-left: 50px;"   name="password" id="password" placeholder="Password">
+          <input type="password" class="form-control mx-auto" style="padding-left: 50px;"   id="password" placeholder="Password">
           <span class="eye" onclick="myFunction()">
             <i id="hide1" class="fa-solid fa-eye"></i>
             <i id="hide2" class="fa-solid fa-eye-slash"></i>
           </span>
         </div>
         <a href="#" class="sandi">Lupa kata sandi ?</a>
-        <a href="#"><button type="submit" class="btn ">Login</button></a>
+        <a href="#"><button type="submit" class="btn ">Daftar</button></a>
       </form>
-      <h1 class="daftar">Belum punya akun ?<a href=""> Daftar</a></h1>
+      <h1 class="login">Sudah punya akun ?<a href=""> Login</a></h1>
     </div>
     <div class="col-md-6" id="kol2">
       <img class="w-100" src="{{ asset('image/gambar.png') }}" alt="">
@@ -72,12 +71,6 @@
       }
     }
   </script>
-
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>
