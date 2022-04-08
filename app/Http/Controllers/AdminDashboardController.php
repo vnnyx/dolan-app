@@ -6,7 +6,7 @@ use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AdminDashboard extends Controller
+class AdminDashboardController extends Controller
 {
     public function index(){
         $count = DB::table('notes')->count();

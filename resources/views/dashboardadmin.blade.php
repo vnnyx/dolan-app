@@ -196,10 +196,13 @@
                 navbarState = true;
             }
         });
+
         $('li').on('click', function () {
             $(this).siblings().removeClass('act')
             $(this).addClass('act')
         });
+
+        $(".alert").slideDown(300).delay(3000).slideUp(300)
     });
 </script>
 </body>

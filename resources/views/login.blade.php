@@ -14,7 +14,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="/css/login.css">
   <title>RPL PROJECT</title>
 </head>
 
@@ -33,7 +33,7 @@
         </div>
         <div class="mb-3">
           <label for="password"><i class='bx bx-lock-alt' id="lock"></i></label>
-          <input type="password" class="form-control mx-auto"style="padding-left: 60px;padding-right:-20;"   id="password" placeholder="Password">
+          <input type="password" class="form-control mx-auto" style="padding-left: 60px;padding-right:-20;"   id="password" placeholder="Password">
           <span class="eye" onclick="myFunction()">
             <i id="hide1" class="fa-solid fa-eye"></i>
             <i id="hide2" class="fa-solid fa-eye-slash"></i>
