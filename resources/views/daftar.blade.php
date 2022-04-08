@@ -33,7 +33,7 @@
         </div>
         <div class="mb-3">
           <label for="password"><i class='bx bx-lock-alt' id="lock"></i></label>
-          <input type="password" class="form-control mx-auto"style="padding-left: 50px;"   id="password" placeholder="Password">
+          <input type="password" class="form-control mx-auto" style="padding-left: 50px;"   id="password" placeholder="Password">
           <span class="eye" onclick="myFunction()">
             <i id="hide1" class="fa-solid fa-eye"></i>
             <i id="hide2" class="fa-solid fa-eye-slash"></i>

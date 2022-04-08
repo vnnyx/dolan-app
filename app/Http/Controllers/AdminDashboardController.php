@@ -6,16 +6,19 @@ use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AdminDashboard extends Controller
+class AdminDashboardController extends Controller
 {
+
+
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
+
     public function index(){
         $count = DB::table('notes')->count();
         $note = Note::orderBy('id', 'DESC')->get();
         return view('dashboardadmin', compact('note','count'));
-    }
-
-    public function create(){
-        return view('modal');
     }
 
     public function store(Request $request){
@@ -31,7 +34,7 @@ class AdminDashboard extends Controller
         ]);
 
         if ($note){
-            return redirect()->route('admin.index')->with(['success'=>'New note has been create']);
+            return redirect('/admin/dashboard')->with(['success'=>'New note has been create']);
         }else{
             return redirect()->back()->withInput()->with(['error'=>'some problem']);
         }
@@ -54,13 +57,13 @@ class AdminDashboard extends Controller
                 ]);
 
                 if ($note){
-                    return redirect()->route('admin.index')->with(['success'=>'Note has been updated']);
+                    return redirect('/admin/dashboard')->with(['success'=>'Note has been updated']);
                 }else{
                     return redirect()->back()->withInput()->with(['error'=>'some problem']);
                 }
             case 'delete':
                 Note::destroy($id);
-                return redirect()->route('admin.index')->with(['success'=>'Note has been deleted']);
+                return redirect('/admin/dashboard')->with(['success'=>'Note has been deleted']);
             default:
                 return 0;
         }

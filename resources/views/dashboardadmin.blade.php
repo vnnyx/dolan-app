@@ -139,7 +139,7 @@
                             <h6 class="adm-name">{{ $notes->username }}</h6>
                         </div>
                     </div>
-                @include('modal.modalupdate')
+                @include('modal.modal_update')
             @endforeach
         </div>
     </div>
@@ -156,7 +156,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.store') }}" method="post">
+                <form action="/admin/note" method="post">
                     @csrf
                     <h1 style="color: #B9B9B9;">Judul Catatan</h1>
                     <input type="text" id="notes" name="title" placeholder="Update Konten, Wisata, dll"
@@ -196,10 +196,13 @@
                 navbarState = true;
             }
         });
+
         $('li').on('click', function () {
             $(this).siblings().removeClass('act')
             $(this).addClass('act')
         });
+
+        $(".alert").slideDown(300).delay(3000).slideUp(300)
     });
 </script>
 </body>
