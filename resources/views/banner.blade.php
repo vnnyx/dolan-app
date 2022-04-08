@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="contoh.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/contoh.css') }}">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -32,7 +32,7 @@
             <div class="col-md-3" id="nav">
                 <nav id="sidebar">
                     <div class="sidebar-header">
-                        <a href="#"><img src="../dplan.png" alt=""></a>
+                        <a href="#"><img src="{{ asset('image/dplan.png') }}" alt=""></a>
                     </div>
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
                         <span></span>

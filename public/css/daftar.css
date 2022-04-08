@@ -25,12 +25,13 @@ body {
 #kol1 .tulisan {
     font-weight: 900;
 }
-.daftar{
+.login{
     position: relative;
-    top: 390px;
+    top: 380px;
+    left: 240px;
     font-size: 20px;
 }
-.daftar a{
+.login a{
     font-weight: 700;
     text-decoration: none;
     color: #000;
@@ -48,6 +49,10 @@ body {
     background-color: #FFF;
     box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .2);
 }
+.form-control:hover{
+    border: 1px solid #000;
+    transition: all 1.5s ease-out;
+}
 .form-control::placeholder {
     color: #B0B0B0;
 }
@@ -57,11 +62,14 @@ body {
     top: 270px;
     width: 305px;
     height: 57px;
-    background-color: #02182B;
     color: white;
+    background-color: #02182B;
+    transition: all .3s ease-in-out;
 }
 .btn:hover {
     color: #fff;
+    transform: translateY(-10px);
+    transition: all .3s ease-in-out;
 }
 .sandi {
     position: relative;
@@ -70,13 +78,18 @@ body {
     color: #B0B0B0;
     font-size: 13px;
     text-decoration: none;
+    font-weight: 700;
+    transition: all .5s ease;
+}
+.sandi:hover{
+    color: #000;
+    transition: all .5s ease;
 }
 .eye {
     position: absolute;
-    top: 395px;
+    top: 397px;
     left: 495px;
     color: #000;
-    z-index: 2222 !important;
 }
 #hide1 {
     display: none;
@@ -85,11 +98,11 @@ label, #envelope{
     position: absolute;
     font-size: 25px;
     top: 159px;
-    left: 125px;
+    left: 120px;
     z-index: 111;
 }
 #lock{
     position: absolute;
     top: 235px;
-    left: 125px;
+    left: 120px;
 }

@@ -14,7 +14,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
   <title>RPL PROJECT</title>
 </head>
 
@@ -22,18 +22,18 @@
   <div class="row">
     <div class="col-md-6" id="kol1">
       <div class="head-c">
-        <img class="img-head" src="../Dolan.png" alt="">
+        <img class="img-head" src="{{ asset('image/Dolan.png') }}" alt="">
         <p class="tulisan">Pemilik Wisata</p>
       </div>
       <form>
         <div class="mb-3">
           <label for="email"><i class='bx bx-envelope' id="envelope"></i></label>
-          <input type="text" class="form-control mx-auto" id="email" style="padding-left: 60px;" placeholder="E-mail">
+          <input type="text" class="form-control mx-auto" id="email" style="padding-left: 50px;" placeholder="E-mail">
           <div id="emailHelp" class="form-text"></div>
         </div>
         <div class="mb-3">
           <label for="password"><i class='bx bx-lock-alt' id="lock"></i></label>
-          <input type="password" class="form-control mx-auto"style="padding-left: 60px;padding-right:-20;"   id="password" placeholder="Password">
+          <input type="password" class="form-control mx-auto"style="padding-left: 50px;"   id="password" placeholder="Password">
           <span class="eye" onclick="myFunction()">
             <i id="hide1" class="fa-solid fa-eye"></i>
             <i id="hide2" class="fa-solid fa-eye-slash"></i>
@@ -42,10 +42,10 @@
         <a href="#" class="sandi">Lupa kata sandi ?</a>
         <a href="#"><button type="submit" class="btn ">Login</button></a>
       </form>
-      <h1 class="daftar text-center">Belum punya akun ?<a href=""> Daftar</a></h1>
+      <h1 class="daftar">Belum punya akun ?<a href=""> Daftar</a></h1>
     </div>
     <div class="col-md-6" id="kol2">
-      <img class="w-100" src="../gambar.png" alt="">
+      <img class="w-100" src="{{ asset('image/gambar.png') }}" alt="">
     </div>
   </div>
 
@@ -57,7 +57,7 @@
     crossorigin="anonymous"></script>
   <script>
     function myFunction() {
-      var x = document.getElementById("myInput")
+      var x = document.getElementById("password")
       var y = document.getElementById("hide1")
       var z = document.getElementById("hide2")
       if (x.type == "password") {

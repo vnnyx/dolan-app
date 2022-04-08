@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+}
+
+#kol1 {
+    width: 50%;
+    height: 100%;
+}
+#kol1 h3 {
+    position: relative;
+    top: 140px;
+    left: 177px;
+    font-size: bold;
+    font-size: 40px;
+}
+.head-c{
+    position: relative;
+    top: 100px;
+    left: 37%;
+}
+#kol1 .tulisan {
+    font-weight: 900;
+}
+.daftar{
+    position: relative;
+    top: 380px;
+    left: 240px;
+    font-size: 20px;
+}
+.daftar a{
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+}
+/* =================================================== */
+#kol2 {
+    width: 50%;
+}
+.form-control {
+    position: relative;
+    top: 200px;
+    width: 308px;
+    height: 62px;
+    border-radius: 8px;
+    background-color: #FFF;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .2);
+}
+.form-control:hover{
+    border: 1px solid #000;
+    transition: all 1.5s ease-out;
+}
+.form-control::placeholder {
+    color: #B0B0B0;
+}
+.btn {
+    position: relative;
+    left: 15%;
+    top: 270px;
+    width: 305px;
+    height: 57px;
+    color: white;
+    background-color: #02182B;
+    transition: all .3s ease-in-out;
+}
+.btn:hover {
+    color: #fff;
+    transform: translateY(-10px);
+    transition: all .3s ease-in-out;
+}
+.sandi {
+    position: relative;
+    top: 175px;
+    left: 430px;
+    color: #B0B0B0;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all .5s ease;
+}
+.sandi:hover{
+    color: #000;
+    transition: all .5s ease;
+}
+.eye {
+    position: absolute;
+    top: 397px;
+    left: 495px;
+    color: #000;
+}
+#hide1 {
+    display: none;
+}
+label, #envelope{
+    position: absolute;
+    font-size: 25px;
+    top: 159px;
+    left: 120px;
+    z-index: 111;
+}
+#lock{
+    position: absolute;
+    top: 235px;
+    left: 120px;
+}
