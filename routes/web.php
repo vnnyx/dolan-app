@@ -21,11 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [AdminDashboardController::class, 'index']);
-Route::post('/note', [AdminDashboardController::class, 'store']);
-Route::put('/note/{id}', [AdminDashboardController::class, 'update']);
-
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index']);
+    Route::post('/note', [AdminDashboardController::class, 'store']);
+    Route::put('/note/{id}', [AdminDashboardController::class, 'update']);
 }));
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
