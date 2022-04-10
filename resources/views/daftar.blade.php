@@ -28,12 +28,12 @@
       <form>
         <div class="mb-3">
           <label for="email"><i class='bx bx-envelope' id="envelope"></i></label>
-          <input type="text" class="form-control mx-auto" id="email" style="padding-left: 50px;" placeholder="E-mail">
+          <input type="text" class="form-control mx-auto" id="email" style="padding-left: 50px;" placeholder="E-mail" required>
           <div id="emailHelp" class="form-text"></div>
         </div>
         <div class="mb-3">
           <label for="password"><i class='bx bx-lock-alt' id="lock"></i></label>
-          <input type="password" class="form-control mx-auto" style="padding-left: 50px;"   id="password" placeholder="Password">
+          <input type="password" class="form-control mx-auto" style="padding-left: 50px;"   id="password" placeholder="Password" required>
           <span class="eye" onclick="myFunction()">
             <i id="hide1" class="fa-solid fa-eye"></i>
             <i id="hide2" class="fa-solid fa-eye-slash"></i>

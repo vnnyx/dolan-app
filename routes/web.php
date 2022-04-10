@@ -18,7 +18,7 @@ use App\Http\Controllers\PengelolaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('daftar');
 });
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin', 'Auth']], (function (){
