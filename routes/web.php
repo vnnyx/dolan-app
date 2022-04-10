@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('daftar');
 });
 
-Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin', 'Auth']], (function (){
+Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
     Route::post('/note', [AdminDashboardController::class, 'store']);
     Route::put('/note/{id}', [AdminDashboardController::class, 'update']);
