@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ListAkunController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\noteController;
@@ -20,10 +21,7 @@ use App\Http\Controllers\PengelolaController;
 Route::get('/', function () {
     return view('daftar');
 });
-Route::get('/akun', function () {
-    return view('list-akun');
-});
-
+Route::get('/akun', [ListAkunController::class, 'list']);
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
     Route::post('/note', [AdminDashboardController::class, 'store']);
