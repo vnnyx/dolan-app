@@ -106,3 +106,14 @@ label, #envelope{
     top: 235px;
     left: 120px;
 }
+.circle{
+    position: relative;
+    width: 43px;
+    height: 43px;
+    background-color: #02182B;
+    color: #FFF;
+    border-radius: 50%;
+}
+.btn-sm{
+    position: absolute;
+}

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengelolaController;
 
@@ -31,3 +32,5 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [PengelolaController::class, 'register']);
 Route::get('/content', [PengelolaController::class, 'createContent']);
 Route::post('/content', [PengelolaController::class, 'storeContent']);
+Route::get('/transaction', [TransactionController::class, 'index']);
+Route::get('/autocomplete', [TransactionController::class, 'search']);
