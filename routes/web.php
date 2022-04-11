@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ListAkunController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin','Auth']], (function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
+    return view('list-akun');
+}));
+Route::get('/akun', [ListAkunController::class, 'list']);
+Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
     Route::post('/note', [AdminDashboardController::class, 'store']);
     Route::put('/note/{id}', [AdminDashboardController::class, 'update']);

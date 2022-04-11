@@ -175,8 +175,8 @@ a:focus {
     vertical-align: middle;
     white-space: nowrap;
     position: relative;
-    top: -7px;
-    left: 220px;
+    top: -45px;
+    left: 690px;
 }
 
 .container-1 input#search {
@@ -230,4 +230,9 @@ a:focus {
 hr{
     position: relative;
     top: 35px;
+}
+.cari{
+    position: absolute;
+    right: 40px;
+    top: 100px;
 }
