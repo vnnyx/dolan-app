@@ -10,7 +10,13 @@ class PengelolaController extends Controller
         return view('daftar');
     }
 
-    public function create(Request $request){
+    public function createContent(){
+        return view('banner');
+    }
 
+    public function storeContent(Request $request){
+        if($request->ajax()){
+            $request->file->storeOnCloudinary('abp');
+        }
     }
 }

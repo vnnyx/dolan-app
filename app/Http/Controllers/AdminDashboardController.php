@@ -34,7 +34,7 @@ class AdminDashboardController extends Controller
         ]);
 
         $note = Note::create([
-            'username' => 'nindra',
+            'username' => auth()->user()->username,
             'title' => $field['title'],
             'message' => $field['message']
         ]);
@@ -58,7 +58,7 @@ class AdminDashboardController extends Controller
                 $note = Note::find($id);
 
                 $note->update([
-                    'username' => 'nindra',
+                    'username' => auth()->user()->username,
                     'title' => $field['title'],
                     'message' => $field['message']
                 ]);
