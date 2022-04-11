@@ -90,9 +90,10 @@
                     <hr class="garis ml-4">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-12">
                         <div class="wrapp">
+                            <img class="status" src="{{ asset('image/centang.png') }}" alt="">
                             <h1 class="wisata ml-4">Tiket wisata <span>Jurug Bang</span></h1>
                             <h4 class="harga">Rp. 40.000, 00</h4>
                             <i class="fas fa-ticket-alt"></i>
@@ -100,7 +101,22 @@
                             <i class="fa-solid fa-ticket-simple"></i>
                             <h4 class="lokasi mb-5 ml-4">Watulimo, Trenggalek, Jawa Timur</h4>
                             <i class='bx bx-user font-weight-bold ml-4'> <span class="user pr-3"> Ignasius Nindra Kharisma F</span></i>
-                            <i class='bx bx-calendar-week'>20 Desember 2022</i>
+                            <i class='bx bx-calendar-week font-weight-bold'> 20 Desember 2022</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="wrapp">
+                            <img class="status" src="{{ asset('image/silang.png') }}" alt="">
+                            <h1 class="wisata ml-4">Tiket wisata <span>Jurug Bang</span></h1>
+                            <h4 class="harga">Rp. 40.000, 00</h4>
+                            <i class="fas fa-ticket-alt"></i>
+                            <span class="tiket">2 Tiket</span> 
+                            <i class="fa-solid fa-ticket-simple"></i>
+                            <h4 class="lokasi mb-5 ml-4">Watulimo, Trenggalek, Jawa Timur</h4>
+                            <i class='bx bx-user font-weight-bold ml-4'> <span class="user pr-3"> Ignasius Nindra Kharisma F</span></i>
+                            <i class='bx bx-calendar-week font-weight-bold'> 20 Desember 2022</i>
                         </div>
                     </div>
                 </div>

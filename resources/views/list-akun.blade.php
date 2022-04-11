@@ -24,7 +24,7 @@
     <!-- Sidebar Holder -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
+            <div class="col-3" id="nav">
                 <nav id="sidebar">
                     <div class="sidebar-header">
                         <a href="#"><img src="{{ asset('image/dplan.png') }}" alt=""></a>
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn chat mr-3" "> Cari</button>
+                        <button type="submit" class="btn cari mr-3"> Cari</button>
                     </form>
                 </div>
                 @foreach($datas as $key => $data)
@@ -104,10 +104,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
+        let navbarState = true;
         $(document).ready(function() {
             $('#sidebarCollapse').on('click', function() {
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
+
+                if (navbarState) {
+                    $('#nav').removeClass('col-md-3').addClass('col-md-2')
+                    navbarState = false;
+                }else{
+                    $('#nav').removeClass('col-md-2').addClass('col-md-3')
+                    navbarState = true;
+                }
 
             });
             $('li').on('click', function() {
