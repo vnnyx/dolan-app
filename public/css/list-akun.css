@@ -1,0 +1,242 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #FBFBFB;
+    overflow-x: hidden;
+}
+
+/* body::-webkit-scrollbar {
+    display: none;
+} */
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+#sidebar {
+    position: fixed;
+    margin-left: -20px;
+    min-height: 100vh;
+    min-width: 350px;
+    max-width: 350px;
+    background: #02182B;
+    color: #fff;
+    transition: all 0.4s ease-in;
+}
+
+#sidebar.active {
+    margin-left: -200px;
+    transition: all .4s ease-out;
+}
+
+#sidebar.active .navbar-btn {
+    top: 40px;
+    left: 240px;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px 50px;
+}
+
+#sidebar.active .sidebar-header {
+    visibility: hidden;
+}
+
+#sidebar .sidebar-header img {
+    width: 190px;
+    object-fit: cover;
+}
+
+.act {
+    color: #DF9506;
+}
+
+#sidebar ul li a {
+    padding: 10px 36px;
+    margin-left: 60px;
+    line-height: 33px;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: block;
+}
+
+#sidebar.active ul li a {
+    visibility: hidden;
+    transition: all 0s ease;
+}
+
+#sidebar.active .hov {
+    position: relative;
+    top: -50px;
+    margin-left: 193px;
+    display: show;
+    transition: all 0s ease;
+}
+
+#sidebar ul li a:hover {
+    color: #DF9506;
+}
+
+#sidebar i {
+    position: relative;
+    top: 45px;
+    left: 55px;
+    font-size: 1.9em;
+}
+
+#sidebarCollapse {
+    position: absolute;
+    top: 4px;
+    left: 300px;
+    width: 40px;
+    height: 40px;
+    background-color: #02182B;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#sidebarCollapse span {
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+    display: block;
+    background: #555;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
+}
+
+#sidebarCollapse span:first-of-type {
+    transform: rotate(45deg) translate(2px, 2px);
+}
+
+#sidebarCollapse span:nth-of-type(2) {
+    opacity: 0;
+}
+
+#sidebarCollapse span:last-of-type {
+    transform: rotate(-45deg) translate(1px, -1px);
+}
+
+#sidebarCollapse.active span {
+    transform: none;
+    opacity: 1;
+    margin: 5px auto;
+}
+
+#sidebar .hov:hover {
+    color: #DF9506;
+    -webkit-transform: scale(1.10);
+    transform: scale(1.10);
+}
+
+/* judul */
+.container-fluid .akun #kategori {
+    position: absolute;
+    left: 380px;
+    top: -6px;
+    padding: 10px;
+}
+
+.container-fluid .akun h5 {
+    font-size: 26px;
+}
+
+.container-fluid .akun .count {
+    position: absolute;
+    left: 570px;
+    top: 0;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* .container-fluid .akun .garis {
+    font-size: 40px;
+    margin-left: 655px;
+    margin-top: -50px;
+    font-weight: 500;
+    color: #B9B9B9;
+} */
+/* search box */
+.container-1 {
+    width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    top: -7px;
+    left: 220px;
+}
+
+.container-1 input#search {
+    width: 300px;
+    height: 50px;
+    background: #FFF;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #63717f;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.container-1 input#search:hover{
+    border: 2px solid;
+}
+.container-1 input#search:-ms-input-placeholder {
+    color: #65737e;
+}
+
+.container-1 .icon {
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 17px;
+    z-index: 1;
+    color: #4f5b66;
+}
+.list{
+    margin-left: 5px;
+}
+.account{
+    position: relative;
+    display: flex;
+    float: left;
+    line-height: 30px;
+}
+.chat{
+    position: absolute;
+    right: 140px;
+}
+.blokir{
+    position: absolute;
+    /* left: 670px; */
+    right: 40px;
+}
+.btn-lg:hover{
+    cursor: pointer;
+}
+hr{
+    position: relative;
+    top: 35px;
+}

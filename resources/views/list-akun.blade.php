@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/contoh.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/list-akun.css') }}">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -29,7 +29,7 @@
     <!-- Sidebar Holder -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3" id="nav">
+            <div class="col-3">
                 <nav id="sidebar">
                     <div class="sidebar-header">
                         <a href="#"><img src="{{ asset('image/dplan.png') }}" alt=""></a>
@@ -67,48 +67,33 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-9" id="banner">
-                <h1 class="judul mt-3 mb-5 font-weight-bold">Daftar Konten</h1>
-                <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Banner Halaman Utama</h4>
-                <hr class="ml-4" style="border-color: blue;">
-                <div class="wrapper">
-                    <div class="drop-file">
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="1" class="input-text" multiple>
-                    </div>
-                    <div class="drop-file">
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="1" class="input-text" multiple>
-                    </div>
-                    <div class="drop-file">
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="1" class="input-text" multiple>
-                    </div>
-                </div>
+            <div class="akun col-md-9 mt-4">
+                <h1 class="judul font-weight-bold mb-5">Daftar Akun</h1>
                 <div class="row">
-                    <div class="col-md-12">
-                        <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Banner Iklan Wisata</h4>
-                        <hr class="ml-4" style="border-color: blue;">
-                        <div class="wrapper">
-                            <div class="drop-file">
-                                <span class="btn-file">Browse File</span>
-                                <span class="name-file">or drag and drop files(png)</span>
-                                <input type="file" id="1" class="input-text" multiple>
-                            </div>
-                            <div class="drop-file">
-                                <span class="btn-file">Browse File</span>
-                                <span class="name-file">or drag and drop files(png)</span>
-                                <input type="file" id="1" class="input-text" multiple>
-                            </div>
-                            <div class="drop-file">
-                                <span class="btn-file">Browse File</span>
-                                <span class="name-file">or drag and drop files(png)</span>
-                                <input type="file" id="1" class="input-text" multiple>
+                    <div class="col">
+                        <h5 class="ml-3 font-weight-bold">Menampilkan Daftar Akun</h5>
+                        <select name="kategori" id="kategori" class="ml-3">
+                            <option value="">Pemilik Wisata</option>
+                            <option value="">Pengunjung</option>
+                            <option value="">Semua</option>
+                        </select>
+                        <h1 class="count">(56)</h1>
+                    </div>
+                    <div class="col">
+                        <div class="box">
+                            <div class="container-1">
+                                <span class="icon"><i class='bx bx-search'></i></span>
+                                <input type="search" id="search" placeholder="Search..." />
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="row list mt-5">
+                    <div class="col-md-12">
+                        <h4 class="account">Ignasius Nindra Karisma F</h4>
+                        <button type="button" class="btn chat mr-3"><i class="bx bx-chat"></i> Kirim Pesan</button>
+                        <button type="button" class="btn btn-danger blokir"><i class="bx bx-block"> Blokir</i></button>
+                        <hr>
                     </div>
                 </div>
             </div>
@@ -124,42 +109,16 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            let navbarState = true;
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
-                if (navbarState) {
-                    $('#nav').removeClass('col-md-3').addClass('col-md-2')
-                    $('#banner').removeClass('col-lg-9').addClass('col-lg-10') 
-                    navbarState = false;
-                }else{
-                    $('#nav').removeClass('col-md-2').addClass('col-md-3')
-                    $('#banner').removeClass('col-lg-10').addClass('col-lg-9') 
-                    navbarState = true;
-                }
+
             });
             $('li').on('click', function () {
                 $(this).siblings().removeClass('act')
                 $(this).addClass('act')
             });
-            $('.input-text').on('change', function () {
-                var countfile = $(this)[0].files.length;
-                var textgambar = $(this).prev();
 
-                if (countfile === 1) {
-                    var filename = $(this).val().split('\\').pop();
-                    textgambar.text(filename);
-                } else {
-                    textgambar.text(countfile + ' File yang dipilih')
-                }
-            });
-            $(window).on('resize', function () {
-                if ($(window).width() < 768) {
-                    $('#sidebar').addClass('active');
-                } else {
-                    $('#sidebar').removeClass('active')
-                }
-            });
         });
     </script>
 </body>

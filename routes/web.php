@@ -20,6 +20,9 @@ use App\Http\Controllers\PengelolaController;
 Route::get('/', function () {
     return view('daftar');
 });
+Route::get('/akun', function () {
+    return view('list-akun');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
