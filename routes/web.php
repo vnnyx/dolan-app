@@ -18,7 +18,7 @@ use App\Http\Controllers\PengelolaController;
 */
 
 Route::get('/', function () {
-    return view('daftar');
+    return view('transaksi');
 });
 Route::get('/akun', function () {
     return view('list-akun');
