@@ -1,15 +1,13 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Poppins', sans-serif;
     background: #FBFBFB;
-    overflow-x: hidden;
+    overflow-x:hidden ;
 }
 
 /* body::-webkit-scrollbar {
@@ -58,16 +56,14 @@ a:focus {
 #sidebar .sidebar-header {
     padding: 20px 50px;
 }
-
-#sidebar.active .sidebar-header {
+#sidebar.active .sidebar-header
+{
     visibility: hidden;
 }
-
 #sidebar .sidebar-header img {
     width: 190px;
     object-fit: cover;
 }
-
 .act {
     color: #DF9506;
 }
@@ -97,14 +93,12 @@ a:focus {
 #sidebar ul li a:hover {
     color: #DF9506;
 }
-
 #sidebar i {
     position: relative;
     top: 45px;
     left: 55px;
     font-size: 1.9em;
 }
-
 #sidebarCollapse {
     position: absolute;
     top: 4px;
@@ -115,7 +109,6 @@ a:focus {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 #sidebarCollapse span {
     width: 80%;
     height: 2px;
@@ -133,50 +126,34 @@ a:focus {
 #sidebarCollapse span:nth-of-type(2) {
     opacity: 0;
 }
-
 #sidebarCollapse span:last-of-type {
     transform: rotate(-45deg) translate(1px, -1px);
 }
-
 #sidebarCollapse.active span {
     transform: none;
     opacity: 1;
     margin: 5px auto;
 }
-
 #sidebar .hov:hover {
     color: #DF9506;
     -webkit-transform: scale(1.10);
     transform: scale(1.10);
 }
 
-/* judul */
-.container-fluid .akun #kategori {
-    position: absolute;
-    left: 380px;
-    top: -6px;
-    padding: 10px;
-}
 
-.container-fluid .akun h5 {
-    font-size: 26px;
-}
-
-.container-fluid .akun .count {
-    position: absolute;
-    left: 570px;
-    top: 0;
-    font-size: 30px;
-    font-weight: bold;
-}
-/* search box */
+/* CONTENT KIRI*/
+.pipe{
+    font-size: 40px;
+    margin-left: 80px;
+    color: #B9B9B9;
+}  
 .container-1 {
     width: 300px;
     vertical-align: middle;
     white-space: nowrap;
     position: relative;
-    top: -7px;
-    left: 220px;
+    top: -55px;
+    left: 720px;
 }
 
 .container-1 input#search {
@@ -201,33 +178,55 @@ a:focus {
 
 .container-1 .icon {
     position: absolute;
-    top: 50%;
     margin-left: 17px;
-    margin-top: 17px;
+    margin-top: 15px;
     z-index: 1;
     color: #4f5b66;
 }
-.list{
-    margin-left: 5px;
-}
-.account{
-    position: relative;
-    display: flex;
-    float: left;
-    line-height: 30px;
-}
-.chat{
+.bx-filter-alt{
     position: absolute;
-    right: 140px;
-}
-.blokir{
-    position: absolute;
+    font-size: 30px;
+    top: 128px;
     right: 40px;
-}
-.btn-lg:hover{
     cursor: pointer;
 }
-hr{
+.garis{
     position: relative;
-    top: 35px;
+    top: -60px;
+}
+.wrapp{
+    position: relative;
+    height: 160px;
+    width: 1076px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+}
+.wisata{
+    padding-top: 10px;
+    font-size: 32px;
+    font-weight: 600;
+}
+.lokasi{
+    color: grey;
+    font-size: 14px;
+}
+.harga{
+    position: absolute;
+    top: 30px;
+    left: 890px;
+}
+.harga{
+    color: #DF9506;
+}
+.fa-ticket-alt{
+    position: absolute;
+    right: 100px;
+    margin-top: 10px;
+    color: #DF9506;
+}
+.tiket{
+    position: absolute;
+    right: 40px;
+    margin-top: 7px;
+    font-weight: 900;
 }

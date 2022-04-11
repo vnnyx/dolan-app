@@ -19,7 +19,7 @@ use App\Http\Controllers\PengelolaController;
 */
 
 Route::get('/', function () {
-    return view('daftar');
+    return view('transaksi');
 });
 Route::get('/akun', [ListAkunController::class, 'list']);
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
