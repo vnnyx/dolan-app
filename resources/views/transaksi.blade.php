@@ -79,14 +79,17 @@
                 <div class="col-md-6">
                     <span class="pipe">|</span>
                 </div>
+                <form action="/transaction">
                 <div class="box">
                     <div class="container-1">
                         <span class="icon"><i class='bx bx-search'></i></span>
                         <input name="search" class="form-control" type="text" id="search"
                                placeholder="Cari nama transaksi"/>
                     </div>
+                    <button type="submit" class="btn btn-success">Cari</button>
                     <i class='bx bx-filter-alt'></i>
                 </div>
+                </form>
             </div>
             <div class="row">
                 <div class="col-12">
@@ -103,7 +106,7 @@
                                     <img class="status" src="{{ asset('image/silang.png') }}" alt="">
                                 @endif
                                 <h1 class="wisata ml-4">Tiket Wisata <span>{{ $data->nama_wisata }}</span></h1>
-                                <h4 class="harga">Rp. {{ number_format($data->harga_tiket, 2) }}</h4>
+                                <h4 class="harga">Rp{{ number_format($data->harga_tiket, 2) }}</h4>
                                 <i class="fas fa-ticket-alt"></i>
                                 <span class="tiket">{{ $data->total_ticket }} Tiket</span>
                                 <i class="fa-solid fa-ticket-simple"></i>
@@ -114,70 +117,60 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
             </div>
+            @endforeach
         </div>
     </div>
-    <!-- Page Content Holder -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.js"
-            integrity="sha512-Rc24PGD2NTEGNYG/EMB+jcFpAltU9svgPcG/73l1/5M6is6gu3Vo1uVqyaNWf/sXfKyI0l240iwX9wpm6HE/Tg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            let navbarState = true;
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-                if (navbarState) {
-                    $('#nav').removeClass('col-md-3').addClass('col-md-2')
-                    $('#banner').removeClass('col-lg-9').addClass('col-lg-10')
-                    navbarState = false;
-                } else {
-                    $('#nav').removeClass('col-md-2').addClass('col-md-3')
-                    $('#banner').removeClass('col-lg-10').addClass('col-lg-9')
-                    navbarState = true;
-                }
-            });
-            $('li').on('click', function () {
-                $(this).siblings().removeClass('act')
-                $(this).addClass('act')
-            });
-            $('.input-text').on('change', function () {
-                var countfile = $(this)[0].files.length;
-                var textgambar = $(this).prev();
-
-                if (countfile === 1) {
-                    var filename = $(this).val().split('\\').pop();
-                    textgambar.text(filename);
-                } else {
-                    textgambar.text(countfile + ' File yang dipilih')
-                }
-            });
-            $(window).on('resize', function () {
-                if ($(window).width() < 768) {
-                    $('#sidebar').addClass('active');
-                } else {
-                    $('#sidebar').removeClass('active')
-                }
-            });
-
-            var route = "{{ url('autocomplete') }}";
-            $('#search').typeahead({
-                source: function (query, process) {
-                    return $.get(route, {
-                        query: query
-                    }, function (data) {
-                        return process(data);
-                    });
-                }
-            });
+</div>
+<!-- Page Content Holder -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.js"
+        integrity="sha512-Rc24PGD2NTEGNYG/EMB+jcFpAltU9svgPcG/73l1/5M6is6gu3Vo1uVqyaNWf/sXfKyI0l240iwX9wpm6HE/Tg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        let navbarState = true;
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+            if (navbarState) {
+                $('#nav').removeClass('col-md-3').addClass('col-md-2')
+                $('#banner').removeClass('col-lg-9').addClass('col-lg-10')
+                navbarState = false;
+            } else {
+                $('#nav').removeClass('col-md-2').addClass('col-md-3')
+                $('#banner').removeClass('col-lg-10').addClass('col-lg-9')
+                navbarState = true;
+            }
         });
-    </script>
+        $('li').on('click', function () {
+            $(this).siblings().removeClass('act')
+            $(this).addClass('act')
+        });
+        $('.input-text').on('change', function () {
+            var countfile = $(this)[0].files.length;
+            var textgambar = $(this).prev();
+
+            if (countfile === 1) {
+                var filename = $(this).val().split('\\').pop();
+                textgambar.text(filename);
+            } else {
+                textgambar.text(countfile + ' File yang dipilih')
+            }
+        });
+        $(window).on('resize', function () {
+            if ($(window).width() < 768) {
+                $('#sidebar').addClass('active');
+            } else {
+                $('#sidebar').removeClass('active')
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

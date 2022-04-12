@@ -38,4 +38,3 @@ Route::get('/register', [PengelolaController::class, 'register']);
 Route::get('/content', [PengelolaController::class, 'createContent']);
 Route::post('/content', [PengelolaController::class, 'storeContent']);
 Route::get('/transaction', [TransactionController::class, 'index']);
-Route::get('/autocomplete', [TransactionController::class, 'search']);
