@@ -65,7 +65,7 @@
             <div class="akun col-md-9 mt-4">
                 <h1 class="judul font-weight-bold mb-5">Daftar Akun</h1>
                 <div class="row">
-                    <form action="/akun" method="get">
+                    <form action="/admin/akun" method="get">
                         <div class="col">
                             <h5 class="ml-3 font-weight-bold">Menampilkan Daftar Akun</h5>
                             <select name="role" id="kategori" class="ml-3">

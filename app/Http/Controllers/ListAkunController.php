@@ -11,8 +11,8 @@ class ListAkunController extends Controller
 {
     public function list(Request $request)
     {
-        $totalData = User::query();
-        $datas = User::query();
+        $totalData = User::query()->where('role', '!=', 'admin');
+        $datas = User::query()->where('role', '!=', 'admin');
 
         if (!is_null($request->term)) {
             $datas->orWhere("username", "LIKE", "%{$request->term}%");

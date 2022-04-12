@@ -24,8 +24,8 @@ class LoginController extends Controller
 
             if(auth()->user()->role == 'admin'){
                 return redirect()->intended('/admin/dashboard');
-            }else{
-                return redirect('/login');
+            }elseif(auth()->user()->role == 'owner'){
+                return redirect('/pengelola/dashboard');
             }
         }
 

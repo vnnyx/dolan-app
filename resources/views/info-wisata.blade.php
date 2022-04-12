@@ -79,13 +79,13 @@
                     <div class="kanan col-6">
                         <img class="var" src="{{ asset('image/Variasi1.png') }}" alt="">
                         <h1 class="tiket mt-3 ml-3">Tiket terjual</h1>
-                        <h1 class="count ml-4">120</h1>
-                    </div>    
+                        <h1 class="count ml-4">{{ $totalTicket }}</h1>
+                    </div>
                     <div class="kiri col-6 ml-3">
                         <img class="var" src="{{ asset('image/Variasi2.png') }}" alt="">
                         <h1 class="tiket mt-3 ml-3">Pengunjung</h1>
-                        <h1 class="count ml-4">480</h1>
-                    </div>    
+                        <h1 class="count ml-4">{{ $jumlahPengunjung }}</h1>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -97,8 +97,8 @@
                     <div class="item col-12">
                         <img class="var" src="{{ asset('image/Variasi3.png') }}" alt="">
                         <h1 class="tiket mt-3 ml-3">Pendapatan Terkini</h1>
-                        <h1 class="count ml-4">Rp 1.520.000,00</h1>
-                    </div>       
+                        <h1 class="count ml-4">Rp {{ number_format($total, 2) }}</h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,11 +119,11 @@
                 $(this).toggleClass('active');
                 if (navbarState) {
                     $('#nav').removeClass('col-md-3').addClass('col-md-2')
-                    $('#banner').removeClass('col-lg-9').addClass('col-lg-10') 
+                    $('#banner').removeClass('col-lg-9').addClass('col-lg-10')
                     navbarState = false;
                 }else{
                     $('#nav').removeClass('col-md-2').addClass('col-md-3')
-                    $('#banner').removeClass('col-lg-10').addClass('col-lg-9') 
+                    $('#banner').removeClass('col-lg-10').addClass('col-lg-9')
                     navbarState = true;
                 }
             });
