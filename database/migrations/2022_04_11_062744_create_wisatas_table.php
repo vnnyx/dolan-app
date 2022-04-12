@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('wisatas', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
+            $table->string('username')->unique();
             $table->foreign('username')->references('username')->on('users');
             $table->string('nama_wisata')->unique();
             $table->integer('harga_tiket');

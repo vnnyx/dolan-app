@@ -29,57 +29,57 @@
 
 <body>
 <!-- Sidebar Holder -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3" id="nav">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <a href="#"><img src="{{ asset('image/dplan.png') }}" alt=""></a>
-                </div>
-                <button type="button" id="sidebarCollapse" class="navbar-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="list-unstyled components">
-                    <li class="act">
-                        <div class="hov">
-                            <i class='bx bxs-dashboard'></i>
-                            <a href="#">Dashboard</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="hov">
-                            <i class='bx bx-book-content'></i>
-                            <a href="#">Konten</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="hov">
-                            <i class='bx bxs-user-account'></i>
-                            <a href="#">Akun</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="hov">
-                            <i class='bx bx-cart'></i>
-                            <a href="#">Transaksi</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div class="col-lg-9" id="banner">
-            <h1 class="judul mt-3 mb-5 font-weight-bold">Daftar Transaksi</h1>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Menampilkan Daftar transaksi <span class="count">({{$count}})</span>
-                    </h4>
-                </div>
-                <div class="col-md-6">
-                    <span class="pipe">|</span>
-                </div>
-                <form action="/transaction">
+
+<div class="row">
+    <div class="col-md-3" id="nav">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="#"><img src="{{ asset('image/dplan.png') }}" alt=""></a>
+            </div>
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="list-unstyled components">
+                <li class="act">
+                    <div class="hov">
+                        <i class='bx bxs-dashboard'></i>
+                        <a href="#">Dashboard</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="hov">
+                        <i class='bx bx-book-content'></i>
+                        <a href="#">Konten</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="hov">
+                        <i class='bx bxs-user-account'></i>
+                        <a href="#">Akun</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="hov">
+                        <i class='bx bx-cart'></i>
+                        <a href="#">Transaksi</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-lg-9" id="banner">
+        <h1 class="judul mt-3 mb-5 font-weight-bold">Daftar Transaksi</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Menampilkan Daftar transaksi <span class="count">({{$count}})</span>
+                </h4>
+            </div>
+            <div class="col-md-6">
+                <span class="pipe">|</span>
+            </div>
+            <form action="/admin/transaction">
                 <div class="box">
                     <div class="container-1">
                         <span class="icon"><i class='bx bx-search'></i></span>
@@ -89,35 +89,34 @@
                     <button type="submit" class="btn btn-cari">Cari</button>
                     <i class='bx bx-filter-alt'></i>
                 </div>
-                </form>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr class="garis ml-4">
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <hr class="garis ml-4">
-                </div>
-                @foreach($datas as $data)
-                    <div class="row mb-5">
-                        <div class="col-12">
-                            <div class="wrapp">
-                                @if($data->success == 1)
-                                    <img class="status" src="{{ asset('image/centang.png') }}" alt="">
-                                @endif
-                                @if($data->success == 0)
-                                    <img class="status" src="{{ asset('image/silang.png') }}" alt="">
-                                @endif
-                                <h1 class="wisata ml-5">Tiket Wisata <span>{{ $data->nama_wisata }}</span></h1>
-                                <h4 class="harga">Rp{{ number_format($data->harga_tiket, 2) }}</h4>
-                                <i class="fas fa-ticket-alt"></i>
-                                <span class="tiket">{{ $data->total_ticket }} Tiket</span>
-                                <i class="fa-solid fa-ticket-simple"></i>
-                                <h4 class="lokasi mb-5">{{ $data->alamat }}</h4>
-                                <i class='bx bx-user'> <span
-                                        class="user"> {{ $data->username }}</span></i>
-                                <i class='bx bx-calendar-week'> {{date('d F Y', strtotime($data->created_at))}}</i>
-                            </div>
+            @foreach($datas as $data)
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="wrapp">
+                            @if($data->success == 1)
+                                <img class="status" src="{{ asset('image/centang.png') }}" alt="">
+                            @endif
+                            @if($data->success == 0)
+                                <img class="status" src="{{ asset('image/silang.png') }}" alt="">
+                            @endif
+                            <h1 class="wisata ml-5">Tiket Wisata <span>{{ $data->nama_wisata }}</span></h1>
+                            <h4 class="harga">Rp{{ number_format($data->harga_tiket, 2) }}</h4>
+                            <i class="fas fa-ticket-alt"></i>
+                            <span class="tiket">{{ $data->total_ticket }} Tiket</span>
+                            <i class="fa-solid fa-ticket-simple"></i>
+                            <h4 class="lokasi mb-5">{{ $data->alamat }}</h4>
+                            <i class='bx bx-user'> <span
+                                    class="user"> {{ $data->username }}</span></i>
+                            <i class='bx bx-calendar-week'> {{date('d F Y', strtotime($data->created_at))}}</i>
                         </div>
                     </div>
-            </div>
+                </div>
             @endforeach
         </div>
     </div>

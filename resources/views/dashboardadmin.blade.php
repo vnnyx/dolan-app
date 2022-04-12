@@ -52,7 +52,7 @@
             <li>
                 <div class="hov">
                     <i class='bx bx-cart'></i>
-                    <a href="#">Transaksi</a>
+                    <a href="{{ url("/admin/transaction") }}">Transaksi</a>
                 </div>
             </li>
         </ul>
