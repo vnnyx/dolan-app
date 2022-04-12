@@ -139,106 +139,35 @@ a:focus {
     -webkit-transform: scale(1.10);
     transform: scale(1.10);
 }
-
-
-/* CONTENT KIRI*/
-.pipe{
-    font-size: 40px;
-    margin-left: 40px;
-    color: #B9B9B9;
-}  
-.container-1 {
-    width: 300px;
-    vertical-align: middle;
-    white-space: nowrap;
-    position: relative;
-    top: -55px;
-    left: 660px;
-}
-
-.container-1 input#search {
-    width: 300px;
-    height: 50px;
-    background: #FFF;
-    border: none;
-    font-size: 10pt;
-    float: left;
-    color: #63717f;
-    padding-left: 45px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-.container-1 input#search:hover{
-    border: 2px solid;
-}
-.container-1 input#search:-ms-input-placeholder {
-    color: #65737e;
-}
-
-.container-1 .icon {
-    position: absolute;
-    margin-left: 17px;
-    margin-top: 15px;
-    z-index: 1;
-    color: #4f5b66;
-}
-.bx-filter-alt{
-    position: absolute;
-    font-size: 30px;
-    top: 128px;
-    right: 40px;
-    cursor: pointer;
-}
 .garis{
+    width: 1067px;
+}
+.kanan{
     position: relative;
-    top: -60px;
+    height: 185px;
+    min-width: 530px;
+    max-width: 530px;
+    border-radius: 8px;
 }
-.wrapp{
+.kiri{
     position: relative;
-    height: 160px;
-    width: 1076px;
-    border-radius: 6px;
-}
-.wisata{
-    padding-top: 13px;
-    font-size: 32px;
-    font-weight: 600;
-    margin-left: 30px;
-}
-.lokasi{
-    color: grey;
-    font-size: 14px;
-    margin-left: 30px;
-}
-.harga{
-    position: absolute;
-    top: 30px;
-    left: 890px;
-    color: #DF9506;
-}
-.fa-ticket-alt{
-    position: absolute;
-    right: 100px;
-    margin-top: 10px;
-    color: #DF9506;
+    height: 185px;
+    min-width: 530px;
+    max-width: 530px;
+    border-radius: 8px;
 }
 .tiket{
-    position: absolute;
-    right: 40px;
-    margin-top: 7px;
-    font-weight: 900;
+    font-size: 24px;
+    color: #B9B9B9;
 }
-.status{
+.count{
+    font-size: 96px;
+}
+.var{
     position: absolute;
     right: 0;
 }
-.btn-cari{
-    position: absolute;
-    top: 125px;
-    border: 2px solid;
-    right: 100px;
-}
-.bx-user, .bx-calendar-week{
-    margin-left: 30px;
+.item{
+    min-width: 1073px;
+    max-width: 1073px;
 }

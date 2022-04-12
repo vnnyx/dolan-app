@@ -9,11 +9,6 @@ body {
     background: #FBFBFB;
     overflow-x:hidden ;
 }
-
-/* body::-webkit-scrollbar {
-    display: none;
-} */
-
 a,
 a:hover,
 a:focus {
@@ -139,106 +134,65 @@ a:focus {
     -webkit-transform: scale(1.10);
     transform: scale(1.10);
 }
-
-
-/* CONTENT KIRI*/
-.pipe{
-    font-size: 40px;
-    margin-left: 40px;
-    color: #B9B9B9;
-}  
-.container-1 {
-    width: 300px;
-    vertical-align: middle;
+/* carousel*/
+.area::placeholder{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.area{
+    border-radius: 10px;
+}
+.wrapper{
+    margin: 0 20px;
+    display: flex;
+    overflow-x: auto;
+}
+.wrapper::-webkit-scrollbar{
+    width: 0;
+}
+.box .drop-file p{
+    position: relative;
+}
+.drop-file{
+    position: relative;
+    display: flex;
+    height: 230px;
+    width: 450px;
+    max-width: 100%;
+    padding: 25px;
+    margin: 0 20px;
+    margin-left: 5px;
+    align-items: center;
+    border: 5px dashed black;
+}
+.btn-file{
+    flex-shrink: 0;
+    background-color: aqua;
+    color: black;
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 20px;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.name-file{
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 4.4;
     white-space: nowrap;
-    position: relative;
-    top: -55px;
-    left: 660px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
-.container-1 input#search {
-    width: 300px;
-    height: 50px;
-    background: #FFF;
-    border: none;
-    font-size: 10pt;
-    float: left;
-    color: #63717f;
-    padding-left: 45px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-.container-1 input#search:hover{
-    border: 2px solid;
-}
-.container-1 input#search:-ms-input-placeholder {
-    color: #65737e;
-}
-
-.container-1 .icon {
+.input-text{
     position: absolute;
-    margin-left: 17px;
-    margin-top: 15px;
-    z-index: 1;
-    color: #4f5b66;
-}
-.bx-filter-alt{
-    position: absolute;
-    font-size: 30px;
-    top: 128px;
-    right: 40px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
     cursor: pointer;
+    opacity: 0;
 }
-.garis{
-    position: relative;
-    top: -60px;
-}
-.wrapp{
-    position: relative;
-    height: 160px;
-    width: 1076px;
-    border-radius: 6px;
-}
-.wisata{
-    padding-top: 13px;
-    font-size: 32px;
-    font-weight: 600;
-    margin-left: 30px;
-}
-.lokasi{
-    color: grey;
-    font-size: 14px;
-    margin-left: 30px;
-}
-.harga{
-    position: absolute;
-    top: 30px;
-    left: 890px;
-    color: #DF9506;
-}
-.fa-ticket-alt{
-    position: absolute;
-    right: 100px;
-    margin-top: 10px;
-    color: #DF9506;
-}
-.tiket{
-    position: absolute;
-    right: 40px;
-    margin-top: 7px;
-    font-weight: 900;
-}
-.status{
-    position: absolute;
-    right: 0;
-}
-.btn-cari{
-    position: absolute;
-    top: 125px;
-    border: 2px solid;
-    right: 100px;
-}
-.bx-user, .bx-calendar-week{
-    margin-left: 30px;
+.input-text:hover{
+    outline: none;
 }

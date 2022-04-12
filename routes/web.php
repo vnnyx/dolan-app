@@ -3,8 +3,8 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ListAkunController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\noteController;
 use App\Http\Controllers\PengelolaController;
 
 /*
@@ -19,8 +19,12 @@ use App\Http\Controllers\PengelolaController;
 */
 
 Route::get('/', function () {
-    return view('transaksi');
+    return view('welcome');
 });
+
+Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
+    return view('list-akun');
+}));
 Route::get('/akun', [ListAkunController::class, 'list']);
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
@@ -31,3 +35,6 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/register', [PengelolaController::class, 'register']);
+Route::get('/content', [PengelolaController::class, 'createContent']);
+Route::post('/content', [PengelolaController::class, 'storeContent']);
+Route::get('/transaction', [TransactionController::class, 'index']);
