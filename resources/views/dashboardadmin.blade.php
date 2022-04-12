@@ -28,7 +28,7 @@
 <!-- Sidebar Holder -->
 <nav id="sidebar">
     <div class="sidebar-header">
-        <a href="#"><img src="{{asset('image/dplan.png')}}" alt=""></a>
+        <a href="#"><img src="{{asset('image/logo.svg')}}" alt=""></a>
         <button type="button" id="sidebarCollapse" class="navbar-btn">
             <span></span>
             <span></span>
@@ -200,6 +200,9 @@
             $(this).siblings().removeClass('act')
             $(this).addClass('act')
         });
+        $('#hapus').on('hover',function() {
+            $(this).css("background", "#DEE6F0");
+        })
     });
 </script>
 </body>
