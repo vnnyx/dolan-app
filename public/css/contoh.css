@@ -140,7 +140,6 @@ a:focus {
     margin: 0 20px;
     display: flex;
     overflow-x: auto;
-    background-color: #DF9506;
 }
 .wrapper::-webkit-scrollbar{
     width: 0;

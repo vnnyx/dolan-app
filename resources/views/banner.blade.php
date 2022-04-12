@@ -35,13 +35,13 @@
                         <span></span>
                     </button>
                     <ul class="list-unstyled components">
-                        <li class="act">
+                        <li>
                             <div class="hov">
                                 <i class='bx bxs-dashboard'></i>
                                 <a href="#">Dashboard</a>
                             </div>
                         </li>
-                        <li>
+                        <li class="act">
                             <div class="hov">
                                 <i class='bx bx-book-content'></i>
                                 <a href="#">Konten</a>

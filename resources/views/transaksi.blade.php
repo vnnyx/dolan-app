@@ -15,14 +15,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/transaksi.css') }}">
 
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0ff6004706.js" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -70,10 +71,10 @@
         </nav>
     </div>
     <div class="col-lg-9" id="banner">
-        <h1 class="judul mt-3 mb-5 font-weight-bold">Daftar Transaksi</h1>
+        <h1 class="judul mt-3 mb-5">Daftar Transaksi</h1>
         <div class="row">
             <div class="col-md-6">
-                <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Menampilkan Daftar transaksi <span class="count">({{$count}})</span>
+                <h4 class="sub-jdl mt-3 ml-4">Menampilkan Daftar transaksi <span class="count">({{$count}})</span>
                 </h4>
             </div>
             <div class="col-md-6">
@@ -107,8 +108,7 @@
                             <h1 class="wisata ml-5">Tiket Wisata <span>{{ $data->nama_wisata }}</span></h1>
                             <h4 class="harga">Rp{{ number_format($data->harga_tiket, 2) }}</h4>
                             <i class="fas fa-ticket-alt"></i>
-                            <span class="tiket">{{ $data->total_ticket }} Tiket</span>
-                            <i class="fa-solid fa-ticket-simple"></i>
+                            <span class="tiket">{{ $data->total_ticket}} Tiket</span>
                             <h4 class="lokasi mb-5">{{ $data->alamat }}</h4>
                             <i class='bx bx-user'> <span
                                     class="user"> {{ $data->username }}</span></i>

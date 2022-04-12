@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: #FBFBFB;
     overflow-x: hidden;
 }
@@ -63,7 +63,6 @@ a, a:hover, a:focus {
     transition: all 0s ease;
 }
 #sidebar.active i{
-    /* margin-left: 100px; */
     display: show;
     transition: all 0s ease;
 }
@@ -85,9 +84,8 @@ a, a:hover, a:focus {
 #sidebarCollapse {
     position: relative;
     top: 5px;
-    left: 70px;
+    /* left: 70px; */
     width: 40px;
-    height: 40px;
     background-color: #02182B;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -223,6 +221,7 @@ a, a:hover, a:focus {
 .fa-ticket-alt{
     position: absolute;
     right: 100px;
+    margin-right: 10px;
     margin-top: 10px;
     color: #DF9506;
 }
@@ -244,4 +243,7 @@ a, a:hover, a:focus {
 }
 .bx-user, .bx-calendar-week{
     margin-left: 30px;
+}
+.sub-jdl{
+    font-weight: bold;
 }
