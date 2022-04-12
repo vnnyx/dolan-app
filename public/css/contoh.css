@@ -9,11 +9,6 @@ body {
     background: #FBFBFB;
     overflow-x:hidden ;
 }
-
-/* body::-webkit-scrollbar {
-    display: none;
-} */
-
 a,
 a:hover,
 a:focus {
@@ -139,17 +134,13 @@ a:focus {
     -webkit-transform: scale(1.10);
     transform: scale(1.10);
 }
-
-
-/* CONTENT KIRI*/
-.container-fluid #sidebar.active ~  .banner{
-    margin-left: -1100px;
-}
 /* carousel*/
 .wrapper{
+    width: 1063px;
     margin: 0 20px;
     display: flex;
     overflow-x: auto;
+    background-color: #DF9506;
 }
 .wrapper::-webkit-scrollbar{
     width: 0;
@@ -198,9 +189,4 @@ a:focus {
 }
 .input-text:hover{
     outline: none;
-}
-/* media query */
-
-@media screen and (max-width: 768px){
-    
 }

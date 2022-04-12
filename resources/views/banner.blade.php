@@ -70,7 +70,7 @@
             <div class="col-lg-9" id="banner">
                 <h1 class="judul mt-3 mb-5 font-weight-bold">Daftar Konten</h1>
                 <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Banner Halaman Utama</h4>
-                <hr class="ml-4" style="border-color: blue;">
+                <hr class="ml-4">
                 <div class="wrapper">
                     <div class="drop-file">
                         <span class="btn-file">Browse File</span>
@@ -91,7 +91,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Banner Iklan Wisata</h4>
-                        <hr class="ml-4" style="border-color: blue;">
+                        <hr class="ml-4">
                         <div class="wrapper">
                             <div class="drop-file">
                                 <span class="btn-file">Browse File</span>
@@ -153,13 +153,13 @@
                     textgambar.text(countfile + ' File yang dipilih')
                 }
             });
-            $(window).on('resize', function () {
-                if ($(window).width() < 768) {
-                    $('#sidebar').addClass('active');
-                } else {
-                    $('#sidebar').removeClass('active')
-                }
-            });
+            // $(window).on('resize', function () {
+            //     if ($(window).width() < 768) {
+            //         $('#sidebar').addClass('active');
+            //     } else {
+            //         $('#sidebar').removeClass('active')
+            //     }
+            // });
         });
     </script>
 </body>
