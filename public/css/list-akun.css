@@ -11,11 +11,6 @@ body {
     background: #FBFBFB;
     overflow-x: hidden;
 }
-
-/* body::-webkit-scrollbar {
-    display: none;
-} */
-
 a,
 a:hover,
 a:focus {

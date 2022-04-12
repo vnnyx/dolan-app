@@ -71,7 +71,7 @@
                 <h1 class="judul mt-3 mb-5 font-weight-bold">Daftar Konten</h1>
                 <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Banner Halaman Utama</h4>
                 <hr class="ml-4">
-                <div class="wrapper">
+                <div class="wrapper mb-5">
                     <div class="drop-file">
                         <span class="btn-file">Browse File</span>
                         <span class="name-file">or drag and drop files(png)</span>
@@ -88,11 +88,35 @@
                         <input type="file" id="1" class="input-text" multiple>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col-md-12">
                         <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Deskripsi Wisata</h4>
                         <hr class="ml-4">
                         <textarea class="area ml-3" name="deskripsi" id="" cols="130" rows="10" placeholder="Tulis deskripsi dari wisata Anda dengan detail disini ..."></textarea>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Set Harga dan Stok Tiket</h4>
+                        <hr class="ml-4">
+                        <form action="put">
+                            <div class="row mb-3 ml-3">
+                                <label for="kode" class="col-sm-2 col-form-label">Harga Tiket Wisata</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="harga-tiket" placeholder="Masukkan harga tiket disini..">
+                                    <img class="tiket" src="{{ asset('image/Vector.png') }}" alt="">
+                                </div>
+                                <span class="keterangan">Per Orang</span>
+                            </div>
+                            <div class="row mb-3 ml-3">
+                                <label for="nama" class="col-sm-2 col-form-label">Stok Tiket Wisata</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="stok-tiket" placeholder="Masukkan stok tiket disini..">
+                                    <img class="tiket" src="{{ asset('image/Vector2.png') }}" alt="">
+                                </div>
+                                <span class="keterangan">Tiket</span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
