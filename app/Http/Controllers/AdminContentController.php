@@ -13,8 +13,8 @@ class AdminContentController extends Controller
     }
 
     public function createContent(){
-        $content = DB::table('contents')->where('advertisement', '=', 1)->get();
-        $ads = DB::table('contents')->where('advertisement', '=', 0)->get();
+        $content = DB::table('contents')->where('advertisement', '=', 0)->get();
+        $ads = DB::table('contents')->where('advertisement', '=', 1)->get();
         return view('banner', compact('content', 'ads'));
     }
 

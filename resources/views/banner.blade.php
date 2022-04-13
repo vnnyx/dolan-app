@@ -78,7 +78,7 @@
                         <span class="name-file">or drag and drop files(png)</span>
                         <input type="file" id="file1" name="fileContent" class="input-text" multiple>
                     @endif
-                    @if(sizeof($content) == 1)
+                    @if(sizeof($content) != 0)
                         <img src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
                     @endif
                 </div>
@@ -88,7 +88,7 @@
                     <span class="name-file">or drag and drop files(png)</span>
                     <input type="file" id="file2" name="fileContent" class="input-text" multiple>
                     @endif
-                        @if(sizeof($content) == 2)
+                        @if(sizeof($content) != 0)
                             <img src="{{ $content[1]->content }}" style="height: 100%; width: 405.38px">
                         @endif
                 </div>
@@ -98,7 +98,7 @@
                     <span class="name-file">or drag and drop files(png)</span>
                     <input type="file" id="file3" name="fileContent" class="input-text" multiple>
                     @endif
-                        @if(sizeof($content) == 3)
+                        @if(sizeof($content) != 0)
                             <img src="{{ $content[2]->content }}" style="height: 100%; width: 405.38px">
                         @endif
                 </div>
@@ -114,7 +114,7 @@
                             <span class="name-file">or drag and drop files(png)</span>
                             <input type="file" id="file4" class="input-text" multiple>
                             @endif
-                                @if(sizeof($ads) == 1)
+                                @if(sizeof($ads) != 0)
                                     <img src="{{ $ads[0]->content }}" style="height: 100%; width: 405.38px">
                                 @endif
                         </div>
@@ -124,7 +124,7 @@
                             <span class="name-file">or drag and drop files(png)</span>
                             <input type="file" id="file5" class="input-text" multiple>
                             @endif
-                                @if(sizeof($ads) == 2)
+                                @if(sizeof($ads) != 0)
                                     <img src="{{ $ads[1]->content }}" style="height: 100%; width: 405.38px">
                                 @endif
                         </div>
@@ -134,7 +134,7 @@
                             <span class="name-file">or drag and drop files(png)</span>
                             <input type="file" id="file6" class="input-text" multiple>
                             @endif
-                                @if(sizeof($ads) == 3)
+                                @if(sizeof($ads) != 0)
                                     <img src="{{ $ads[2]->content }}" style="height: 100%; width: 405.38px">
                                 @endif
                         </div>
