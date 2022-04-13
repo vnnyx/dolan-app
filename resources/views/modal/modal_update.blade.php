@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.update', $notes->id)}}" method="post">
+                <form action="/admin/note/{{ $notes->id }}" method="post">
                     @csrf
                     @method('PUT')
                     <h1 style="color: #B9B9B9;">Judul Catatan</h1>
