@@ -177,7 +177,15 @@
 
             $(".alert").slideDown(300).delay(3000).slideUp(300)
         });
-    </script>
+        $('li').on('click', function () {
+            $(this).siblings().removeClass('act')
+            $(this).addClass('act')
+        });
+        $('#hapus').on('hover',function() {
+            $(this).css("background", "#DEE6F0");
+        })
+    });
+</script>
 </body>
 
 </html>

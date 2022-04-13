@@ -20,10 +20,11 @@ use App\Http\Controllers\AdminContentController;
 |
 */
 
-//Public route
-//Route::get('/', function () {
-//    return view('list-pengajuan');
-//});
+// Public route
+Route::get('/coba', function () {
+   return view('register');
+});
+
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [AdminContentController::class, 'register']);
