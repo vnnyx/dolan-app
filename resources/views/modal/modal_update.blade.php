@@ -17,8 +17,8 @@
                     <h1 style="color: #B9B9B9;">Isi Catatan</h1>
                     <textarea name="message" id="isi" placeholder="Tulis apa aja deh disini buat admin yang lain biar bisa koordinasi" style="border-radius: 8px;">{{ $notes->message }}</textarea>
                     <div class="modal-footer" style="border: none;">
-                        <button name="action" value="update" type="submit" class="btn py-3 text-white" style="background-color: #02182B;border-radius: 8px;">Simpan</button>
-                        <button name="action" value="delete" type="submit" class="btn py-3">Hapus</button>
+                        <button name="action" value="update" type="submit" class="btn py-3 text-white" style="background-color: #02182B;border-radius: 8px;" id="simpan">Simpan</button>
+                        <button name="action" value="delete" type="submit" class="btn py-3 text-danger bg-transparent" id="hapus">Hapus</button>
                     </div>
                 </form>
             </div>

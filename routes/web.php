@@ -5,8 +5,9 @@ use App\Http\Controllers\ListAkunController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengelolaDashboardController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionOwnerController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PengelolaController;
+use App\Http\Controllers\AdminContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,19 +20,14 @@ use App\Http\Controllers\PengelolaController;
 |
 */
 
-//Public route
-Route::get('/', function () {
-    return view('list-pengajuan');
+// Public route
+Route::get('/coba', function () {
+   return view('register');
 });
+
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [PengelolaController::class, 'register']);
-Route::get('/content', [PengelolaController::class, 'createContent']);
-Route::post('/content', [PengelolaController::class, 'storeContent']);
-
-//Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
-//    return view('list-akun');
-//}));
+Route::get('/register', [AdminContentController::class, 'register']);
 
 //Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
@@ -40,11 +36,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (functi
     Route::put('/note/{id}', [AdminDashboardController::class, 'update']);
     Route::get('/transaction', [TransactionController::class, 'index']);
     Route::get('/akun', [ListAkunController::class, 'list']);
+    Route::get('/content', [AdminContentController::class, 'createContent']);
+    Route::post('/content', [AdminContentController::class, 'storeContent']);
 }));
 
 
 //Pengelola / owner
 Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (function () {
     Route::get('/dashboard', [PengelolaDashboardController::class, 'index']);
+    Route::get('/transaction', [TransactionOwnerController::class, 'index']);
+    Route::put('/transaction/{id}', [TransactionOwnerController::class, 'update']);
 }));
+
+
 

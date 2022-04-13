@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/0ff6004706.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
@@ -67,56 +68,47 @@
                 <h1 class="judul font-weight-bold mb-5">Daftar Akun</h1>
                 <div class="row mb-5">
                     <div class="col-6">
-                        <h5 class="ml-3 font-weight-bold">Menampilkan Daftar Pembeli Tiket (56)</h5>
+                        <h5 class="ml-3 font-weight-bold">Menampilkan Daftar Pembeli Tiket ({{ $count }})</h5>
                     </div>
                     <div class="col-7">
                         <div class="pipe"></div>
+                        <form action="/pengelola/transaction">
                         <div class="box">
                             <div class="container-1">
                                 <span class="icon"><i class='bx bx-search'></i></span>
-                                <input type="search" id="search" name="term" placeholder="Search..." />
+                                <input type="text" id="search" name="term" placeholder="Search..." />
                             </div>
-                            <button class="btn btn-cari">Cari</button>
+                            <button type="submit" class="btn btn-cari">Cari</button>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <!-- <hr class="garis"> -->
-                <div class="row ml-2">
+                @foreach($datas as $data)
+                <div class="row ml-2 mb-5">
                     <div class="col-11">
                         <div class="wrapp">
-                            <h5 class="account">Ignasius Nindra Kharisma</h5>
-                            <span class="tiket"><i class="fa-solid fa-ticket"></i> 2 Tiket</span>
+                            <h5 class="account">{{ $data->username }}</h5>
+                            <span class="tiket"><i class="fa-solid fa-ticket"></i> {{ $data->total_ticket }} Tiket</span>
                             <div class="pipe2"></div>
-                            <i class='bx bx-file' data-toggle="modal" data-target="#modal-bukti"> Lihat Transaksi</i>
-                            <button type="button" class="btn btn-danger blokir"><i class='bx bx-block'></i>
-                                Tolak</button>
-                            <button type="button" class="btn btn-success acc"><i class='bx bx-block'></i> Acc</button>
-                            <hr class="garis-konten">
+                            <i class='bx bx-file' data-toggle="modal" data-target="#modal-bukti{{ $data->id }}"> Lihat Transaksi</i>
+                            <form action="/pengelola/transaction/{{ $data->id }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <button name="action" value="tolak" type="submit" class="btn btn-danger blokir"><i class='bx bx-block'></i>
+                                    Tolak</button>
+                                <button name="action" value="acc" type="submit" class="btn btn-success acc"><i class='bx bx-block'></i> Acc</button>
+                                <hr class="garis-konten">
+                            </form>
                         </div>
                     </div>
                 </div>
+                    @include('modal.modal_transaksi')
+                @endforeach
             </div>
         </div>
     </div>
-    <!-- Modal Pop Up -->
-    <div class="modal fade" id="modal-bukti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold h1" id="exampleModalLabel">Bukti Transaksi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="wrap">
-                        <img src="{{ asset('image/bukti.png') }}" alt="">
-                    </div>
-                        <button type="submit" class="btn btn-bukti w-100 py-3 text-white" style="background-color: #02182B;border-radius: 8px;"><i class='bx bxs-file-image'></i> Unduh Bukti Pembayaran</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+
 
 
     <!-- Page Content Holder -->

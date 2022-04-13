@@ -151,8 +151,7 @@ a:focus {
     position: relative;
     display: flex;
     height: 230px;
-    width: 450px;
-    max-width: 100%;
+    max-width: 50%;
     padding: 25px;
     margin: 0 20px;
     margin-left: 5px;

@@ -84,7 +84,7 @@
                 <div class="box">
                     <div class="container-1">
                         <span class="icon"><i class='bx bx-search'></i></span>
-                        <input name="search" class="form-control" type="text" id="search"placeholder="Cari nama transaksi"/>
+                        <input name="search" class="form-control" type="text" id="search" placeholder="Cari nama transaksi"/>
                     </div>
                     <button type="submit" class="btn btn-cari">Cari</button>
                     <i class='bx bx-filter-alt'></i>
