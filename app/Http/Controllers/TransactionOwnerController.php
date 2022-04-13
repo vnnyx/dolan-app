@@ -13,7 +13,7 @@ class TransactionOwnerController extends Controller
         $datas = DB::table('transactions')
             ->join('users', 'users.username', '=', 'transactions.username')
             ->join('wisatas', 'wisatas.nama_wisata', '=', 'transactions.nama_wisata')
-            ->select('transactions.*')->where('transactions.success', '=', 0)
+            ->select('transactions.*')->where('transactions.status', '=', 0)
             ->where('wisatas.username', '=', auth()->user()->username);
         if(request('term')){
             $datas->where('users.username', 'like', '%' . request('term') . '%');
