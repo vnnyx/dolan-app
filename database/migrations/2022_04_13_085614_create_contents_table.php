@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('username')->references('username')->on('users');
             $table->string('content');
             $table->integer('advertisement')->default(0);
+            $table->string('filename');
             $table->timestamps();
         });
     }
