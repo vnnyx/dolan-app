@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf_token" content="{{csrf_token()}}">
 
     <title>Collapsible sidebar using Bootstrap 4</title>
 
@@ -22,9 +23,9 @@
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="csrf_token" content="{{csrf_token()}}">
-    <script src="{{ asset('js/helper.js') }}"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://kit.fontawesome.com/0ff6004706.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/helper.js') }}"></script>
 
 </head>
 
@@ -83,7 +84,7 @@
                         <input type="file" id="file1" class="input-text" name="banner-1" multiple>
                     @endif
                     @if(sizeof($content) > 0)
-                        <img src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
+                        <img class="image" src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
                         <form action="/pengelola/wisata/{{ $content[0]->id }}" method="post">
                             @csrf
                             @method('DELETE')
