@@ -7,6 +7,7 @@ use App\Http\Controllers\PengelolaDashboardController;
 use App\Http\Controllers\RegisController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionOwnerController;
+use App\Http\Controllers\WisataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminContentController;
 
@@ -50,6 +51,7 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::get('/dashboard', [PengelolaDashboardController::class, 'index']);
     Route::get('/transaction', [TransactionOwnerController::class, 'index']);
     Route::put('/transaction/{id}', [TransactionOwnerController::class, 'update']);
+    Route::get('/wisata', [WisataController::class, 'index']);
 }));
 
 

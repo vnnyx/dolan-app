@@ -65,5 +65,6 @@ class AdminContentController extends Controller
 
     public function delete($id){
         Content::destroy($id);
+        return redirect('/admin/content');
     }
 }
