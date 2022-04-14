@@ -9,17 +9,12 @@
     <title>Dolan</title>
 
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style5.css') }}">
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -45,7 +40,7 @@
             <li>
                 <div class="hov">
                     <i class='bx bx-book-content'></i>
-                    <a href="#">Konten</a>
+                    <a href="{{ url("/admin/content") }}">Konten</a>
                 </div>
             </li>
             <li>
@@ -57,7 +52,7 @@
             <li>
                 <div class="hov">
                     <i class='bx bx-cart'></i>
-                    <a href="#">Transaksi</a>
+                    <a href="{{ url("/admin/transaction") }}">Transaksi</a>
                 </div>
             </li>
         </ul>
@@ -120,20 +115,19 @@
                 <i class='bx bx-plus-circle' data-toggle="modal" data-target="#exampleModal"></i>
                 <hr>
                 @foreach( $datas as $datas=>$value)
-                    <div class="row mb-3">
-                        <div class="box col" data-toggle="modal" data-target="#modal-note">
-                            <h1 class="jdl-note">{{ $value->title}}</h1>
-                            <p class="desc">{{ $value->message}}</p>
-                            <h6 class="adm-name">Admin Nindra</h6>
-                        </div>
+                <div class="row mb-3">
+                    <div class="box col" data-toggle="modal" data-target="#modal-note">
+                        <h1 class="jdl-note">{{ $value->title}}</h1>
+                        <p class="desc">{{ $value->message}}</p>
+                        <h6 class="adm-name">Admin Nindra</h6>
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -155,8 +149,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-note" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modal-note" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -178,28 +171,24 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             let navbarState = true;
-            $('#sidebarCollapse').on('click', function () {
+            $('#sidebarCollapse').on('click', function() {
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
                 if (navbarState) {
                     $('#left').removeClass('col-lg-6').addClass('col-lg-7')
                     navbarState = false;
-                }else{
+                } else {
                     $('#left').removeClass('col-lg-7').addClass('col-lg-6')
                     navbarState = true;
                 }
             });
-            $('li').on('click', function () {
+            $('li').on('click', function() {
                 $(this).siblings().removeClass('act')
                 $(this).addClass('act')
             });

@@ -56,3 +56,6 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
 
 
 
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

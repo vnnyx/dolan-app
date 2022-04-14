@@ -6,6 +6,8 @@ use App\Models\Note;
 use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminDashboardController extends Controller
 {
@@ -40,9 +42,10 @@ class AdminDashboardController extends Controller
         ]);
 
         if ($note) {
-            return redirect('/admin/dashboard')->with(['success' => 'New note has been create']);
+            Alert::toast('Catatan berhasil ditambah', 'success');
+            return redirect()->back();
         } else {
-            return redirect()->back()->withInput()->with(['error' => 'some problem']);
+            Alert::toast('Catatan gagal ditambah', 'error');
         }
     }
 
@@ -64,13 +67,16 @@ class AdminDashboardController extends Controller
                 ]);
 
                 if ($note) {
-                    return redirect('/admin/dashboard')->with(['success' => 'Note has been updated']);
+                    Alert::toast('Catatan berhasil diubah', 'success');
+                    return redirect()->back();
                 } else {
-                    return redirect()->back()->withInput()->with(['error' => 'some problem']);
+                    Alert::toast('Catatan gagal diubah', 'error');
+                    return redirect()->back();
                 }
             case 'delete':
                 Note::destroy($id);
-                return redirect('/admin/dashboard')->with(['success' => 'Note has been deleted']);
+                Alert::toast('Catatan berhasil dihapus', 'success');
+                return redirect()->back();
             default:
                 return 0;
         }
