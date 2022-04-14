@@ -5,6 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf_token" content="{{csrf_token()}}">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,7 +24,8 @@
         <img class="img-head" src="{{ asset('image/Dolanpemilikwisata.png') }}" alt="">
 </div>
   <div class="col-6">
-  <form data-multi-step class="multi-step-form">
+  <form action="/register" data-multi-step class="multi-step-form" method="post">
+      @csrf
     <div class="card" data-step>
       <h3 class="step-title"></h3>
       <div class="form-group">
@@ -33,7 +35,7 @@
         <input type="email" name="email" id="email" placeholder="Email" autocomplete="false">
       </div>
       <div class="form-group">
-        <input type="password" name="password" id="password" placeholder="Password" autocomplete="false">
+        <input type="password" id="password" placeholder="Password" autocomplete="false">
       </div>
       <div class="form-group">
         <input type="password" name="password" id="password " placeholder="Konfirmasi Password" autocomplete="false">
@@ -52,15 +54,15 @@
         <label for="iconupload">
           <img src="{{'image/Upload.png'}}"  width="88" height="65" style="cursor: pointer;">
         </label>
-        <input type="file" id="iconupload" name="filename" style="display: none ;" onchange="getImage(this.value);" >
+        <input type="file" id="iconupload" name="filename" style="display: none ;" >
       </div>
-      <button type="button" class="tombol-primary" data-next>Daftar</button>
+      <button type="submit" class="tombol-primary" data-next>Daftar</button>
       <button type="button" class="tombol-secondary" data-previous>Kembali</button>
-      
+
     </div>
     <div class="card" data-step>
       <h3 class="step-title">Silakan Menunggu</h3>
-      <h4>Pembuatan akun wisata yang Anda daftarkan sedang dalam tahap review oleh tim Dolan. 
+      <h4>Pembuatan akun wisata yang Anda daftarkan sedang dalam tahap review oleh tim Dolan.
 Estimasi sekitar 1-20 menit.</h4>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
