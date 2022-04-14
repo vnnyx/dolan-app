@@ -44,9 +44,8 @@ body {
     top: 200px;
     width: 308px;
     height: 62px;
-    border-radius: 8px;
+    border-radius: .25em;
     background-color: #FFF;
-    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .2);
 }
 .form-control:hover{
     border: 1px solid #000;
