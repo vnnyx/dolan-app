@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->foreign('username')->references('username')->on('users');
             $table->string('nama_wisata')->unique();
-            $table->integer('harga_tiket');
+            $table->integer('harga_tiket')->nullable();
             $table->string('alamat');
             $table->string('credential');
             $table->timestamps();

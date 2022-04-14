@@ -11,6 +11,6 @@ class Content extends Model
     protected $fillable = [
         'username',
         'content',
-        'advertisement'
+        'advertisement',
     ];
 }

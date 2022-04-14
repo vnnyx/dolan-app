@@ -35,28 +35,28 @@
                         <span></span>
                     </button>
                     <ul class="list-unstyled components">
-                        <li class="act">
+                        <li>
                             <div class="hov">
                                 <i class='bx bxs-dashboard'></i>
-                                <a href="#">Dashboard</a>
+                                <a href="{{ url("/admin/dashboard") }}">Dashboard</a>
                             </div>
                         </li>
                         <li>
                             <div class="hov">
                                 <i class='bx bx-book-content'></i>
-                                <a href="#">Konten</a>
+                                <a href="{{ url("/admin/content") }}">Konten</a>
                             </div>
                         </li>
-                        <li>
+                        <li class="act">
                             <div class="hov">
                                 <i class='bx bxs-user-account'></i>
-                                <a href="#">Akun</a>
+                                <a href={{ url("/admin/akun") }}>Akun</a>
                             </div>
                         </li>
                         <li>
                             <div class="hov">
                                 <i class='bx bx-cart'></i>
-                                <a href="#">Transaksi</a>
+                                <a href="{{ url("/admin/transaction") }}">Transaksi</a>
                             </div>
                         </li>
                     </ul>
@@ -88,12 +88,12 @@
                 </div>
                 @foreach($datas as $key => $data)
                 <div class=" row list mt-5">
-                            <div class="col-md-12">
-                                <h4 class="account">{{$data->username}}</h4>
-                                <button type="button" class="btn chat mr-3" id="pesan-{{$data->id}}"><i class="bx bx-chat"></i> Kirim Pesan</button>
-                                <button type="button" class="btn btn-danger blokir" id="blokir-{{$data->id}}"><i class="bx bx-block"> Blokir</i></button>
-                                <hr>
-                            </div>
+                    <div class="col-md-12">
+                        <h4 class="account">{{$data->username}}</h4>
+                        <button type="button" class="btn chat mr-3" id="pesan-{{$data->id}}"><i class="bx bx-chat"></i> Kirim Pesan</button>
+                        <button type="button" class="btn btn-danger blokir" id="blokir-{{$data->id}}"><i class="bx bx-block"> Blokir</i></button>
+                        <hr>
+                    </div>
                 </div>
                 @endforeach
             </div>
@@ -113,7 +113,7 @@
                 if (navbarState) {
                     $('#nav').removeClass('col-md-3').addClass('col-md-2')
                     navbarState = false;
-                }else{
+                } else {
                     $('#nav').removeClass('col-md-2').addClass('col-md-3')
                     navbarState = true;
                 }

@@ -4,8 +4,10 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ListAkunController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengelolaDashboardController;
+use App\Http\Controllers\RegisController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionOwnerController;
+use App\Http\Controllers\WisataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminContentController;
 
@@ -21,13 +23,14 @@ use App\Http\Controllers\AdminContentController;
 */
 
 // Public route
-Route::get('/coba', function () {
-   return view('register');
-});
+//Route::get('/coba', function () {
+//   return view('register');
+//});
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [AdminContentController::class, 'register']);
+Route::get('/register', [RegisController::class, 'index']);
+Route::post('/register', [RegisController::class, 'store']);
 
 //Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
@@ -38,6 +41,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (functi
     Route::get('/akun', [ListAkunController::class, 'list']);
     Route::get('/content', [AdminContentController::class, 'createContent']);
     Route::post('/content', [AdminContentController::class, 'storeContent']);
+    Route::post('/content/{id}', [AdminContentController::class, 'update']);
+    Route::delete('/content/{id}', [AdminContentController::class, 'delete']);
 }));
 
 
@@ -46,7 +51,13 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::get('/dashboard', [PengelolaDashboardController::class, 'index']);
     Route::get('/transaction', [TransactionOwnerController::class, 'index']);
     Route::put('/transaction/{id}', [TransactionOwnerController::class, 'update']);
+    Route::get('/wisata', [WisataController::class, 'index']);
+    Route::post('/wisata', [WisataController::class, 'store']);
+    Route::post('/wisata/{id}', [WisataController::class, 'update']);
 }));
 
 
 
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

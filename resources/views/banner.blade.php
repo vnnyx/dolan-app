@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -10,24 +9,22 @@
     <title>Collapsible sidebar using Bootstrap 4</title>
 
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/contoh.css') }}">
 
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/0ff6004706.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="{{ asset('js/helper.js') }}"></script>
     <meta name="csrf_token" content="{{csrf_token()}}">
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- Sidebar Holder -->
     <div class="container-fluid">
         <div class="row">
@@ -45,25 +42,25 @@
                         <li>
                             <div class="hov">
                                 <i class='bx bxs-dashboard'></i>
-                                <a href="#">Dashboard</a>
+                                <a href="{{ url("/admin/dashboard") }}">Dashboard</a>
                             </div>
                         </li>
                         <li class="act">
                             <div class="hov">
                                 <i class='bx bx-book-content'></i>
-                                <a href="#">Konten</a>
+                                <a href="{{ url("/admin/content") }}">Konten</a>
                             </div>
                         </li>
                         <li>
                             <div class="hov">
                                 <i class='bx bxs-user-account'></i>
-                                <a href="#">Akun</a>
+                                <a href={{ url("/admin/akun") }}>Akun</a>
                             </div>
                         </li>
                         <li>
                             <div class="hov">
                                 <i class='bx bx-cart'></i>
-                                <a href="#">Transaksi</a>
+                                <a href="{{ url("/admin/transaction") }}">Transaksi</a>
                             </div>
                         </li>
                     </ul>
@@ -75,52 +72,61 @@
                 <hr class="ml-4">
                 <div class="wrapper">
                     <div class="drop-file" id="banner1">
-                        @if(sizeof($content) == 0)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="file1" name="fileContent" class="input-text" multiple>
-                        @endif
-                        @if(sizeof($content) != 0)
-                        <img src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
-                        @endif
-                        <div class="overlay">
-                            <button type="submit" class="btn btn-edit text-white" style="margin-top: 25%;"><i
-                                    class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar</button>
-                            <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                    class="fa-solid fa-trash-can"></i></button>
-                        </div>
+                        @if(sizeof($content) < 1) <span class="btn-file">Browse File</span>
+                            <span class="name-file">or drag and drop files(png)</span>
+                            <input type="file" id="file1" name="content-1" class="input-text" multiple>
+                            @endif
+                            @if(sizeof($content) > 0)
+                            <img src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
+                            <form action="/admin/content/{{ $content[0]->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <div class="overlay">
+                                    <label for="update1" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                    </label>
+                                    <input type="file" id-content="{{$content[0]->id}}" id="update1" name="content-1" class="input-text" style="display: none ;">
+                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </form>
+                            @endif
                     </div>
                     <div class="drop-file" id="banner2">
-                        @if(sizeof($content) == 0 || sizeof($content) == 1)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="file2" name="fileContent" class="input-text" multiple>
-                        @endif
-                        @if(sizeof($content) != 0)
-                        <img src="{{ $content[1]->content }}" style="height: 100%; width: 405.38px">
-                        @endif
-                        <div class="overlay">
-                                    <button type="submit" class="btn btn-edit text-white" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar</button>
-                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-trash-can"></i></button>
+                        @if(sizeof($content) < 2) <span class="btn-file">Browse File</span>
+                            <span class="name-file">or drag and drop files(png)</span>
+                            <input type="file" id="file2" name="content-2" class="input-text" multiple>
+                            @endif
+                            @if(sizeof($content) > 1)
+                            <img src="{{ $content[1]->content }}" style="height: 100%; width: 405.38px">
+                            <form action="/admin/content/{{ $content[1]->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <div class="overlay">
+                                    <label for="update2" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                    </label>
+                                    <input type="file" id="update2" id-content="{{$content[1]->id}}" name="content-2" class="input-text" style="display: none ;">
+                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
                                 </div>
+                            </form>
+                            @endif
                     </div>
                     <div class="drop-file" id="banner3">
-                        @if(sizeof($content) == 0 || sizeof($content) == 1 ||sizeof($content) == 2)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="file3" name="fileContent" class="input-text" multiple>
-                        @endif
-                        @if(sizeof($content) != 0)
-                        <img src="{{ $content[2]->content }}" style="height: 100%; width: 405.38px">
-                        @endif
-                        <div class="overlay">
-                                    <button type="submit" class="btn btn-edit text-white" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar</button>
-                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-trash-can"></i></button>
+                        @if(sizeof($content) < 3) <span class="btn-file">Browse File</span>
+                            <span class="name-file">or drag and drop files(png)</span>
+                            <input type="file" id="file3" name="content-3" class="input-text" multiple>
+                            @endif
+                            @if(sizeof($content) > 2)
+                            <img src="{{ $content[2]->content }}" style="height: 100%; width: 405.38px">
+                            <form action="/admin/content/{{ $content[2]->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <div class="overlay">
+                                    <label for="update3" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                    </label>
+                                    <input type="file" id="update3" id-content="{{$content[2]->id}}" name="content-3" class="input-text" style="display: none ;">
+                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
                                 </div>
+                            </form>
+                            @endif
                     </div>
                 </div>
                 <div class="row">
@@ -129,52 +135,61 @@
                         <hr class="ml-4">
                         <div class="wrapper">
                             <div class="drop-file" id="banner4">
-                                @if(sizeof($ads) == 0)
-                                <span class="btn-file">Browse File</span>
-                                <span class="name-file">or drag and drop files(png)</span>
-                                <input type="file" id="file4" class="input-text" multiple>
-                                @endif
-                                @if(sizeof($ads) != 0)
-                                <img class="image" src="{{ $ads[0]->content }}" style="height: 100%; width: 405.38px">
-                                @endif
-                                <div class="overlay">
-                                    <button type="submit" class="btn btn-edit text-white" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar</button>
-                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-trash-can"></i></button>
-                                </div>
+                                @if(sizeof($ads) < 1) <span class="btn-file">Browse File</span>
+                                    <span class="name-file">or drag and drop files(png)</span>
+                                    <input type="file" id="file4" name="ads-1" class="input-text" multiple>
+                                    @endif
+                                    @if(sizeof($ads) > 0)
+                                    <img class="image" src="{{ $ads[0]->content }}" style="height: 100%; width: 405.38px">
+                                    <form action="/admin/content/{{ $ads[0]->id }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="overlay">
+                                            <label for="update4" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                            </label>
+                                            <input type="file" id="update4" id-content="{{$ads[0]->id}}" name="ads-1" class="input-text" style="display: none ;">
+                                            <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
+                                        </div>
+                                    </form>
+                                    @endif
                             </div>
                             <div class="drop-file" id="banner5">
-                                @if(sizeof($ads) == 0 || sizeof($ads) == 1)
-                                <span class="btn-file">Browse File</span>
-                                <span class="name-file">or drag and drop files(png)</span>
-                                <input type="file" id="file5" class="input-text" multiple>
-                                @endif
-                                @if(sizeof($ads) != 0)
-                                <img src="{{ $ads[1]->content }}" style="height: 100%; width: 405.38px">
-                                @endif
-                                <div class="overlay">
-                                    <button type="submit" class="btn btn-edit text-white" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar</button>
-                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-trash-can"></i></button>
-                                </div>
+                                @if(sizeof($ads) < 2) <span class="btn-file">Browse File</span>
+                                    <span class="name-file">or drag and drop files(png)</span>
+                                    <input type="file" name="ads-2" id="file5" class="input-text" multiple>
+                                    @endif
+                                    @if(sizeof($ads) > 1)
+                                    <img src="{{ $ads[1]->content }}" style="height: 100%; width: 405.38px">
+                                    <form action="/admin/content/{{ $$ads[1]->id }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="overlay">
+                                            <label for="update5" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                            </label>
+                                            <input type="file" id="update5" id-content="{{$ads[1]->id}}" name="ads-2" class="input-text" style="display: none ;">
+                                            <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
+                                        </div>
+                                    </form>
+                                    @endif
                             </div>
                             <div class="drop-file" id="banner6">
-                                @if(sizeof($ads) == 0 || sizeof($ads) == 1 ||sizeof($ads) == 2)
-                                <span class="btn-file">Browse File</span>
-                                <span class="name-file">or drag and drop files(png)</span>
-                                <input type="file" id="file6" class="input-text" multiple>
-                                @endif
-                                @if(sizeof($ads) != 0)
-                                <img src="{{ $ads[2]->content }}" style="height: 100%; width: 405.38px">
-                                @endif
-                                <div class="overlay">
-                                    <button type="submit" class="btn btn-edit text-white" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar</button>
-                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                            class="fa-solid fa-trash-can"></i></button>
-                                </div>
+                                @if(sizeof($ads) < 3) <span class="btn-file">Browse File</span>
+                                    <span class="name-file">or drag and drop files(png)</span>
+                                    <input type="file" name="ads-3" id="file6" class="input-text" multiple>
+                                    @endif
+                                    @if(sizeof($ads) > 2)
+                                    <img src="{{ $ads[2]->content }}" style="height: 100%; width: 405.38px">
+                                    <form action="/admin/content/{{ $ads[2]->id }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="overlay">
+                                            <label for="update6" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                            </label>
+                                            <input type="file" id="update6" id-content="{{$ads[2]->id}}" name="ads-3" class="input-text" style="display: none ;">
+                                            <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
+                                        </div>
+                                    </form>
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -183,20 +198,14 @@
         </div>
     </div>
     <!-- Page Content Holder -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             let navbarState = true;
-            $('#sidebarCollapse').on('click', function () {
+            $('#sidebarCollapse').on('click', function() {
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
                 if (navbarState) {
@@ -209,11 +218,11 @@
                     navbarState = true;
                 }
             });
-            $('li').on('click', function () {
+            $('li').on('click', function() {
                 $(this).siblings().removeClass('act')
                 $(this).addClass('act')
             });
-            $('.input-text').on('change', function () {
+            $('.input-text').on('change', function() {
                 var countfile = $(this)[0].files.length;
                 var textgambar = $(this).prev();
 
@@ -226,61 +235,16 @@
             });
 
             for (let i = 1; i <= 6; i++) {
-                $(document.getElementById('file' + i)).change(function () {
+                $(document.getElementById('file' + i)).change(function() {
                     uploadImage('file' + i, '#banner' + i, i)
                 })
             }
 
-            function uploadImage(element, banner, type) {
-                var url = "{{url('/admin/content')}}";
-                if (type < 4) {
-                    var content = new FormData();
-                    content.append('fileContent', document.getElementById(element).files[0]);
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-Token': $('meta[name=csrf_token]').attr('content')
-                        },
-                        async: true,
-                        type: "post",
-                        contentType: false,
-                        url: url,
-                        data: content,
-                        processData: false,
-                        success: function () {
-                            console.log("content");
-                        }
-                    });
 
-                } else {
-                    var ads = new FormData();
-                    ads.append('fileAds', document.getElementById(element).files[0]);
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-Token': $('meta[name=csrf_token]').attr('content')
-                        },
-                        async: true,
-                        type: "post",
-                        contentType: false,
-                        url: url,
-                        data: ads,
-                        processData: false,
-                        success: function () {
-                            console.log("ads");
-                        }
-                    });
-                }
-                var reader = new FileReader();
-                var myurl = inputToUrl(document.getElementById(element))
-                reader.onload = function () {
-                    var preview = `<img src="${myurl}" style="height: 100%; width: 405.38px">`
-                    $(banner).html(preview)
-                }
-                reader.readAsDataURL(document.getElementById(element).files[0]);
-            }
-
-            function inputToUrl(inputElement) {
-                var file = inputElement.files[0];
-                return window.URL.createObjectURL(file);
+            for (let i = 1; i <= 6; i++) {
+                $(document.getElementById('update' + i)).change(function() {
+                    updateImage('update' + i, '#banner' + i, i)
+                })
             }
         });
     </script>

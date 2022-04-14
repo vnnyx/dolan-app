@@ -13,7 +13,7 @@ class PengelolaDashboardController extends Controller
             ->join('users', 'users.username', '=', 'transactions.username')
             ->join('wisatas', 'wisatas.nama_wisata', '=', 'transactions.nama_wisata')
             ->select('wisatas.harga_tiket')->where('wisatas.username', '=', auth()->user()->username);
-        $jumlahPengunjung = $query->where('success', 1)->get()->count();
+        $jumlahPengunjung = $query->where('status', 1)->get()->count();
         $totalTicket = $query->sum('total_ticket');
         $harga = $query->value('harga_tiket');
         $total = $harga * $totalTicket;

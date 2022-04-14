@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- Sidebar Holder -->
     <nav id="sidebar">
         <div class="sidebar-header">
@@ -40,7 +41,7 @@
             <li>
                 <div class="hov">
                     <i class='bx bx-book-content'></i>
-                    <a href="#">Konten</a>
+                    <a href="{{ url("/admin/content") }}">Konten</a>
                 </div>
             </li>
             <li>
@@ -177,15 +178,14 @@
 
             $(".alert").slideDown(300).delay(3000).slideUp(300)
         });
-        $('li').on('click', function () {
+        $('li').on('click', function() {
             $(this).siblings().removeClass('act')
             $(this).addClass('act')
         });
-        $('#hapus').on('hover',function() {
+        $('#hapus').on('hover', function() {
             $(this).css("background", "#DEE6F0");
         })
-    });
-</script>
+    </script>
 </body>
 
 </html>
