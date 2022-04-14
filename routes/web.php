@@ -52,6 +52,8 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::get('/transaction', [TransactionOwnerController::class, 'index']);
     Route::put('/transaction/{id}', [TransactionOwnerController::class, 'update']);
     Route::get('/wisata', [WisataController::class, 'index']);
+    Route::post('/wisata', [WisataController::class, 'store']);
+    Route::post('/wisata/{id}', [WisataController::class, 'update']);
 }));
 
 
