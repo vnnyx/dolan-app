@@ -62,7 +62,7 @@ a, a:hover, a:focus {
     transition: all 0s ease;
 }
 #sidebar.active i{
-    /* margin-left: 100px; */
+    cursor: pointer;
     display: show;
     transition: all 0s ease;
 }
