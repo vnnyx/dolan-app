@@ -64,6 +64,12 @@
                                 <a href="#">Transaksi</a>
                             </div>
                         </li>
+                        <li>
+                            <div class="hov log-out">
+                                <i class='bx bx-log-out'></i>
+                                <a href="#">Keluar</a>
+                            </div>
+                        </li>
                     </ul>
                 </nav>
             </div>

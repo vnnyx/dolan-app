@@ -159,8 +159,6 @@ a, a:hover, a:focus {
     position: relative;
     background-color: #FFFFFF;
     left: -150px;
-    /* min-width: 1200px;
-    max-width: 1200px; */
     transition: all .4 ease;
 }
 #content .cont-l h4{
@@ -186,8 +184,6 @@ a, a:hover, a:focus {
     box-shadow: 0 0 1px #000;
 }
 #sidebar.active ~ #content .cont-l .item{
-    /* min-width: 750px;
-    max-width: 750px; */
     height: 150px;
 }
 #content .cont-l .item .nama-wisata{
@@ -284,8 +280,6 @@ a, a:hover, a:focus {
     margin-bottom: 10px;
 }
 .modal-body #notes{
-    /* border: none;
-    outline: none; */
     width: 100%;
     padding: 10px;
 }
@@ -308,41 +302,6 @@ a, a:hover, a:focus {
 .modal{
     margin-top: 7%;
 }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 4a9914a8620a1a82529b2c5a514c9ba4b24b0c2a
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-/* @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-        transform: rotateY(90deg);
-    }
-    #sidebar.active {
-        margin-left: 0;
-        transform: none;
-    }
-    #sidebarCollapse span:first-of-type,
-    #sidebarCollapse span:nth-of-type(2),
-    #sidebarCollapse span:last-of-type {
-        transform: none;
-        opacity: 1;
-        margin: 5px auto;
-    }
-    #sidebarCollapse.active span {
-        margin: 0 auto;
-    }
-    #sidebarCollapse.active span:first-of-type {
-        transform: rotate(45deg) translate(2px, 2px);
-    }
-    #sidebarCollapse.active span:nth-of-type(2) {
-        opacity: 0;
-    }
-    #sidebarCollapse.active span:last-of-type {
-        transform: rotate(-45deg) translate(1px, -1px);
-    }
-
-} */
+.bx-plus-circle{
+    cursor: pointer;
+}

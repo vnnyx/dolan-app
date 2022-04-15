@@ -5,10 +5,12 @@ body {
     overflow: hidden;
     font-family: 'Raleway', sans-serif;
 }
+
 #kol1 {
     width: 50%;
     height: 100%;
 }
+
 #kol1 h3 {
     position: relative;
     top: 140px;
@@ -16,29 +18,35 @@ body {
     font-size: bold;
     font-size: 40px;
 }
-.head-c{
+
+.head-c {
     position: relative;
     top: 100px;
     left: 37%;
 }
+
 #kol1 .tulisan {
     font-weight: 900;
 }
-.daftar{
+
+.daftar {
     position: relative;
     top: 380px;
     left: 240px;
     font-size: 20px;
 }
-.daftar a{
+
+.daftar a {
     font-weight: 700;
     text-decoration: none;
     color: #000;
 }
+
 /* =================================================== */
 #kol2 {
     width: 50%;
 }
+
 .form-control {
     position: relative;
     top: 200px;
@@ -47,13 +55,20 @@ body {
     border-radius: .25em;
     background-color: #FFF;
 }
-.form-control:hover{
+
+.form-control:hover {
     border: 1px solid #000;
     transition: all 1.5s ease-out;
 }
+
+.form-group>input:focus {
+    border-color: 2px #02182B;
+}
+
 .form-control::placeholder {
     color: #B0B0B0;
 }
+
 .btn {
     position: relative;
     left: 15%;
@@ -64,11 +79,13 @@ body {
     background-color: #02182B;
     transition: all .3s ease-in-out;
 }
+
 .btn:hover {
     color: #fff;
     transform: translateY(-10px);
     transition: all .3s ease-in-out;
 }
+
 .sandi {
     position: relative;
     top: 175px;
@@ -79,27 +96,33 @@ body {
     font-weight: 700;
     transition: all .5s ease;
 }
-.sandi:hover{
+
+.sandi:hover {
     color: #000;
     transition: all .5s ease;
 }
+
 .eye {
     position: absolute;
     top: 397px;
     left: 495px;
     color: #000;
 }
+
 #hide1 {
     display: none;
 }
-label, #envelope{
+
+label,
+#envelope {
     position: absolute;
     font-size: 25px;
     top: 159px;
     left: 120px;
     z-index: 111;
 }
-#lock{
+
+#lock {
     position: absolute;
     top: 235px;
     left: 120px;

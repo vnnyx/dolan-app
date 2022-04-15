@@ -27,7 +27,7 @@
         @csrf
         <div class="mb-3">
           <label for="email"><i class='bx bx-envelope' id="envelope"></i></label>
-          <input type="text" name="email" class="form-control mx-auto" id="email" style="padding-left: 50px;" placeholder="E-mail" required>
+          <input type="text" name="email" class="form-control mx-auto" id="email" style="padding-left: 50px;" placeholder="E-mail" required autocomplete=’off’>
           <div id="emailHelp" class="form-text"></div>
         </div>
         <div class="mb-3">

@@ -1,156 +1,200 @@
-
 .card {
-    background-color: white;
-    padding: .5rem;
-    max-width: 360px;
-    margin: 0 auto;
-    animation: fade 250ms ease-in-out forwards;
-    top: 120px;
-    border: none;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: .5rem;
-    column-gap: 48px;
-    max-height: 400px;
-  }
-  
-  .form-group:last-child {
-    margin: 0;
-  }
-  
-  .form-group > input {
-    border: 1px solid #ACC2D5;
-    height: 56px;
-    border-radius: .25em;
-    font-size: 1rem;
-    padding: .25em;
-    padding-left: 24px;
+  background-color: white;
+  padding: .5rem;
+  max-width: 360px;
+  margin: 0 auto;
+  animation: fade 250ms ease-in-out forwards;
+  top: 120px;
+  border: none;
+}
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .5rem;
+  column-gap: 48px;
+  max-height: 400px;
+}
+.form-group:last-child {
+  margin: 0;
+}
+
+.form-group>input {
+  border: 1px solid #ACC2D5;
+  height: 56px;
+  border-radius: .25em;
+  font-size: 1rem;
+  padding: .25em;
+  padding-left: 50px;
+}
+
+.form-group>input:focus {
+  border-color: 2px #02182B;
+
+}
+
+input:hover {
+  border-color: #5C7285;
+  transition: all .5s ease-in-out;
+}
+
+input:focus {
+  border-color: #02182B;
+  transition: all .5s ease-in-out;
+}
+
+.step-title {
+  margin: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.card.active {
+  animation: slide 250ms 125ms ease-in-out both;
+}
+
+.tombol-primary {
+  background-color: #02182B;
+  color: white;
+  padding: 16px;
+  border-radius: 6px;
+  margin-top: 36px;
+  transition: all .3s ease-in-out;
+}
+
+.tombol-secondary {
+  margin-top: 12px;
+  background-color: white;
+  color: #02182B;
+  padding: 16px;
+  border-radius: 6px;
+  border: none;
+}
+
+#iconupload {
+  align-items: flex-end;
+}
+
+h3 {
+  font-size: 32px;
+  font-family: 'Raleway', sans-serif;
+  color: #02182B;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+
+h4 {
+  font-size: medium;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  color: #02182B;
+  opacity: 80%;
+  line-height: 24px;
+}
+
+.tombol-primary:hover {
+  background-color: #000417;
+  transform: translateY(-10px);
+  transition: all .3s ease-in-out;
+}
+
+.multi-step-form {
+  position: relative;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(200%);
+    opacity: 0;
   }
 
-  .form-group > input:focus{
-    border-color: 2px #02182B;
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
-  }
-
-  input:hover{
-    border-color: #5C7285;
-    transition: all .5s ease-in-out;
-  }
-
-  input:focus{
-    border-color: #02182B;
-    transition: all .5s ease-in-out;
-  }
-  .step-title {
-    margin: 0;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  .card.active {
-    animation: slide 250ms 125ms ease-in-out both;
-  }
-  
-.tombol-primary{
-      background-color:#02182B;
-      color: white;
-      padding: 16px;
-      border-radius: 6px;
-      margin-top: 36px;
+@keyframes fade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
 
-  .tombol-secondary{
-    margin-top: 12px;
-    background-color:white;
-    color:#02182B;
-    padding: 16px;
-    border-radius: 6px;
-    border: none;
+  50% {
+    transform: scale(.75);
+    opacity: 0;
   }
 
-  #iconupload{
-    align-items: flex-end;
+  100% {
+    opacity: 0;
+    transform: scale(0);
   }
+}
 
-  h3{
-    font-size: 32px;
-    font-family: 'Raleway', sans-serif;
-    color: #02182B;
-    font-weight: 600;
-    letter-spacing: -2px;
-  }
+.gambar {
+  position: absolute;
+  width: 705px;
+  height: 768px;
+  right: 0px;
+  top: 0px;
+}
 
-  h4{
-    font-size: medium;
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-    color: #02182B;
-    opacity: 80%;
-    line-height: 24px;
-  }
-
-  .tombol-primary:hover{
-    background-color: #000417;
-    transform: translateY(-10px);
-    transition: all .3s ease-in-out;
-  }
-  .multi-step-form {
-    /* overflow: hidden; */
-    position: relative;
-  }
-  
-  .hide {
-    display: none;
-  }
-  
-  @keyframes slide {
-    0% {
-      transform: translateX(200%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fade {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(.75);
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-      transform: scale(0);
-    }
-  }
-
-  .gambar{
-    position: absolute;
-    width: 705px;
-    height: 768px;
-    right: 0px;
-    top: 0px;
-  }
-
-  body{
-    overflow: hidden;
-    font-family: 'Raleway', sans-serif;
-  }
-
-
-
-
-.img-head{
-    position: relative;
-    left: 280px;
-    top: 60px;
-
+body {
+  overflow: hidden;
+  font-family: 'Raleway', sans-serif;
+}
+.img-head {
+  position: relative;
+  left: 280px;
+  top: 60px;
+}
+.bx-envelope{
+  position: absolute;
+  top: 14px;
+  left: 15px;
+  font-size: 25px;
+  z-index: 11;
+}
+.bx-lock-alt{
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  font-size: 25px;
+  z-index: 11;
+}
+.bx-user{
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 25px;
+  z-index: 11;
+}
+.fa-bahai{
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  font-size: 25px;
+}
+.fa-location-dot{
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  font-size: 25px;
+}
+.eye {
+  position: absolute;
+  right: 15px;
+  top: 13px;
+  font-size: 20px;
+}
+#hide1 {
+  display: none;
+}
+#hide3 {
+  display: none;
 }
