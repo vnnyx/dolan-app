@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Content;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class WisataController extends Controller
 {
@@ -14,6 +16,12 @@ class WisataController extends Controller
 
     public function store(Request $request){
         if($request->ajax()){
+            $validator = Validator::make($request->all(), [
+                'fileContent'=>'max:512'
+            ]);
+            if ($validator->fails()) {
+                return back()->with('errors', $validator->messages()->all()[0])->withInput();
+            }
             $result = $request->fileContent->storeOnCloudinaryAs('abp', $request->fileName);
             Content::create([
                 'username'=>auth()->user()->username,
@@ -24,15 +32,22 @@ class WisataController extends Controller
     }
 
     public function update(Request $request, $id){
-        $data = Content::find($id);
         if($request->ajax()){
-            $result = $request->fileContent->storeOnCloudinaryAs('abp', $request->fileName);
+            $result = $request->updateContent->storeOnCloudinaryAs('abp', $request->fileName);
+            $path = $result->getSecurePath();
+            $data = Content::find($id);
             $data->update([
                 'username'=>auth()->user()->username,
-                'content'=>$result->getSesurePath()
+                'content'=> $path
             ]);
         }
 
-        toast('Banner berhasil diupdate', 'success');
+        Alert::toast('Banner berhasil diupdate', 'success');
+    }
+
+    public function delete(Request $request, $id){
+        Content::destroy($id);
+        Alert::toast('Banner berhasil dihapus', 'success');
+        return redirect('/pengelola/wisata');
     }
 }

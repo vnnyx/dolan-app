@@ -169,6 +169,7 @@ return [
          * Package Service Providers...
          */
         CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -196,6 +197,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];

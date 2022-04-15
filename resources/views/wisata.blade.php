@@ -30,8 +30,8 @@
 </head>
 
 <body>
+@include('sweetalert::alert')
 <!-- Sidebar Holder -->
-@include('vendor.sweetalert.alert')
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3" id="nav">
@@ -222,8 +222,8 @@
             })
         }
         for (let i = 1; i <= 3; i++) {
-            $(document.getElementById('file' + i)).change(function () {
-                updateBanner('file' + i, '#banner' + i)
+            $(document.getElementById('update' + i)).change(function () {
+                updateBanner('update' + i, '#banner' + i)
             })
         }
     });

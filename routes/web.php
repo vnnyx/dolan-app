@@ -54,6 +54,7 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::get('/wisata', [WisataController::class, 'index']);
     Route::post('/wisata', [WisataController::class, 'store']);
     Route::post('/wisata/{id}', [WisataController::class, 'update']);
+    Route::delete('/wisata/{id}', [WisataController::class, 'delete']);
 }));
 
 

@@ -78,16 +78,16 @@
                             @endif
                             @if(sizeof($content) > 0)
                             <img src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
-                            <form action="/admin/content/{{ $content[0]->id }}" method="post">
+                                <form action="/admin/content/{{ $content[0]->id }}" method="post" id="delete{{ $content[0]->id }}">
                                 @csrf
                                 @method('DELETE')
                                 <div class="overlay">
                                     <label for="update1" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                     </label>
                                     <input type="file" id-content="{{$content[0]->id}}" id="update1" name="content-1" class="input-text" style="display: none ;">
-                                    <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
+                                    <button data-id="{{ $content[0]->id }}" type="submit" id="delete1" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
                                 </div>
-                            </form>
+                                </form>
                             @endif
                     </div>
                     <div class="drop-file" id="banner2">
@@ -201,7 +201,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             let navbarState = true;
@@ -239,7 +239,6 @@
                     uploadImage('file' + i, '#banner' + i, i)
                 })
             }
-
 
             for (let i = 1; i <= 6; i++) {
                 $(document.getElementById('update' + i)).change(function() {

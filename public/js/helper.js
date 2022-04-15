@@ -5,7 +5,7 @@ function uploadImage(element, banner, type) {
     if (type < 4) {
         var content = new FormData();
         content.append('fileContent', elmnt.files[0]);
-        content.append('fileName',filename);
+        content.append('fileName', filename);
         console.log(content)
         $.ajax({
             headers: {
@@ -55,8 +55,7 @@ function updateImage(element, banner, type) {
     var elmnt = document.getElementById(element);
     var id = elmnt.getAttribute('id-content');
     var filename = elmnt.getAttribute('name');
-    console.log(id)
-    var url = "/admin/content/"+id;
+    var url = "/admin/content/" + id;
 
     if (type < 4) {
         var content = new FormData();
@@ -76,8 +75,8 @@ function updateImage(element, banner, type) {
             success: function () {
                 location.reload();
             },
-            error: function(e){
-                console.log(e)
+            error: function () {
+                location.reload();
             }
         });
 
@@ -113,40 +112,9 @@ function uploadBanner(element, banner) {
     var url = "/pengelola/wisata";
     var elmnt = document.getElementById(element);
     var filename = elmnt.getAttribute('name');
-        var content = new FormData();
-        content.append('fileContent', elmnt.files[0]);
-        content.append('fileName',filename);
-        console.log(content)
-        $.ajax({
-            headers: {
-                'X-CSRF-Token': $('meta[name=csrf_token]').attr('content')
-            },
-            async: true,
-            type: "post",
-            contentType: false,
-            url: url,
-            data: content,
-            processData: false,
-            success: function () {
-                location.reload();
-            }
-        });
-    var reader = new FileReader();
-    reader.onload = function () {
-        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
-        $(banner).html(preview)
-    }
-    reader.readAsDataURL(document.getElementById(element).files[0]);
-}
-
-function updateBanner(element, banner) {
-    var elmnt = document.getElementById(element);
-    var id = elmnt.getAttribute('id-content');
-    var filename = elmnt.getAttribute('name');
     var content = new FormData();
-    var url = "/pengelola/wisata/"+id;
     content.append('fileContent', elmnt.files[0]);
-    content.append('fileName',filename);
+    content.append('fileName', filename);
     console.log(content)
     $.ajax({
         headers: {
@@ -160,6 +128,40 @@ function updateBanner(element, banner) {
         processData: false,
         success: function () {
             location.reload();
+        }
+    });
+    var reader = new FileReader();
+    reader.onload = function () {
+        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+        $(banner).html(preview)
+    }
+    reader.readAsDataURL(document.getElementById(element).files[0]);
+}
+
+function updateBanner(element, banner) {
+    var elmnt = document.getElementById(element);
+    var id = elmnt.getAttribute('id-content');
+    var filename = elmnt.getAttribute('name');
+    var url = "/pengelola/wisata/" + id;
+    var content = new FormData();
+    content.append('updateContent', elmnt.files[0]);
+    content.append('fileName', filename);
+    console.log(content)
+    $.ajax({
+        headers: {
+            'X-CSRF-Token': $('meta[name=csrf_token]').attr('content')
+        },
+        async: true,
+        type: "post",
+        contentType: false,
+        url: url,
+        data: content,
+        processData: false,
+        success: function () {
+            location.reload();
+        },
+        error: function (e) {
+            console.log(e)
         }
     });
     var reader = new FileReader();
