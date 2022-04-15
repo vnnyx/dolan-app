@@ -65,10 +65,10 @@
                         </div>
                     </li>
                     <br><br><br><br><br><br><br>
-                    <li style="margin-left:25px;">
+                    <li style="margin-left:45px;">
                         <div class="hov">
                             <i class='bx bx-log-out'></i>
-                            <a href="#">Keluar</a>
+                            <a href="{{ url("/admin/logout") }}">Keluar</a>
                         </div>
                     </li>
                 </ul>

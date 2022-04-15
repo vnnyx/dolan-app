@@ -69,6 +69,13 @@
                             <a href="{{ url("/admin/transaction") }}">Transaksi</a>
                         </div>
                     </li>
+                    <br><br><br><br><br><br><br>
+                    <li style="margin-left:40px;">
+                        <div class="hov">
+                            <i class='bx bx-log-out'></i>
+                            <a href="{{ url("/admin/logout") }}">Keluar</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>

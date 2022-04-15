@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ListAkunController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PengelolaDashboardController;
 use App\Http\Controllers\RegisController;
 use App\Http\Controllers\TransactionController;
@@ -43,6 +44,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (functi
     Route::post('/content', [AdminContentController::class, 'storeContent']);
     Route::post('/content/{id}', [AdminContentController::class, 'update']);
     Route::get('/content/{id}', [AdminContentController::class, 'delete']);
+    Route::get('/logout', [LogoutController::class, 'logout']);
 }));
 
 
@@ -55,6 +57,7 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::post('/wisata', [WisataController::class, 'store']);
     Route::post('/wisata/{id}', [WisataController::class, 'update']);
     Route::get('/wisata/{id}', [WisataController::class, 'delete']);
+    Route::get('/logout', [LogoutController::class, 'logout']);
 }));
 
 

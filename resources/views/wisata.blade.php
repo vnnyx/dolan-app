@@ -52,12 +52,6 @@
                             <a href="#">Dashboard</a>
                         </div>
                     </li>
-                    <li class="act">
-                        <div class="hov">
-                            <i class='bx bx-book-content'></i>
-                            <a href="#">Konten</a>
-                        </div>
-                    </li>
                     <li>
                         <div class="hov">
                             <i class='bx bxs-user-account'></i>
@@ -70,11 +64,11 @@
                             <a href="#">Transaksi</a>
                         </div>
                     </li>
-                    <br><br><br><br><br><br><br>
-                    <li style="margin-left:25px;">
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <li style="margin-left:35px;">
                         <div class="hov">
                             <i class='bx bx-log-out'></i>
-                            <a href="#">Keluar</a>
+                            <a href="{{ url('/pengelola/logout') }}">Keluar</a>
                         </div>
                     </li>
                 </ul>

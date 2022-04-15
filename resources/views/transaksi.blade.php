@@ -69,10 +69,10 @@
                         </div>
                     </li>
                     <br><br><br><br><br><br><br>
-                    <li>
+                    <li style="margin-left: 45px">
                         <div class="hov">
                             <i class='bx bx-log-out'></i>
-                            <a href="#">Keluar</a>
+                            <a href="{{ url('/pengelola/logout') }}">Keluar</a>
                         </div>
                     </li>
                 </ul>
@@ -108,10 +108,10 @@
                     <div class="row mb-5">
                         <div class="col-12">
                             <div class="wrapp">
-                                @if($data->success == 1)
+                                @if($data->status == 1)
                                     <img class="status" src="{{ asset('image/centang.png') }}" alt="">
                                 @endif
-                                @if($data->success == 0)
+                                @if($data->status == 0)
                                     <img class="status" src="{{ asset('image/silang.png') }}" alt="">
                                 @endif
                                 <h1 class="wisata ml-5">Tiket Wisata <span>{{ $data->nama_wisata }}</span></h1>
