@@ -36,7 +36,7 @@ Route::post('/register', [RegisController::class, 'store']);
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
     Route::post('/note', [AdminDashboardController::class, 'store']);
-    Route::put('/note/{id}', [AdminDashboardController::class, 'update']);
+    Route::post('/note/{id}', [AdminDashboardController::class, 'update']);
     Route::get('/transaction', [TransactionController::class, 'index']);
     Route::get('/akun', [ListAkunController::class, 'list']);
     Route::get('/content', [AdminContentController::class, 'createContent']);
