@@ -36,7 +36,7 @@ Route::post('/register', [RegisController::class, 'store']);
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
     Route::post('/note', [AdminDashboardController::class, 'store']);
-    Route::put('/note/{id}', [AdminDashboardController::class, 'update']);
+    Route::post('/note/{id}', [AdminDashboardController::class, 'update']);
     Route::get('/transaction', [TransactionController::class, 'index']);
     Route::get('/akun', [ListAkunController::class, 'list']);
     Route::get('/content', [AdminContentController::class, 'createContent']);
@@ -54,7 +54,7 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::get('/wisata', [WisataController::class, 'index']);
     Route::post('/wisata', [WisataController::class, 'store']);
     Route::post('/wisata/{id}', [WisataController::class, 'update']);
-    Route::delete('/wisata/{id}', [WisataController::class, 'delete']);
+    Route::get('/wisata/{id}', [WisataController::class, 'delete']);
 }));
 
 

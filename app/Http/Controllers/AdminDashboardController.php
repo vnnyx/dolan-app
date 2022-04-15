@@ -43,10 +43,10 @@ class AdminDashboardController extends Controller
 
         if ($note) {
             Alert::toast('Catatan berhasil ditambah', 'success');
-            return redirect()->back();
         } else {
             Alert::toast('Catatan gagal ditambah', 'error');
         }
+        return redirect()->back();
     }
 
     public function update(Request $request, $id)
@@ -76,9 +76,11 @@ class AdminDashboardController extends Controller
             case 'delete':
                 Note::destroy($id);
                 Alert::toast('Catatan berhasil dihapus', 'success');
-                return redirect()->back();
+                return redirect('/admin/dashboard');
             default:
-                return 0;
+                Note::destroy($id);
+                Alert::toast('Catatan berhasil dihapus', 'success');
+                return redirect('/admin/dashboard');
         }
     }
 }
