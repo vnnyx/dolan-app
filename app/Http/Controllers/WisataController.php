@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Content;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class WisataController extends Controller
@@ -46,7 +45,7 @@ class WisataController extends Controller
         Alert::toast('Banner berhasil diupdate', 'success');
     }
 
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
         Content::destroy($id);
         Alert::toast('Banner berhasil dihapus', 'success');
