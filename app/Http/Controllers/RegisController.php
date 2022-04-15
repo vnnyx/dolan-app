@@ -23,7 +23,7 @@ class RegisController extends Controller
             'password' => 'required',
             'namawisata' => 'required',
             'alamatwisata' => 'required',
-            'certificate' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'certificate' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
 

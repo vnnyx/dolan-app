@@ -22,7 +22,10 @@ multiStepForm.addEventListener("click", e => {
   if (incrementor == null) return
 
   const inputs = [...formSteps[currentStep].querySelectorAll("input")]
-  const allValid = inputs.every(input => input.reportValidity())
+  let allValid = inputs.every(input => input.reportValidity())
+    if(document.getElementById('password-confirm').value !== document.getElementById('password').value){
+        allValid = false;
+    }
   if (allValid) {
     currentStep += incrementor
     showCurrentStep()
