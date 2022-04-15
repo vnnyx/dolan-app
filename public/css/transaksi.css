@@ -28,69 +28,82 @@ a, a:hover, a:focus {
 ----------------------------------------------------- */
 #sidebar {
     position: fixed;
+    margin-left: -20px;
     min-height: 100vh;
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 350px;
+    max-width: 350px;
     background: #02182B;
     color: #fff;
     transition: all 0.4s ease-in;
 }
 
 #sidebar.active {
-    margin-left: -170px;
+    margin-left: -200px;
     transition: all .4s ease-out;
 }
-#sidebar.active .navbar-btn{
-    left: 40px;
+
+#sidebar.active .navbar-btn {
+    top: 40px;
+    left: 240px;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
 }
 
 #sidebar .sidebar-header {
-    padding: 20px 36px;
+    padding: 20px 50px;
 }
-.act{
+#sidebar.active .sidebar-header
+{
+    visibility: hidden;
+}
+#sidebar .sidebar-header img {
+    width: 190px;
+    object-fit: cover;
+}
+.act {
     color: #DF9506;
 }
+
 #sidebar ul li a {
     padding: 10px 36px;
-    margin-left: 50px;
+    margin-left: 60px;
+    line-height: 33px;
     font-size: 1.5em;
     font-weight: bold;
     display: block;
 }
-#sidebar.active ul li a{
+
+#sidebar.active ul li a {
     visibility: hidden;
     transition: all 0s ease;
 }
-#sidebar.active i{
+
+#sidebar.active .hov {
+    position: relative;
+    top: -50px;
+    margin-left: 193px;
     display: show;
     transition: all 0s ease;
 }
+
 #sidebar ul li a:hover {
     color: #DF9506;
 }
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-#content {
+#sidebar i {
     position: relative;
-    left: 310px;
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
+    top: 45px;
+    left: 55px;
+    font-size: 1.9em;
 }
 #sidebarCollapse {
-    position: relative;
-    top: 5px;
-    /* left: 70px; */
+    position: absolute;
+    top: 4px;
+    left: 300px;
     width: 40px;
+    height: 40px;
     background-color: #02182B;
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 #sidebarCollapse span {
     width: 80%;
     height: 2px;
@@ -104,6 +117,7 @@ a, a:hover, a:focus {
 #sidebarCollapse span:first-of-type {
     transform: rotate(45deg) translate(2px, 2px);
 }
+
 #sidebarCollapse span:nth-of-type(2) {
     opacity: 0;
 }
@@ -115,17 +129,7 @@ a, a:hover, a:focus {
     opacity: 1;
     margin: 5px auto;
 }
-#sidebar i{
-    position: relative;
-    top: 45px;
-    left: 40px;
-    font-size: 1.5em;
-}
-#sidebar.active i{
-    position: relative;
-    left: 215px;
-}
-#sidebar .hov:hover{
+#sidebar .hov:hover {
     color: #DF9506;
     -webkit-transform: scale(1.10);
     transform: scale(1.10);

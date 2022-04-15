@@ -9,12 +9,17 @@
     <title>Dolan</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+    </script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -54,6 +59,13 @@
                 <div class="hov">
                     <i class='bx bx-cart'></i>
                     <a href="{{ url("/admin/transaction") }}">Transaksi</a>
+                </div>
+            </li>
+            <br><br><br><br><br><br><br><br><br>
+            <li>
+                <div class="hov">
+                    <i class='bx bx-log-out'></i>
+                    <a href="#">Keluar</a>
                 </div>
             </li>
         </ul>
@@ -117,7 +129,8 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -130,71 +143,72 @@
                     <form action="/admin/note" method="post">
                         @csrf
                         <h1 style="color: #B9B9B9;">Judul Catatan</h1>
-                        <input type="text" id="notes" name="title" placeholder="Update Konten, Wisata, dll" style="border-radius: 8px;">
+                        <input type="text" id="notes" name="title" placeholder="Update Konten, Wisata, dll"
+                            style="border-radius: 8px;">
                         <h1 style="color: #B9B9B9;">Isi Catatan</h1>
-                        <textarea name="message" id="isi" placeholder="Tulis apa aja deh disini buat admin yang lain biar bisa koordinasi" style="border-radius: 8px;"></textarea>
-                        <button type="submit" class="btn justify-content-center w-100 py-3 text-white" style="background-color: #02182B;border-radius: 8px;">Buat Catatan
+                        <textarea name="message" id="isi"
+                            placeholder="Tulis apa aja deh disini buat admin yang lain biar bisa koordinasi"
+                            style="border-radius: 8px;"></textarea>
+                        <button type="submit" class="btn justify-content-center w-100 py-3 text-white"
+                            style="background-color: #02182B;border-radius: 8px;">Buat Catatan
                         </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            let navbarState = true;
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-                if (navbarState) {
-                    $('#left').removeClass('col-lg-6').addClass('col-lg-7')
-                    navbarState = false;
-                } else {
-                    $('#left').removeClass('col-lg-7').addClass('col-lg-6')
-                    navbarState = true;
-                }
-            });
+    $(document).ready(function() {
+                let navbarState = true;
+                $('#sidebarCollapse').on('click', function() {
+                    $('#sidebar').toggleClass('active');
+                    $(this).toggleClass('active');
+                    if (navbarState) {
+                        $('#left').removeClass('col-lg-6').addClass('col-lg-7')
+                        navbarState = false;
+                    } else {
+                        $('#left').removeClass('col-lg-7').addClass('col-lg-6')
+                        navbarState = true;
+                    }
+                });
 
-            $('li').on('click', function() {
-                $(this).siblings().removeClass('act')
-                $(this).addClass('act')
-            });
-
-            $(".alert").slideDown(300).delay(3000).slideUp(300)
-        });
-        $('li').on('click', function() {
-            $(this).siblings().removeClass('act')
-            $(this).addClass('act')
-        });
-        $('#hapus').on('hover', function() {
-            $(this).css("background", "#DEE6F0");
-        })
+                $('li').on('click', function() {
+                    $(this).siblings().removeClass('act')
+                    $(this).addClass('act')
+                });
+                $('#hapus').on('hover', function() {
+                    $(this).css("background", "#DEE6F0");
+                })
 
 
 
-        $('.show_confirm').click(function(event) {
-            var form = $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            new Swal({
-                title: 'Apakah anda yakin?',
-                text: "Anda tidak dapat mengembalikan file ini",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                cancelButtonText: 'Batalkan',
-                confirmButtonText: 'Ya, hapus',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
-            })
-        });
+                $('.show_confirm').click(function(event) {
+                    var form = $(this).closest("form");
+                    var name = $(this).data("name");
+                    event.preventDefault();
+                    new Swal({
+                        title: 'Apakah anda yakin?',
+                        text: "Anda tidak dapat mengembalikan file ini",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        cancelButtonText: 'Batalkan',
+                        confirmButtonText: 'Ya, hapus',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    })
+                });
     </script>
 </body>
 

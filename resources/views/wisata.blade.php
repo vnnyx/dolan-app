@@ -17,11 +17,11 @@
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-            crossorigin="anonymous"></script>
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+    </script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-            crossorigin="anonymous"></script>
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+    </script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://kit.fontawesome.com/0ff6004706.js" crossorigin="anonymous"></script>
@@ -46,13 +46,13 @@
                     <span></span>
                 </button>
                 <ul class="list-unstyled components">
-                    <li class="act">
+                    <li>
                         <div class="hov">
                             <i class='bx bxs-dashboard'></i>
                             <a href="#">Dashboard</a>
                         </div>
                     </li>
-                    <li>
+                    <li class="act">
                         <div class="hov">
                             <i class='bx bx-book-content'></i>
                             <a href="#">Konten</a>
@@ -70,6 +70,13 @@
                             <a href="#">Transaksi</a>
                         </div>
                     </li>
+                    <br><br><br><br><br><br><br>
+                    <li style="margin-left:25px;">
+                        <div class="hov">
+                            <i class='bx bx-log-out'></i>
+                            <a href="#">Keluar</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -79,15 +86,15 @@
             <hr class="ml-4">
             <div class="wrapper mb-5">
                 <div class="drop-file" id="banner1">
-                    @if(sizeof($content) < 1)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="file1" class="input-text" name="banner-1" multiple>
+                    @if(sizeof($content) < 1) <span class="btn-file">Browse File</span>
+                    <span class="name-file">or drag and drop files(png)</span>
+                    <input type="file" id="file1" class="input-text" name="banner-1" multiple>
                     @endif
                     @if(sizeof($content) > 0)
                         <img class="image" src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
                             <div class="overlay">
-                                <label for="update1" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i
+                                <label for="update1" class="btn btn-edit text-white"
+                                       style="margin-top: 27%; margin-right:10px;"><i
                                         class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                 </label>
                                 <input type="file" id-content="{{$content[0]->id}}" id="update1" name="banner-1"
@@ -98,15 +105,15 @@
                     @endif
                 </div>
                 <div class="drop-file" id="banner2">
-                    @if(sizeof($content) < 2)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="file2" class="input-text" name="banner-2" multiple>
+                    @if(sizeof($content) < 2) <span class="btn-file">Browse File</span>
+                    <span class="name-file">or drag and drop files(png)</span>
+                    <input type="file" id="file2" class="input-text" name="banner-2" multiple>
                     @endif
                     @if(sizeof($content) > 1)
                         <img src="{{ $content[1]->content }}" style="height: 100%; width: 405.38px">
                             <div class="overlay">
-                                <label for="update2" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i
+                                <label for="update2" class="btn btn-edit text-white"
+                                       style="margin-top: 27%; margin-right:10px;"><i
                                         class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                 </label>
                                 <input type="file" id-content="{{$content[1]->id}}" id="update2" name="banner-2"
@@ -117,15 +124,15 @@
                     @endif
                 </div>
                 <div class="drop-file" id="banner3">
-                    @if(sizeof($content) < 3)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
-                        <input type="file" id="file3" class="input-text" name="banner-3" multiple>
+                    @if(sizeof($content) < 3) <span class="btn-file">Browse File</span>
+                    <span class="name-file">or drag and drop files(png)</span>
+                    <input type="file" id="file3" class="input-text" name="banner-3" multiple>
                     @endif
                     @if(sizeof($content) > 2)
                         <img src="{{ $content[2]->content }}" style="height: 100%; width: 405.38px">
                             <div class="overlay">
-                                <label for="update3" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i
+                                <label for="update3" class="btn btn-edit text-white"
+                                       style="margin-top: 27%; margin-right:10px;"><i
                                         class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                 </label>
                                 <input type="file" id-content="{{$content[2]->id}}" id="update3" name="banner-3"
@@ -167,6 +174,12 @@
                             </div>
                             <span class="keterangan">Tiket</span>
                         </div>
+                        <button type="submit" class="btn text-white"
+                                style="margin-left:220px;background-color:#C17700;"><i class='bx bx-pencil'></i>
+                            Ubah
+                            Konten</button>
+                        <button type="submit" class="btn btn-success" style="margin-left:20px;"><i
+                                class='bx bx-check-circle'></i> Simpan Perubahan</button>
                     </form>
                 </div>
             </div>
@@ -175,19 +188,19 @@
 </div>
 <!-- Page Content Holder -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-        crossorigin="anonymous"></script>
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         let navbarState = true;
-        $('#sidebarCollapse').on('click', function () {
+        $('#sidebarCollapse').on('click', function() {
             $('#sidebar').toggleClass('active');
             $(this).toggleClass('active');
             if (navbarState) {
@@ -200,18 +213,18 @@
                 navbarState = true;
             }
         });
-        $('li').on('click', function () {
+        $('li').on('click', function() {
             $(this).siblings().removeClass('act')
             $(this).addClass('act')
         });
 
         for (let i = 1; i <= 3; i++) {
-            $(document.getElementById('file' + i)).change(function () {
+            $(document.getElementById('file' + i)).change(function() {
                 uploadBanner('file' + i, '#banner' + i)
             })
         }
         for (let i = 1; i <= 3; i++) {
-            $(document.getElementById('update' + i)).change(function () {
+            $(document.getElementById('update' + i)).change(function() {
                 updateBanner('update' + i, '#banner' + i)
             })
         }
