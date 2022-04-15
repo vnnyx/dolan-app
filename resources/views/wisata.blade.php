@@ -25,6 +25,7 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://kit.fontawesome.com/0ff6004706.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/helper.js') }}"></script>
 
 </head>
@@ -85,19 +86,15 @@
                     @endif
                     @if(sizeof($content) > 0)
                         <img class="image" src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
-                        <form action="/pengelola/wisata/{{ $content[0]->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
                             <div class="overlay">
                                 <label for="update1" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i
                                         class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                 </label>
                                 <input type="file" id-content="{{$content[0]->id}}" id="update1" name="banner-1"
                                        class="input-text" style="display: none ;">
-                                <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                        class="fa-solid fa-trash-can"></i></button>
+                                <a data-id="{{$content[0]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
+                                        class="fa-solid fa-trash-can"></i></a>
                             </div>
-                        </form>
                     @endif
                 </div>
                 <div class="drop-file" id="banner2">
@@ -108,19 +105,15 @@
                     @endif
                     @if(sizeof($content) > 1)
                         <img src="{{ $content[1]->content }}" style="height: 100%; width: 405.38px">
-                        <form action="/pengelola/wisata/{{ $content[1]->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
                             <div class="overlay">
                                 <label for="update2" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i
                                         class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                 </label>
                                 <input type="file" id-content="{{$content[1]->id}}" id="update2" name="banner-2"
                                        class="input-text" style="display: none ;">
-                                <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                        class="fa-solid fa-trash-can"></i></button>
+                                <a data-id="{{$content[1]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
+                                        class="fa-solid fa-trash-can"></i></a>
                             </div>
-                        </form>
                     @endif
                 </div>
                 <div class="drop-file" id="banner3">
@@ -131,19 +124,15 @@
                     @endif
                     @if(sizeof($content) > 2)
                         <img src="{{ $content[2]->content }}" style="height: 100%; width: 405.38px">
-                        <form action="/pengelola/wisata/{{ $content[2]->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
                             <div class="overlay">
                                 <label for="update3" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i
                                         class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                 </label>
                                 <input type="file" id-content="{{$content[2]->id}}" id="update3" name="banner-3"
                                        class="input-text" style="display: none ;">
-                                <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i
-                                        class="fa-solid fa-trash-can"></i></button>
+                                <a data-id="{{$content[2]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
+                                        class="fa-solid fa-trash-can"></i></a>
                             </div>
-                        </form>
                     @endif
                 </div>
             </div>
@@ -226,6 +215,24 @@
                 updateBanner('update' + i, '#banner' + i)
             })
         }
+
+        $('.delete').click(function () {
+            var id = $(this).attr('data-id');
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Anda tidak dapat mengembalikan file ini",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                cancelButtonText: 'Batalkan',
+                confirmButtonText: 'Ya, hapus',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "/pengelola/wisata/"+id
+                }
+            })
+        })
     });
 </script>
 </body>

@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Content;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-use RealRashid\SweetAlert;
 
 class AdminContentController extends Controller
 {
@@ -35,22 +33,31 @@ class AdminContentController extends Controller
     {
         if ($request->ajax()) {
             if($request->fileContent){
-                $content = $request->fileContent->storeOnCloudinaryAs('abp', $request->fileName);
-                $path = $content->getSecurePath();
-                Content::create([
-                    'username' => auth()->user()->username,
-                    'content' => $path,
-                ]);
+                if ($request->fileContent->extension() != 'jpg' && $request->fileContent->extension() != 'png' && $request->fileContent->extension() != 'jpeg') {
+                    alert()->error('Oops', 'Format file harus .png atau .jpg');
+                }else{
+                    $content = $request->fileContent->storeOnCloudinaryAs('abp', $request->fileName);
+                    $path = $content->getSecurePath();
+                    Content::create([
+                        'username' => auth()->user()->username,
+                        'content' => $path,
+                    ]);
+                    Alert::toast('Banner berhasil ditambahkan', 'success');
+                }
             } else {
-                $advertisement = $request->fileAds->storeOnCloudinaryAs('abp', $request->fileName);
-                $path = $advertisement->getSecurePath();
-                Content::create([
-                    'username' => auth()->user()->username,
-                    'content' => $path,
-                    'advertisement' => 1,
-                ]);
+                if ($request->fileAds->extension() != 'jpg' && $request->fileAds->extension() != 'png' && $request->fileAds->extension() != 'jpeg') {
+                    alert()->error('Oops', 'Format file harus .png atau .jpg');
+                }else{
+                    $advertisement = $request->fileAds->storeOnCloudinaryAs('abp', $request->fileName);
+                    $path = $advertisement->getSecurePath();
+                    Content::create([
+                        'username' => auth()->user()->username,
+                        'content' => $path,
+                        'advertisement' => 1,
+                    ]);
+                    Alert::toast('Banner berhasil ditambahkan', 'success');
+                }
             }
-            Alert::toast('Banner berhasil ditambah', 'success');
         }
     }
 
@@ -58,37 +65,39 @@ class AdminContentController extends Controller
     {
         if ($request->ajax()) {
             if ($request->updateContent) {
-                if ($request->fileContent->extension() != 'jpg' && $request->fileContent->extension() != 'png' && $request->fileContent->extension() != 'jpeg') {
-                    alert()->error('Oops', 'Format file harus .png atau .jpg');
-                }
-                $content = $request->updateContent->storeOnCloudinaryAs('abp', $request->fileName);
-                $path = $content->getSecurePath();
-                $data = Content::find($id);
-                if($data){
-                    $data->update([
-                        'username' => auth()->user()->username,
-                        'content' => $path,
-                    ]);
-                    Alert::toast('Banner berhasil diubah', 'success');
+                if ($request->updateContent->extension() != 'jpg' && $request->updateContent->extension() != 'png' && $request->updateContent->extension() != 'jpeg') {
+                    alert()->error('Oops...', 'Format file harus .png atau .jpg');
                 }else{
-                    Alert::toast('Banner gagal diubah', 'error');
+                    $content = $request->updateContent->storeOnCloudinaryAs('abp', $request->fileName);
+                    $path = $content->getSecurePath();
+                    $data = Content::find($id);
+                    if($data){
+                        $data->update([
+                            'username' => auth()->user()->username,
+                            'content' => $path,
+                        ]);
+                        Alert::toast('Banner berhasil diubah', 'success');
+                    }else{
+                        Alert::toast('Banner gagal diubah', 'error');
+                    }
                 }
             } else {
-                if ($request->fileAds->extension() != 'jpg' && $request->fileAds->extension() != 'png' && $request->fileAds->extension() != 'jpeg') {
-                    alert()->error('Oops', 'Format file harus .png atau .jpg');
-                }
-                $advertisement = $request->updateAds->storeOnCloudinaryAs('abp', $request->fileName);
-                $path = $advertisement->getSecurePath();
-                $data = Content::find($id);
-                if($data){
-                    $data->update([
-                        'username' => auth()->user()->username,
-                        'content' => $path,
-                        'advertisement' => 1,
-                    ]);
-                    Alert::toast('Banner berhasil diubah', 'success');
+                if ($request->updateAds->extension() != 'jpg' && $request->updateAds->extension() != 'png' && $request->updateAds->extension() != 'jpeg') {
+                    alert()->error('Oops...', 'Format file harus .png atau .jpg');
                 }else{
-                    Alert::toast('Banner gagal diubah', 'error');
+                    $advertisement = $request->updateAds->storeOnCloudinaryAs('abp', $request->fileName);
+                    $path = $advertisement->getSecurePath();
+                    $data = Content::find($id);
+                    if($data){
+                        $data->update([
+                            'username' => auth()->user()->username,
+                            'content' => $path,
+                            'advertisement' => 1,
+                        ]);
+                        Alert::toast('Banner berhasil diubah', 'success');
+                    }else{
+                        Alert::toast('Banner gagal diubah', 'error');
+                    }
                 }
             }
         }
@@ -102,7 +111,6 @@ class AdminContentController extends Controller
         }else{
             Alert::toast('Banner gagal dihapus', 'error');
         }
-
         return redirect("/admin/content");
     }
 }

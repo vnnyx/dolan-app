@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (functi
     Route::get('/content', [AdminContentController::class, 'createContent']);
     Route::post('/content', [AdminContentController::class, 'storeContent']);
     Route::post('/content/{id}', [AdminContentController::class, 'update']);
-    Route::delete('/content/{id}', [AdminContentController::class, 'delete']);
+    Route::get('/content/{id}', [AdminContentController::class, 'delete']);
 }));
 
 
@@ -54,7 +54,7 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::get('/wisata', [WisataController::class, 'index']);
     Route::post('/wisata', [WisataController::class, 'store']);
     Route::post('/wisata/{id}', [WisataController::class, 'update']);
-    Route::delete('/wisata/{id}', [WisataController::class, 'delete']);
+    Route::get('/wisata/{id}', [WisataController::class, 'delete']);
 }));
 
 

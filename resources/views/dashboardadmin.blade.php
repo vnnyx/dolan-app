@@ -60,18 +60,6 @@
     </nav>
     <!-- Page Content Holder -->
     <div id="content">
-        @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
-
-        @if (session('error'))
-        <div class="alert alert-error">
-            {{ session('error') }}
-        </div>
-        @endif
-
         <h1 class="judul">Dashboard Admin</h1>
         <div class="row">
             <div class="cont-l col-lg-6" id="left">
