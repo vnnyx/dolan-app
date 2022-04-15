@@ -82,7 +82,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <div class="overlay">
-                                    <label for="update1" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                    <label for="update1" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                     </label>
                                     <input type="file" id-content="{{$content[0]->id}}" id="update1" name="content-1" class="input-text" style="display: none ;">
                                     <button data-id="{{ $content[0]->id }}" type="submit" id="delete1" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
@@ -101,7 +101,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <div class="overlay">
-                                    <label for="update2" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                    <label for="update2" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                     </label>
                                     <input type="file" id="update2" id-content="{{$content[1]->id}}" name="content-2" class="input-text" style="display: none ;">
                                     <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
@@ -120,7 +120,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <div class="overlay">
-                                    <label for="update3" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                    <label for="update3" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                     </label>
                                     <input type="file" id="update3" id-content="{{$content[2]->id}}" name="content-3" class="input-text" style="display: none ;">
                                     <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
@@ -145,7 +145,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <div class="overlay">
-                                            <label for="update4" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                            <label for="update4" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                             </label>
                                             <input type="file" id="update4" id-content="{{$ads[0]->id}}" name="ads-1" class="input-text" style="display: none ;">
                                             <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
@@ -164,7 +164,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <div class="overlay">
-                                            <label for="update5" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                            <label for="update5" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                             </label>
                                             <input type="file" id="update5" id-content="{{$ads[1]->id}}" name="ads-2" class="input-text" style="display: none ;">
                                             <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
@@ -183,7 +183,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <div class="overlay">
-                                            <label for="update6" class="btn btn-edit text-white" style="margin-top: 25%;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                                            <label for="update6" class="btn btn-edit text-white" style="margin-top: 27%; margin-right:10px;"><i class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                             </label>
                                             <input type="file" id="update6" id-content="{{$ads[2]->id}}" name="ads-3" class="input-text" style="display: none ;">
                                             <button type="submit" class="btn btn-danger ms-2" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></button>
