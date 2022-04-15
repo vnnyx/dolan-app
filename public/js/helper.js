@@ -128,6 +128,9 @@ function uploadBanner(element, banner) {
         processData: false,
         success: function () {
             location.reload();
+        },
+        error: function (e) {
+            console.log(e)
         }
     });
     var reader = new FileReader();

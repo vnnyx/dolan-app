@@ -9,43 +9,45 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class WisataController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $content = Content::query()->where('username', '=', auth()->user()->username)->get();
         return view('wisata', compact('content'));
     }
 
-    public function store(Request $request){
-        if($request->ajax()){
-            $validator = Validator::make($request->all(), [
-                'fileContent'=>'max:512'
-            ]);
-            if ($validator->fails()) {
-                return back()->with('errors', $validator->messages()->all()[0])->withInput();
+    public function store(Request $request)
+    {
+        if ($request->ajax()) {
+            if ($request->fileContent->extension() != 'jpg' && $request->fileContent->extension() != 'png' && $request->fileContent->extension() != 'jpeg') {
+                alert()->error('Oops', 'Format file harus .png atau .jpg');
+            } else {
+                $result = $request->fileContent->storeOnCloudinaryAs('abp', $request->fileName);
+                Content::create([
+                    'username' => auth()->user()->username,
+                    'content' => $result->getSecurePath(),
+                ]);
+                toast('Banner berhasil ditambahkan', 'success');
             }
-            $result = $request->fileContent->storeOnCloudinaryAs('abp', $request->fileName);
-            Content::create([
-                'username'=>auth()->user()->username,
-                'content'=>$result->getSecurePath(),
-            ]);
         }
-        toast('Banner berhasil ditambah ','success');
     }
 
-    public function update(Request $request, $id){
-        if($request->ajax()){
+    public function update(Request $request, $id)
+    {
+        if ($request->ajax()) {
             $result = $request->updateContent->storeOnCloudinaryAs('abp', $request->fileName);
             $path = $result->getSecurePath();
             $data = Content::find($id);
             $data->update([
-                'username'=>auth()->user()->username,
-                'content'=> $path
+                'username' => auth()->user()->username,
+                'content' => $path
             ]);
         }
 
         Alert::toast('Banner berhasil diupdate', 'success');
     }
 
-    public function delete(Request $request, $id){
+    public function delete(Request $request, $id)
+    {
         Content::destroy($id);
         Alert::toast('Banner berhasil dihapus', 'success');
         return redirect('/pengelola/wisata');

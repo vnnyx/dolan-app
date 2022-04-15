@@ -58,6 +58,9 @@ class AdminContentController extends Controller
     {
         if ($request->ajax()) {
             if ($request->updateContent) {
+                if ($request->fileContent->extension() != 'jpg' && $request->fileContent->extension() != 'png' && $request->fileContent->extension() != 'jpeg') {
+                    alert()->error('Oops', 'Format file harus .png atau .jpg');
+                }
                 $content = $request->updateContent->storeOnCloudinaryAs('abp', $request->fileName);
                 $path = $content->getSecurePath();
                 $data = Content::find($id);
@@ -71,6 +74,9 @@ class AdminContentController extends Controller
                     Alert::toast('Banner gagal diubah', 'error');
                 }
             } else {
+                if ($request->fileAds->extension() != 'jpg' && $request->fileAds->extension() != 'png' && $request->fileAds->extension() != 'jpeg') {
+                    alert()->error('Oops', 'Format file harus .png atau .jpg');
+                }
                 $advertisement = $request->updateAds->storeOnCloudinaryAs('abp', $request->fileName);
                 $path = $advertisement->getSecurePath();
                 $data = Content::find($id);
