@@ -6,7 +6,6 @@ use App\Models\Note;
 use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminDashboardController extends Controller
@@ -24,7 +23,6 @@ class AdminDashboardController extends Controller
         $note = Note::orderBy('id', 'DESC')->get();
         $countSubmission = Submission::whereStatus(0)->count();
         $submissions = Submission::selectRaw('id,name,location,DATE(created_at) as created_at')->whereStatus(0)->orderBy('created_at', 'DESC')->get()->groupBy('created_at');
-        // return  $submissions[0];
         return view('dashboardadmin', compact('note', 'count', 'submissions', 'countSubmission'));
     }
 

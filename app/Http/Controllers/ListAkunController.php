@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ListAkunController extends Controller
@@ -16,14 +14,14 @@ class ListAkunController extends Controller
         $datas = User::query()->where('role', '!=', 'admin');
 
         if (!is_null($request->term)) {
-            $datas->orWhere("username", "LIKE", "%{$request->term}%");
-            $totalData->orWhere("username", "LIKE", "%{$request->term}%");
+            $datas->Where("username", "LIKE", "%{$request->term}%");
+            $totalData->Where("username", "LIKE", "%{$request->term}%");
         }
         if (!is_null($request->role) && $request->role != "semua") {
-            $datas->orWhere("role", "=", "$request->role");
-            $totalData->orWhere("role", "=", "$request->role");
+            $datas->Where("role", "=", "$request->role");
+            $totalData->Where("role", "=", "$request->role");
         }
-        session(['roleOption' => '$request->role']);
+        session(['roleOption' => $request->role]);
 
         $datas = $datas->get();
         $totalData = $totalData->count();
@@ -44,9 +42,7 @@ class ListAkunController extends Controller
             Alert::toast('Akun gagal diblokir', 'error');
         }
 
-        return redirect("/admin/akun");
-
-//        return $data;
+        return redirect()->back();
     }
 
     public function unblokir($id)
@@ -62,6 +58,6 @@ class ListAkunController extends Controller
             Alert::toast('Akun gagal dibuka blokir', 'error');
         }
 
-        return redirect("/admin/akun");
+        return redirect()->back();
     }
 }

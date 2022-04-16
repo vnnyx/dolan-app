@@ -25,10 +25,12 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
+    <title>Dolan App</title>
 </head>
 
 <body>
 <!-- Sidebar Holder -->
+@include('sweetalert::alert')
 <div class="container-fluid">
     <div class="row">
         <div class="col-3" id="nav">
@@ -82,13 +84,19 @@
                 <form action="/admin/akun" method="get">
                     <div class="col">
                         <h5 class="ml-3 font-weight-bold">Menampilkan Daftar Akun</h5>
-                        <select name="role" id="kategori" class="ml-3">
-                            <option {{old('role',Session::get('roleOption'))=="semua" ? 'selected' :''}}
-                                    value="semua">Semua</option>
-                            <option {{old('role',Session::get('roleOption'))=="owner" ? 'selected' :''}}
-                                    value="owner">Pemilik Wisata</option>
-                            <option {{old('role',Session::get('roleOption'))=="user" ? 'selected' :''}}
-                                    value="user">Pengunjung</option>
+                        <select name="role" id="kategori" class="ml-3" onchange="this.form.submit()">
+                            <option
+                                {{session()->get('roleOption') == 'semua' ? 'selected="selected"' : ''}} value="semua">
+                                Semua
+                            </option>
+                            <option
+                                {{session()->get('roleOption') == 'owner' ? 'selected="selected"' : ''}} value="owner">
+                                Pemilik Wisata
+                            </option>
+                            <option
+                                {{session()->get('roleOption') == 'user' ? 'selected="selected"' : ''}} value="user">
+                                Pengunjung
+                            </option>
                         </select>
                         <h1 class="count">({{$totalData}})</h1>
                     </div>
@@ -96,7 +104,7 @@
                         <div class="box">
                             <div class="container-1">
                                 <span class="icon"><i class='bx bx-search'></i></span>
-                                <input type="search" id="search" name="term" placeholder="Search..." />
+                                <input type="search" id="search" name="term" placeholder="Search..."/>
                             </div>
                         </div>
                     </div>
@@ -108,9 +116,11 @@
                     <div class="col-md-12">
                         <h4 class="account">{{$data->username}}</h4>
                         @if($data->is_blocked)
-                            <a data-id="{{$data->id}}" style="color: white" class="btn btn-success blokir unblock"><i class="bx">Buka Blokir</i></a>
+                            <a data-id="{{$data->id}}" style="color: white" class="btn btn-success blokir unblock"><i
+                                    class="bx">Buka Blokir</i></a>
                         @else
-                            <a data-id="{{$data->id}}" style="color: white" class="btn btn-danger blokir"><i class="bx bx-block"> Blokir</i></a>
+                            <a data-id="{{$data->id}}" style="color: white" class="btn btn-danger blokir"><i
+                                    class="bx bx-block"> Blokir</i></a>
                         @endif
                         <hr>
                     </div>
@@ -129,11 +139,10 @@
 
 <script type="text/javascript">
     let navbarState = true;
-    $(document).ready(function() {
-        $('#sidebarCollapse').on('click', function() {
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
             $(this).toggleClass('active');
-
             if (navbarState) {
                 $('#nav').removeClass('col-md-3').addClass('col-md-2')
                 navbarState = false;
@@ -141,15 +150,12 @@
                 $('#nav').removeClass('col-md-2').addClass('col-md-3')
                 navbarState = true;
             }
-
         });
-
-        $('li').on('click', function() {
+        $('li').on('click', function () {
             $(this).siblings().removeClass('act')
             $(this).addClass('act')
         });
-
-        $('.blokir').click(function() {
+        $('.blokir').click(function () {
             var id = $(this).attr('data-id');
             Swal.fire({
                 title: 'Apakah anda yakin?',
@@ -166,8 +172,7 @@
                 }
             })
         })
-
-        $('.unblock').click(function() {
+        $('.unblock').click(function () {
             var id = $(this).attr('data-id');
             Swal.fire({
                 title: 'Apakah anda yakin?',
@@ -184,7 +189,6 @@
                 }
             })
         })
-
     });
 </script>
 </body>
