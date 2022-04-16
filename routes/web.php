@@ -44,6 +44,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (functi
     Route::post('/content', [AdminContentController::class, 'storeContent']);
     Route::post('/content/{id}', [AdminContentController::class, 'update']);
     Route::get('/content/{id}', [AdminContentController::class, 'delete']);
+    Route::get('/akun/block/{id}', [ListAkunController::class, 'blokir']);
+    Route::get('/akun/unblock/{id}', [ListAkunController::class, 'unblokir']);
     Route::get('/logout', [LogoutController::class, 'logout']);
 }));
 

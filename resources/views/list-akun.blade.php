@@ -22,6 +22,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -106,10 +107,11 @@
                 <div class=" row list mt-5">
                     <div class="col-md-12">
                         <h4 class="account">{{$data->username}}</h4>
-                        <button type="button" class="btn chat mr-3" id="pesan-{{$data->id}}"><i class="bx bx-chat"></i>
-                            Kirim Pesan</button>
-                        <button type="button" class="btn btn-danger blokir" id="blokir-{{$data->id}}"><i
-                                class="bx bx-block"> Blokir</i></button>
+                        @if($data->is_blocked)
+                            <a data-id="{{$data->id}}" style="color: white" class="btn btn-success blokir unblock"><i class="bx">Buka Blokir</i></a>
+                        @else
+                            <a data-id="{{$data->id}}" style="color: white" class="btn btn-danger blokir"><i class="bx bx-block"> Blokir</i></a>
+                        @endif
                         <hr>
                     </div>
                 </div>
@@ -141,10 +143,47 @@
             }
 
         });
+
         $('li').on('click', function() {
             $(this).siblings().removeClass('act')
             $(this).addClass('act')
         });
+
+        $('.blokir').click(function() {
+            var id = $(this).attr('data-id');
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Anda dapat membukanya nanti",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                cancelButtonText: 'Batalkan',
+                confirmButtonText: 'Ya, blokir'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "/admin/akun/block/" + id
+                }
+            })
+        })
+
+        $('.unblock').click(function() {
+            var id = $(this).attr('data-id');
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Anda dapat memblokir lagi nanti",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                cancelButtonText: 'Batalkan',
+                confirmButtonText: 'Ya, buka blokir'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "/admin/akun/unblock/" + id
+                }
+            })
+        })
 
     });
 </script>
