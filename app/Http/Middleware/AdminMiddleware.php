@@ -20,7 +20,8 @@ class AdminMiddleware
         if (auth()->user()->role == 'admin') {
             return $next($request);
         } else {
-            return redirect('/login');
+            alert()->warning('Akun Tidak Sah','Anda tidak memiliki akses')->autoClose(0);
+            return redirect()->back();
         }
     }
 }

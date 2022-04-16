@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf_token" content="{{csrf_token()}}">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Dolan - Wisata</title>
+    <link rel="icon" href="{{ url('image/favicon.ico') }}">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -49,19 +50,19 @@
                     <li>
                         <div class="hov">
                             <i class='bx bxs-dashboard'></i>
-                            <a href="#">Dashboard</a>
+                            <a href="{{ url('/pengelola/dashboard') }}">Dashboard</a>
                         </div>
                     </li>
-                    <li>
+                    <li class="act">
                         <div class="hov">
-                            <i class='bx bxs-user-account'></i>
-                            <a href="#">Akun</a>
+                            <i class='bx bx-book-content'></i>
+                            <a href="{{ url('/pengelola/wisata') }}">Konten</a>
                         </div>
                     </li>
                     <li>
                         <div class="hov">
                             <i class='bx bx-cart'></i>
-                            <a href="#">Transaksi</a>
+                            <a href="{{ url('/pengelola/transaction') }}">Transaksi</a>
                         </div>
                     </li>
                     <br><br><br><br><br><br><br><br><br><br>
@@ -80,80 +81,89 @@
             <hr class="ml-4">
             <div class="wrapper mb-5">
                 <div class="drop-file" id="banner1">
-                    @if(sizeof($content) < 1) <span class="btn-file">Browse File</span>
-                    <span class="name-file">or drag and drop files(png)</span>
-                    <input type="file" id="file1" class="input-text" name="banner-1" multiple>
+                    @if(sizeof($content) < 1)
+                        <span class="btn-file">Browse File</span>
+                        <span class="name-file">or drag and drop files(png)</span>
+                        <input type="file" id="file1" class="input-text" name="banner-1" multiple>
                     @endif
                     @if(sizeof($content) > 0)
                         <img class="image" src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
-                            <div class="overlay">
-                                <label for="update1" class="btn btn-edit text-white"
-                                       style="margin-top: 27%; margin-right:10px;"><i
-                                        class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
-                                </label>
-                                <input type="file" id-content="{{$content[0]->id}}" id="update1" name="banner-1"
-                                       class="input-text" style="display: none ;">
-                                <a data-id="{{$content[0]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
-                                        class="fa-solid fa-trash-can"></i></a>
-                            </div>
+                        <div class="overlay">
+                            <label for="update1" class="btn btn-edit text-white"
+                                   style="margin-top: 27%; margin-right:10px;"><i
+                                    class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                            </label>
+                            <input type="file" id-content="{{$content[0]->id}}" id="update1" name="banner-1"
+                                   class="input-text" style="display: none ;">
+                            <a data-id="{{$content[0]->id}}" class="btn btn-danger ms-2 delete"
+                               style="margin-top: 25%; color: white"><i
+                                    class="fa-solid fa-trash-can"></i></a>
+                        </div>
                     @endif
                 </div>
                 <div class="drop-file" id="banner2">
-                    @if(sizeof($content) < 2) <span class="btn-file">Browse File</span>
-                    <span class="name-file">or drag and drop files(png)</span>
-                    <input type="file" id="file2" class="input-text" name="banner-2" multiple>
+                    @if(sizeof($content) < 2)
+                        <span class="btn-file">Browse File</span>
+                        <span class="name-file">or drag and drop files(png)</span>
+                        <input type="file" id="file2" class="input-text" name="banner-2" multiple>
                     @endif
                     @if(sizeof($content) > 1)
                         <img src="{{ $content[1]->content }}" style="height: 100%; width: 405.38px">
-                            <div class="overlay">
-                                <label for="update2" class="btn btn-edit text-white"
-                                       style="margin-top: 27%; margin-right:10px;"><i
-                                        class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
-                                </label>
-                                <input type="file" id-content="{{$content[1]->id}}" id="update2" name="banner-2"
-                                       class="input-text" style="display: none ;">
-                                <a data-id="{{$content[1]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
-                                        class="fa-solid fa-trash-can"></i></a>
-                            </div>
+                        <div class="overlay">
+                            <label for="update2" class="btn btn-edit text-white"
+                                   style="margin-top: 27%; margin-right:10px;"><i
+                                    class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                            </label>
+                            <input type="file" id-content="{{$content[1]->id}}" id="update2" name="banner-2"
+                                   class="input-text" style="display: none ;">
+                            <a data-id="{{$content[1]->id}}" class="btn btn-danger ms-2 delete"
+                               style="margin-top: 25%; color: white"><i
+                                    class="fa-solid fa-trash-can"></i></a>
+                        </div>
                     @endif
                 </div>
                 <div class="drop-file" id="banner3">
-                    @if(sizeof($content) < 3) <span class="btn-file">Browse File</span>
-                    <span class="name-file">or drag and drop files(png)</span>
-                    <input type="file" id="file3" class="input-text" name="banner-3" multiple>
+                    @if(sizeof($content) < 3)
+                        <span class="btn-file">Browse File</span>
+                        <span class="name-file">or drag and drop files(png)</span>
+                        <input type="file" id="file3" class="input-text" name="banner-3" multiple>
                     @endif
                     @if(sizeof($content) > 2)
                         <img src="{{ $content[2]->content }}" style="height: 100%; width: 405.38px">
-                            <div class="overlay">
-                                <label for="update3" class="btn btn-edit text-white"
-                                       style="margin-top: 27%; margin-right:10px;"><i
-                                        class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
-                                </label>
-                                <input type="file" id-content="{{$content[2]->id}}" id="update3" name="banner-3"
-                                       class="input-text" style="display: none ;">
-                                <a data-id="{{$content[2]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
-                                        class="fa-solid fa-trash-can"></i></a>
-                            </div>
+                        <div class="overlay">
+                            <label for="update3" class="btn btn-edit text-white"
+                                   style="margin-top: 27%; margin-right:10px;"><i
+                                    class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
+                            </label>
+                            <input type="file" id-content="{{$content[2]->id}}" id="update3" name="banner-3"
+                                   class="input-text" style="display: none ;">
+                            <a data-id="{{$content[2]->id}}" class="btn btn-danger ms-2 delete"
+                               style="margin-top: 25%; color: white"><i
+                                    class="fa-solid fa-trash-can"></i></a>
+                        </div>
                     @endif
                 </div>
             </div>
-            <div class="row mb-5">
-                <div class="col-md-12">
-                    <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Deskripsi Wisata</h4>
-                    <hr class="ml-4">
-                    <textarea class="area ml-3" name="deskripsi" id="" cols="130" rows="10"
-                              placeholder="Tulis deskripsi dari wisata Anda dengan detail disini ..."></textarea>
+            <form action="/pengelola/data-wisata" method="post">
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Deskripsi Wisata</h4>
+                        <hr class="ml-4">
+                        <textarea data-datas="{{ $wisata[0]->deskripsi }}" class="area ml-3" name="deskripsi"
+                                  id="deskripsi" cols="130" rows="10"
+                                  placeholder="Tulis deskripsi dari wisata Anda dengan detail disini ...">{{ $wisata[0]->deskripsi }}</textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-md-12">
-                    <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Set Harga dan Stok Tiket</h4>
-                    <hr class="ml-4">
-                    <form action="put">
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <h4 class="sub-jdl mt-3 ml-4 font-weight-bold">Set Harga dan Stok Tiket</h4>
+                        <hr class="ml-4">
                         <div class="row mb-3 ml-3">
                             <label for="kode" class="col-sm-2 col-form-label">Harga Tiket Wisata</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="harga-tiket"
+                                <input data-type="Harga Tiket" data-datas="{{ $wisata[0]->harga_tiket }}"
+                                       value="{{ $wisata[0]->harga_tiket }}"
+                                       type="text" class="form-control" name="harga_tiket" id="harga-tiket"
                                        placeholder="Masukkan harga tiket disini..">
                                 <img class="tiket" src="{{ asset('image/Vector.png') }}" alt="">
                             </div>
@@ -162,21 +172,22 @@
                         <div class="row mb-3 ml-3">
                             <label for="nama" class="col-sm-2 col-form-label">Stok Tiket Wisata</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="stok-tiket"
+                                <input data-type="Stok Tiket" data-datas="{{ $wisata[0]->stock_tiket }}"
+                                       value="{{ $wisata[0]->stock_tiket }}"
+                                       type="text" class="form-control" name="stock_tiket" id="stok-tiket"
                                        placeholder="Masukkan stok tiket disini..">
                                 <img class="tiket" src="{{ asset('image/Vector2.png') }}" alt="">
                             </div>
                             <span class="keterangan">Tiket</span>
                         </div>
-                        <button type="submit" class="btn text-white"
-                                style="margin-left:220px;background-color:#C17700;"><i class='bx bx-pencil'></i>
-                            Ubah
-                            Konten</button>
-                        <button type="submit" class="btn btn-success" style="margin-left:20px;"><i
-                                class='bx bx-check-circle'></i> Simpan Perubahan</button>
-                    </form>
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" disabled id="save" class="btn btn-success" style="margin-left:20px;"><i
+                                class='bx bx-check-circle'></i> Simpan Perubahan
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -192,9 +203,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         let navbarState = true;
-        $('#sidebarCollapse').on('click', function() {
+        $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
             $(this).toggleClass('active');
             if (navbarState) {
@@ -207,18 +218,18 @@
                 navbarState = true;
             }
         });
-        $('li').on('click', function() {
+        $('li').on('click', function () {
             $(this).siblings().removeClass('act')
             $(this).addClass('act')
         });
 
         for (let i = 1; i <= 3; i++) {
-            $(document.getElementById('file' + i)).change(function() {
+            $(document.getElementById('file' + i)).change(function () {
                 uploadBanner('file' + i, '#banner' + i)
             })
         }
         for (let i = 1; i <= 3; i++) {
-            $(document.getElementById('update' + i)).change(function() {
+            $(document.getElementById('update' + i)).change(function () {
                 updateBanner('update' + i, '#banner' + i)
             })
         }
@@ -236,9 +247,55 @@
                 confirmButtonText: 'Ya, hapus',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location = "/pengelola/wisata/"+id
+                    window.location = "/pengelola/wisata/" + id
                 }
             })
+        })
+
+        $('#save').click(function () {
+            if (isNaN($('#harga-tiket').val()) || isNaN($('#stok-tiket').val())) {
+                $('#save').attr('type', 'button')
+                alertValidation('warning', 'Oops...', 'Format harus angka')
+            } else if ($('#harga-tiket').val() === "" && $('#stok-tiket').val() !== "") {
+                $('#save').attr('type', 'button')
+                alertValidation('warning', 'Oops...', 'Harga tiket tidak boleh kosong')
+            } else if ($('#stok-tiket').val() === "" && $('#harga-tiket').val() !== "") {
+                $('#save').attr('type', 'button')
+                alertValidation('warning', 'Oops...', 'Stok tiket tidak boleh kosong')
+            } else if ($('#deskripsi').val() === "" && $('#harga-tiket').val() !== "" && $('#stok-tiket').val() !== "") {
+                $('#save').attr('type', 'button')
+                alertValidation('warning', 'Oops...', 'Deskripsi tidak boleh kosong')
+            }else{
+                $('#save').attr('type', 'button')
+                alertValidation('warning', 'Oops...', 'Data tidak boleh kosong')
+            }
+        })
+
+        $(document).keyup(function () {
+            $('#save').attr('type', 'submit')
+            const deskripsi = $('#deskripsi').attr('data-datas');
+            const stok_tiket = $('#stok-tiket').attr('data-datas');
+            const harga_tiket = $('#harga-tiket').attr('data-datas');
+            if (deskripsi !== $('#deskripsi').val() || stok_tiket !== $('#stok-tiket').val() || harga_tiket !== $('#harga-tiket').val()) {
+                $(':input[type="submit"]').prop('disabled', false)
+                if (isNaN($('#harga-tiket').val()) && isNaN($('#stok-tiket').val())) {
+                    $('#stok-tiket').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
+                    $('#harga-tiket').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
+                } else if (isNaN($('#harga-tiket').val()) && !isNaN($('#stok-tiket').val())) {
+                    $('#harga-tiket').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
+                    $('#stok-tiket').css('box-shadow', '')
+                } else if (!isNaN($('#harga-tiket').val()) && isNaN($('#stok-tiket').val())) {
+                    $('#stok-tiket').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
+                    $('#harga-tiket').css('box-shadow', '')
+                } else {
+                    $('#harga-tiket').css('box-shadow', '')
+                    $('#stok-tiket').css('box-shadow', '')
+                }
+            } else {
+                $('#harga-tiket').css('box-shadow', '')
+                $('#stok-tiket').css('box-shadow', '')
+                $('#save').attr('disabled', 'true')
+            }
         })
     });
 </script>

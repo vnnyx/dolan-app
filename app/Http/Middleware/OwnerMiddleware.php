@@ -19,7 +19,8 @@ class OwnerMiddleware
         if (auth()->user()->role == 'owner') {
             return $next($request);
         } else {
-            return redirect('/login');
+            alert()->warning('Akun Tidak Sah','Anda tidak memiliki akses')->autoClose(0);
+            return redirect()->back();
         }
     }
 }

@@ -26,20 +26,17 @@ class TransactionOwnerController extends Controller
     public function update(Request $request, $id)
     {
         $transaction = Transaction::find($id);
-        switch ($request->input('action')) {
-            case 'tolak':
-                $transaction->update([
-                    'success' => 2
-                ]);
-                return redirect('/pengelola/transaction');
-            case 'acc':
-                $transaction->update([
-                    'success' => 1
-                ]);
-                return redirect('/pengelola/transaction');
-            default:
-                return 0;
+        if ($request->input('action') == 'acc') {
+            $transaction->update([
+                'status' => 1
+            ]);
+            toast('Transaksi berhasil diterima', 'success');
+        } else {
+            $transaction->update([
+                'status' => 2
+            ]);
+            toast('Transaksi berhasil ditolak', 'success');
         }
-
+        return redirect('/pengelola/transaction');
     }
 }

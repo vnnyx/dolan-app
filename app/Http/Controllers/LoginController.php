@@ -32,7 +32,7 @@ class LoginController extends Controller
             }
         }
 
-        Alert::error('Login Failed', 'Silakan persiksa kembali email dan password anda');
+        Alert::error('Login Failed', 'Silakan persiksa kembali email dan password anda')->autoClose(0);
 
         return redirect()->back();
     }

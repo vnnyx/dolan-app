@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Dolan - Dashboard</title>
+    <link rel="icon" href="{{ url('image/favicon.ico') }}">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -43,19 +44,19 @@
                     <li class="act">
                         <div class="hov">
                             <i class='bx bxs-dashboard'></i>
-                            <a href="#">Dashboard</a>
+                            <a href="{{ url('/pengelola/dashboard') }}">Dashboard</a>
                         </div>
                     </li>
                     <li>
                         <div class="hov">
                             <i class='bx bx-book-content'></i>
-                            <a href="#">Konten</a>
+                            <a href="{{ url('/pengelola/wisata') }}">Konten</a>
                         </div>
                     </li>
                     <li>
                         <div class="hov">
                             <i class='bx bx-cart'></i>
-                            <a href="#">Transaksi</a>
+                            <a href="{{ url('/pengelola/transaction') }}">Transaksi</a>
                         </div>
                     </li>
                     <br><br><br><br><br><br><br><br><br><br>

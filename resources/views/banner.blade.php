@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Dolan - Konten</title>
+    <link rel="icon" href="{{ url('image/favicon.ico') }}">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -98,7 +99,7 @@
                             </label>
                             <input type="file" id-content="{{$content[0]->id}}" id="update1" name="content-1"
                                    class="input-text" style="display: none ;">
-                            <a data-id="{{ $content[0]->id }}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i class="fa-solid fa-trash-can"></i></a>
+                            <a data-id="{{ $content[0]->id }}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                     @endif
                 </div>
@@ -116,7 +117,7 @@
                                 </label>
                                 <input type="file" id="update2" id-content="{{$content[1]->id}}" name="content-2"
                                        class="input-text" style="display: none ;">
-                                <a data-id="{{ $content[1]->id }}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
+                                <a data-id="{{ $content[1]->id }}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i
                                         class="fa-solid fa-trash-can"></i></a>
                             </div>
                     @endif
@@ -135,7 +136,7 @@
                                 </label>
                                 <input type="file" id="update3" id-content="{{$content[2]->id}}" name="content-3"
                                        class="input-text" style="display: none ;">
-                                <a class="btn btn-danger ms-2 delete" style="margin-top: 25%;" data-id="{{ $content[2]->id }}"><i
+                                <a class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white" data-id="{{ $content[2]->id }}"><i
                                         class="fa-solid fa-trash-can"></i></a>
                             </div>
                     @endif
@@ -160,7 +161,7 @@
                                         </label>
                                         <input type="file" id="update4" id-content="{{$ads[0]->id}}" name="ads-1"
                                                class="input-text" style="display: none ;">
-                                        <a data-id="{{$ads[0]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
+                                        <a data-id="{{$ads[0]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i
                                                 class="fa-solid fa-trash-can"></i></a>
                                     </div>
                             @endif
@@ -179,7 +180,7 @@
                                         </label>
                                         <input type="file" id="update5" id-content="{{$ads[1]->id}}" name="ads-2"
                                                class="input-text" style="display: none ;">
-                                        <a data-id="{{$ads[1]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
+                                        <a data-id="{{$ads[1]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i
                                                 class="fa-solid fa-trash-can"></i></a>
                                     </div>
                             @endif
@@ -198,7 +199,7 @@
                                         </label>
                                         <input type="file" id="update6" id-content="{{$ads[2]->id}}" name="ads-3"
                                                class="input-text" style="display: none ;">
-                                        <a data-id="{{$ads[2]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%;"><i
+                                        <a data-id="{{$ads[2]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i
                                                 class="fa-solid fa-trash-can"></i></a>
                                     </div>
                             @endif

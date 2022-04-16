@@ -19,7 +19,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/register.css') }}">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{'js/script.js'}}" defer></script>
-    <title>RPL PROJECT</title>
+    <title>Dolan - Register</title>
+    <link rel="icon" href="{{ url('image/favicon.ico') }}">
 </head>
 
 <body>

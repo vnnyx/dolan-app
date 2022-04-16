@@ -8,11 +8,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminContentController extends Controller
 {
-    public function register()
-    {
-        return view('daftar');
-    }
-
     public function createContent()
     {
         $content = Content::query()

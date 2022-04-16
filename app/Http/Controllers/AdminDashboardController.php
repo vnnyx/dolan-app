@@ -74,9 +74,6 @@ class AdminDashboardController extends Controller
                     return redirect()->back();
                 }
             case 'delete':
-                Note::destroy($id);
-                Alert::toast('Catatan berhasil dihapus', 'success');
-                return redirect('/admin/dashboard');
             default:
                 Note::destroy($id);
                 Alert::toast('Catatan berhasil dihapus', 'success');

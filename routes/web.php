@@ -28,7 +28,7 @@ use App\Http\Controllers\AdminContentController;
 //   return view('register');
 //});
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisController::class, 'index']);
 Route::post('/register', [RegisController::class, 'store']);
@@ -57,6 +57,7 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::post('/wisata', [WisataController::class, 'store']);
     Route::post('/wisata/{id}', [WisataController::class, 'update']);
     Route::get('/wisata/{id}', [WisataController::class, 'delete']);
+    Route::put('/data-wisata', [WisataController::class, 'updateData']);
     Route::get('/logout', [LogoutController::class, 'logout']);
 }));
 

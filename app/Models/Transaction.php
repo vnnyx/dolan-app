@@ -12,6 +12,6 @@ class Transaction extends Model
         'username',
         'nama_wisata',
         'total_ticket',
-        'success',
+        'status',
     ];
 }

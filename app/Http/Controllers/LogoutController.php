@@ -14,6 +14,6 @@ class LogoutController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/login')->withToastSuccess('Anda berhasil logout');
     }
 }

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Dolan</title>
+    <title>Dolan - Dashboard</title>
+    <link rel="icon" href="{{ url('image/favicon.ico') }}">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -195,7 +196,7 @@
             event.preventDefault();
             new Swal({
                 title: 'Apakah anda yakin?',
-                text: "Anda tidak dapat mengembalikan file ini",
+                text: "Anda tidak dapat mengembalikan aksi ini",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
@@ -208,6 +209,7 @@
                 }
             })
         });
+    });
 </script>
 </body>
 

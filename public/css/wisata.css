@@ -236,3 +236,11 @@ a:focus {
 .btn-edit:hover {
     background-color: #C17700;
 }
+
+/*.form-control:focus {*/
+/*    color: #495057;*/
+/*    background-color: #fff;*/
+/*    border-color: red;*/
+/*    outline: 0;*/
+/*    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);*/
+/*}*/

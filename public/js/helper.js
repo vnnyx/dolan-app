@@ -175,4 +175,12 @@ function updateBanner(element, banner) {
     reader.readAsDataURL(document.getElementById(element).files[0]);
 }
 
+function alertValidation(type, title, message) {
+    Swal.fire({
+        icon: type,
+        title: title,
+        text: message,
+    })
+}
+
 
