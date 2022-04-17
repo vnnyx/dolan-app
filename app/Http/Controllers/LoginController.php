@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Symfony\Component\Console\Input\Input;
 
 class LoginController extends Controller
 {
@@ -17,7 +18,7 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'email' => ['required'],
-            'password' => ['required'],
+            'password' => ['required', 'min:8'],
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -32,6 +33,6 @@ class LoginController extends Controller
 
         Alert::error('Login Failed', 'Silakan persiksa kembali email dan password anda')->autoClose(0);
 
-        return redirect()->back();
+        return redirect()->back()->withInput();
     }
 }
