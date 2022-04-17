@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" name="password-confirm" id="password-confirm"
+                    <input type="password" name="password_confirmation" id="password-confirm"
                            placeholder="Konfirmasi Password"
                            autocomplete='off'>
                     <span class="eye" onclick="hide()">

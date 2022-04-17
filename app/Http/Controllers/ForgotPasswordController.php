@@ -55,8 +55,8 @@ class ForgotPasswordController extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:users,email',
-            'password' => 'required',
-            'password-confirm' => 'required'
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required'
         ]);
         $check_token = DB::table('password_resets')
             ->where('email', '=', $request->email)
