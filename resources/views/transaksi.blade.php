@@ -112,7 +112,7 @@
                                 @if($data->status == 1)
                                     <img class="status" src="{{ asset('image/centang.png') }}" alt="">
                                 @endif
-                                @if($data->status == 0)
+                                @if($data->status == 0 || $data->status == 2)
                                     <img class="status" src="{{ asset('image/silang.png') }}" alt="">
                                 @endif
                                 <h1 class="wisata ml-5">Tiket Wisata <span>{{ $data->nama_wisata }}</span></h1>

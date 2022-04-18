@@ -4,26 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use App\Models\Submission;
+use App\Models\Wisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminDashboardController extends Controller
 {
-
-
-    //    public function __construct()
-    //    {
-    //        $this->middleware('auth');
-    //    }
-
     public function index()
     {
         $count = DB::table('notes')->count();
         $note = Note::orderBy('id', 'DESC')->get();
-        $countSubmission = Submission::whereStatus(0)->count();
-        $submissions = Submission::selectRaw('id,name,location,DATE(created_at) as created_at')->whereStatus(0)->orderBy('created_at', 'DESC')->get()->groupBy('created_at');
-        return view('dashboardadmin', compact('note', 'count', 'submissions', 'countSubmission'));
+//        $countSubmission = Submission::whereStatus(0)->count();
+//        $submissions = Submission::selectRaw('id,name,location,DATE(created_at) as created_at')->whereStatus(0)->orderBy('created_at', 'DESC')->get()->groupBy('created_at');
+//        return view('dashboardadmin', compact('note', 'count', 'submissions', 'countSubmission'));
+        $countWisata = Wisata::all()->count();
+        $detailWisata = Wisata::selectRaw('id, username, nama_wisata, credential, DATE(created_at) as created_at')->orderBy('created_at', 'DESC')->get()->groupBy('created_at');
+//        return $detailWisata;
+        return view('dashboardadmin', compact('note', 'count', 'detailWisata', 'countWisata'));
     }
 
     public function store(Request $request)
