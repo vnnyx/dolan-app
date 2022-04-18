@@ -151,7 +151,7 @@
     }
 
     function hide() {
-        var a = document.getElementById("password-cnfrm")
+        var a = document.getElementById("password-confirm")
         var b = document.getElementById("hide3")
         var c = document.getElementById("hide4")
         if (a.type == "password") {
