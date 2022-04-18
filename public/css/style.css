@@ -198,7 +198,7 @@ a, a:hover, a:focus {
 #content .cont-l .row{
     width: 95%;
 }
-#content .cont-l .btn
+#content .cont-l .btn-detail
 {
     position: absolute;
     top: 35%;
@@ -317,4 +317,22 @@ a, a:hover, a:focus {
 .variasi{
     position: absolute;
     right: 0;
+}
+
+.wrap{
+    height: 400px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+}
+.wrap::-webkit-scrollbar {
+    display: none;
+}
+.wrap img{
+    width: 450px;
+    object-fit: cover;
+}
+
+.btn-detail{
+    left: 0;
 }

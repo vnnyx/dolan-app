@@ -96,7 +96,7 @@
                                 Tiket</span>
                             <div class="pipe2"></div>
                             <i class='bx bx-file' data-toggle="modal" data-target="#modal-bukti{{ $data->id }}" > </i>
-                            <span style="position: absolute; right: 225px; top: 10px; cursor:pointer" data-toggle="modal" data-target="#modal-bukti{{ $data->id }}" > Lihat Transaksi </span>
+                            <span style="position: absolute; right: 225px; top: 10px; cursor:pointer" data-toggle="modal" data-target="#modal-bukti{{ $data->id }}"> Lihat Transaksi </span>
                             <form action="/pengelola/transaction/{{ $data->id }}" method="post">
                                 @csrf
                                 @method('PUT')
