@@ -76,7 +76,7 @@
     <h1 class="judul">Dashboard Admin</h1>
     <div class="row">
         <div class="cont-l col-lg-6" id="left">
-            <h4>Menunggu Pengajuan({{$countSubmission}})</h4>
+            <h4>Detail Wisata({{$countSubmission}})</h4>
             <hr>
             @foreach($submissions as $key => $submission)
                 @php($day='Minggu')
@@ -104,9 +104,10 @@
                 @foreach($submission as $wisata)
                     <div class="row mb-3 ml-4">
                         <div class="item col-lg-12 col-md-6">
+                            <img class="variasi" src="{{asset('image/variasilagii.png')}}" alt="">
                             <h1 class="nama-wisata">{{$wisata->name}}</h1>
-                            <p class="lokasi">{{$wisata->location}}</p>
-                            <button type="button" class="btn" id="{{$wisata->id}}">Detail wisata</button>
+                            <p class="lokasi mt-2">{{$wisata->location}}</p>
+                            <button type="button" class="btn detail" id="{{$wisata->id}}">Detail wisata</button>
                         </div>
                     </div>
                 @endforeach
@@ -118,7 +119,7 @@
             <hr>
             @foreach($note as $notes)
                 <div class="row mb-3">
-                    <div class="box col" data-toggle="modal" data-target="#modal-note{{$notes->id}}">
+                    <div class="box col"  data-toggle="modal" data-target="#modal-note{{$notes->id}}">
                         <h1 class="jdl-note">{{ $notes->title }}</h1>
                         <p class="desc">{{ $notes->message }}</p>
                         <h6 class="adm-name">{{ $notes->username }}</h6>
@@ -145,11 +146,11 @@
                     @csrf
                     <h1 style="color: #B9B9B9;">Judul Catatan</h1>
                     <input type="text" id="notes" name="title" placeholder="Update Konten, Wisata, dll"
-                           style="border-radius: 8px;">
+                           style="border-radius: 6px;">
                     <h1 style="color: #B9B9B9;">Isi Catatan</h1>
                     <textarea name="message" id="isi"
                               placeholder="Tulis apa aja deh disini buat admin yang lain biar bisa koordinasi"
-                              style="border-radius: 8px;"></textarea>
+                              style="border-radius: 6px;"></textarea>
                     <button type="submit" class="btn justify-content-center w-100 py-3 text-white"
                             style="background-color: #02182B;border-radius: 8px;">Buat Catatan
                     </button>

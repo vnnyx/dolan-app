@@ -27,6 +27,9 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="{{ asset('js/helper.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta name="csrf_token" content="{{csrf_token()}}">
 </head>
 
@@ -86,57 +89,60 @@
             <hr class="ml-4">
             <div class="wrapper">
                 <div class="drop-file" id="banner1">
-                    @if(sizeof($content) < 1) <span class="btn-file">Browse File</span>
-                    <span class="name-file">or drag and drop files(png)</span>
+                    @if(sizeof($content) < 1) <span class="btn-file">Pilih file</span>
+                    <span class="name-file">atau Seret gambar kesini</span>
                     <input type="file" id="file1" name="content-1" class="input-text" multiple>
                     @endif
                     @if(sizeof($content) > 0)
-                        <img src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
+                        <script>
+                            $(".drop-file").attr ("padding",0)
+                        </script>
+                        <img src="{{ $content[0]->content }}" style="height: 100%; width: 420px;">
                         <div class="overlay">
                             <label for="update1" class="btn btn-edit text-white"
-                                   style="margin-top: 27%; margin-right:10px;"><i
+                                   style="margin-top: 23%; margin-right:10px;"><i
                                     class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                             </label>
                             <input type="file" id-content="{{$content[0]->id}}" id="update1" name="content-1"
                                    class="input-text" style="display: none ;">
-                            <a data-id="{{ $content[0]->id }}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i class="fa-solid fa-trash-can"></i></a>
+                            <a data-id="{{ $content[0]->id }}" class="btn btn-danger ms-2 delete" style="margin-top: 21%; color: white"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                     @endif
                 </div>
                 <div class="drop-file" id="banner2">
-                    @if(sizeof($content) < 2) <span class="btn-file">Browse File</span>
-                    <span class="name-file">or drag and drop files(png)</span>
+                    @if(sizeof($content) < 2) <span class="btn-file">Pilih file</span>
+                    <span class="name-file">atau Seret gambar kesini</span>
                     <input type="file" id="file2" name="content-2" class="input-text" multiple>
                     @endif
                     @if(sizeof($content) > 1)
-                        <img src="{{ $content[1]->content }}" style="height: 100%; width: 405.38px">
+                        <img src="{{ $content[1]->content }}" style="height: 100%; width: 420px">
                             <div class="overlay">
                                 <label for="update2" class="btn btn-edit text-white"
-                                       style="margin-top: 27%; margin-right:10px;"><i
+                                       style="margin-top: 23%; margin-right:10px;"><i
                                         class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                 </label>
                                 <input type="file" id="update2" id-content="{{$content[1]->id}}" name="content-2"
                                        class="input-text" style="display: none ;">
-                                <a data-id="{{ $content[1]->id }}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i
+                                <a data-id="{{ $content[1]->id }}" class="btn btn-danger ms-2 delete" style="margin-top: 21%; color: white"><i
                                         class="fa-solid fa-trash-can"></i></a>
                             </div>
                     @endif
                 </div>
                 <div class="drop-file" id="banner3">
-                    @if(sizeof($content) < 3) <span class="btn-file">Browse File</span>
-                    <span class="name-file">or drag and drop files(png)</span>
+                    @if(sizeof($content) < 3) <span class="btn-file">Pilih file</span>
+                    <span class="name-file">atau Seret gambar kesini</span>
                     <input type="file" id="file3" name="content-3" class="input-text" multiple>
                     @endif
                     @if(sizeof($content) > 2)
-                        <img src="{{ $content[2]->content }}" style="height: 100%; width: 405.38px">
+                        <img src="{{ $content[2]->content }}" style="height: 100%; width: 420px">
                             <div class="overlay">
                                 <label for="update3" class="btn btn-edit text-white"
-                                       style="margin-top: 27%; margin-right:10px;"><i
+                                       style="margin-top: 23%; margin-right:10px;"><i
                                         class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                 </label>
                                 <input type="file" id="update3" id-content="{{$content[2]->id}}" name="content-3"
                                        class="input-text" style="display: none ;">
-                                <a class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white" data-id="{{ $content[2]->id }}"><i
+                                <a class="btn btn-danger ms-2 delete" style="margin-top: 21%; color: white" data-id="{{ $content[2]->id }}"><i
                                         class="fa-solid fa-trash-can"></i></a>
                             </div>
                     @endif
@@ -148,58 +154,58 @@
                     <hr class="ml-4">
                     <div class="wrapper">
                         <div class="drop-file" id="banner4">
-                            @if(sizeof($ads) < 1) <span class="btn-file">Browse File</span>
-                            <span class="name-file">or drag and drop files(png)</span>
+                            @if(sizeof($ads) < 1) <span class="btn-file">Pilih file</span>
+                            <span class="name-file">atau Seret gambar kesini</span>
                             <input type="file" id="file4" name="ads-1" class="input-text" multiple>
                             @endif
                             @if(sizeof($ads) > 0)
-                                <img class="image" src="{{ $ads[0]->content }}" style="height: 100%; width: 405.38px">
+                                <img class="image" src="{{ $ads[0]->content }}" style="height: 100%; width: 420px">
                                     <div class="overlay">
                                         <label for="update4" class="btn btn-edit text-white"
-                                               style="margin-top: 27%; margin-right:10px;"><i
+                                               style="margin-top: 23%; margin-right:10px;"><i
                                                 class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                         </label>
                                         <input type="file" id="update4" id-content="{{$ads[0]->id}}" name="ads-1"
                                                class="input-text" style="display: none ;">
-                                        <a data-id="{{$ads[0]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i
+                                        <a data-id="{{$ads[0]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 21%; color: white"><i
                                                 class="fa-solid fa-trash-can"></i></a>
                                     </div>
                             @endif
                         </div>
                         <div class="drop-file" id="banner5">
-                            @if(sizeof($ads) < 2) <span class="btn-file">Browse File</span>
-                            <span class="name-file">or drag and drop files(png)</span>
+                            @if(sizeof($ads) < 2) <span class="btn-file">Pilih file</span>
+                            <span class="name-file">atau Seret gambar kesini</span>
                             <input type="file" name="ads-2" id="file5" class="input-text" multiple>
                             @endif
                             @if(sizeof($ads) > 1)
-                                <img src="{{ $ads[1]->content }}" style="height: 100%; width: 405.38px">
+                                <img src="{{ $ads[1]->content }}" style="height: 100%; width: 420px">
                                     <div class="overlay">
                                         <label for="update5" class="btn btn-edit text-white"
-                                               style="margin-top: 27%; margin-right:10px;"><i
+                                               style="margin-top: 23%; margin-right:10px;"><i
                                                 class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                         </label>
                                         <input type="file" id="update5" id-content="{{$ads[1]->id}}" name="ads-2"
                                                class="input-text" style="display: none ;">
-                                        <a data-id="{{$ads[1]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i
+                                        <a data-id="{{$ads[1]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 21%; color: white"><i
                                                 class="fa-solid fa-trash-can"></i></a>
                                     </div>
                             @endif
                         </div>
                         <div class="drop-file" id="banner6">
-                            @if(sizeof($ads) < 3) <span class="btn-file">Browse File</span>
-                            <span class="name-file">or drag and drop files(png)</span>
+                            @if(sizeof($ads) < 3) <span class="btn-file">Pilih file</span>
+                            <span class="name-file">atau Seret gambar kesini</span>
                             <input type="file" name="ads-3" id="file6" class="input-text" multiple>
                             @endif
                             @if(sizeof($ads) > 2)
-                                <img src="{{ $ads[2]->content }}" style="height: 100%; width: 405.38px">
+                                <img src="{{ $ads[2]->content }}" style="height: 100%; width: 420px">
                                     <div class="overlay">
                                         <label for="update6" class="btn btn-edit text-white"
-                                               style="margin-top: 27%; margin-right:10px;"><i
+                                               style="margin-top: 23%; margin-right:10px;"><i
                                                 class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                                         </label>
                                         <input type="file" id="update6" id-content="{{$ads[2]->id}}" name="ads-3"
                                                class="input-text" style="display: none ;">
-                                        <a data-id="{{$ads[2]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 25%; color: white"><i
+                                        <a data-id="{{$ads[2]->id}}" class="btn btn-danger ms-2 delete" style="margin-top: 21%; color: white"><i
                                                 class="fa-solid fa-trash-can"></i></a>
                                     </div>
                             @endif

@@ -82,15 +82,15 @@
             <div class="wrapper mb-5">
                 <div class="drop-file" id="banner1">
                     @if(sizeof($content) < 1)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
+                        <span class="btn-file">Pilih file</span>
+                        <span class="name-file">atau Seret gambar kesini</span>
                         <input type="file" id="file1" class="input-text" name="banner-1" multiple>
                     @endif
                     @if(sizeof($content) > 0)
-                        <img class="image" src="{{ $content[0]->content }}" style="height: 100%; width: 405.38px">
+                        <img class="image" src="{{ $content[0]->content }}" style="height: 100%; width: 420px">
                         <div class="overlay">
                             <label for="update1" class="btn btn-edit text-white"
-                                   style="margin-top: 27%; margin-right:10px;"><i
+                                   style="margin-top: 23%; margin-right:10px;"><i
                                     class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                             </label>
                             <input type="file" id-content="{{$content[0]->id}}" id="update1" name="banner-1"
@@ -103,15 +103,15 @@
                 </div>
                 <div class="drop-file" id="banner2">
                     @if(sizeof($content) < 2)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
+                        <span class="btn-file">Pilih file</span>
+                        <span class="name-file">atau Seret gambar kesini</span>
                         <input type="file" id="file2" class="input-text" name="banner-2" multiple>
                     @endif
                     @if(sizeof($content) > 1)
-                        <img src="{{ $content[1]->content }}" style="height: 100%; width: 405.38px">
+                        <img src="{{ $content[1]->content }}" style="height: 100%; width: 420px">
                         <div class="overlay">
                             <label for="update2" class="btn btn-edit text-white"
-                                   style="margin-top: 27%; margin-right:10px;"><i
+                                   style="margin-top: 23%; margin-right:10px;"><i
                                     class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                             </label>
                             <input type="file" id-content="{{$content[1]->id}}" id="update2" name="banner-2"
@@ -124,15 +124,15 @@
                 </div>
                 <div class="drop-file" id="banner3">
                     @if(sizeof($content) < 3)
-                        <span class="btn-file">Browse File</span>
-                        <span class="name-file">or drag and drop files(png)</span>
+                        <span class="btn-file">Pilih file</span>
+                        <span class="name-file">atau Seret gambar kesini</span>
                         <input type="file" id="file3" class="input-text" name="banner-3" multiple>
                     @endif
                     @if(sizeof($content) > 2)
-                        <img src="{{ $content[2]->content }}" style="height: 100%; width: 405.38px">
+                        <img src="{{ $content[2]->content }}" style="height: 100%; width: 420px">
                         <div class="overlay">
                             <label for="update3" class="btn btn-edit text-white"
-                                   style="margin-top: 27%; margin-right:10px;"><i
+                                   style="margin-top: 23%; margin-right:10px;"><i
                                     class="fa-solid fa-pen-to-square text-white"></i> Ubah Gambar
                             </label>
                             <input type="file" id-content="{{$content[2]->id}}" id="update3" name="banner-3"

@@ -45,7 +45,7 @@ function uploadImage(element, banner, type) {
 
     var reader = new FileReader();
     reader.onload = function () {
-        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 420px; height: auto;"  loop  autoplay></lottie-player>`
         $(banner).html(preview)
     }
     reader.readAsDataURL(document.getElementById(element).files[0]);
@@ -102,7 +102,7 @@ function updateImage(element, banner, type) {
 
     var reader = new FileReader();
     reader.onload = function () {
-        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 420px; height: auto;"  loop  autoplay></lottie-player>`
         $(banner).html(preview)
     }
     reader.readAsDataURL(document.getElementById(element).files[0]);
@@ -135,7 +135,7 @@ function uploadBanner(element, banner) {
     });
     var reader = new FileReader();
     reader.onload = function () {
-        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 420px; height: auto;"  loop  autoplay></lottie-player>`
         $(banner).html(preview)
     }
     reader.readAsDataURL(document.getElementById(element).files[0]);
@@ -169,7 +169,7 @@ function updateBanner(element, banner) {
     });
     var reader = new FileReader();
     reader.onload = function () {
-        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+        var preview = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_sr65xoio.json"  background="transparent"  speed="1.2"  style="width: 420px; height: auto;"  loop  autoplay></lottie-player>`
         $(banner).html(preview)
     }
     reader.readAsDataURL(document.getElementById(element).files[0]);
