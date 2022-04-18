@@ -25,9 +25,9 @@ use App\Http\Controllers\AdminContentController;
 */
 
 // Public route
-//Route::get('/coba', function () {
-//   return view('register');
-//});
+Route::get('/', function () {
+   return view('welcome');
+});
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'sendEmailView']);
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendEmail']);
@@ -37,7 +37,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisController::class, 'index']);
 Route::post('/register', [RegisController::class, 'store']);
-Route::post('/download', [AdminDashboardController::class, 'download']);
 
 //Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {
