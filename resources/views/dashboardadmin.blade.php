@@ -100,7 +100,7 @@
                     @case('Saturday')
                     @php($day='Sabtu')
                 @endswitch
-                <h3 class="tanggal">{{$day}}{{date(', d F Y', strtotime($key));}}</h3>
+                <h3 class="tanggal">{{$day}}{{date(', d F Y', strtotime($key))}}</h3>
                 @foreach($submission as $wisata)
                     <div class="row mb-3 ml-4">
                         <div class="item col-lg-12 col-md-6">

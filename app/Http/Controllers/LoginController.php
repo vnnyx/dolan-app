@@ -24,9 +24,9 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if (auth()->user()->role == 'admin') {
+            if (auth()->user()->role == 'admin' && auth()->user()->is_blocked == 0) {
                 return redirect()->intended('/admin/dashboard');
-            } elseif (auth()->user()->role == 'owner') {
+            } elseif (auth()->user()->role == 'owner' && auth()->user()->is_blocked == 0) {
                 return redirect('/pengelola/dashboard');
             }
         }
