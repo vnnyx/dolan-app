@@ -118,10 +118,12 @@
                                 <h1 class="wisata ml-5">Tiket Wisata <span>{{ $data->nama_wisata }}</span></h1>
                                 <h4 class="harga">Rp{{ number_format($data->harga_tiket, 2) }}</h4>
                                 <i class="fas fa-ticket-alt"></i>
-                                <span class="tiket">{{ $data->total_ticket}} Tiket</span>
+                                <span class="tiket" style="margin-left:40px">{{ $data->total_ticket}} Tiket</span>
                                 <h4 class="lokasi mb-5">{{ $data->alamat }}</h4>
-                                <i class='bx bx-user'> <span class="user"> {{ $data->username }}</span></i>
-                                <i class='bx bx-calendar-week'> {{date('d F Y', strtotime($data->created_at))}}</i>
+                                <i class='bx bx-user'> </i>
+                                <span class="user"> {{ $data->username }}</span>
+                                <i class='bx bx-calendar-week'></i>
+                                <span>{{date('d F Y', strtotime($data->created_at))}}</span>
                             </div>
                         </div>
                     </div>

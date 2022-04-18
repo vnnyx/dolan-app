@@ -151,21 +151,29 @@ a:focus {
     position: relative;
     display: flex;
     height: 230px;
-    max-width: 50%;
+    min-width: 420px;
     margin: 0 20px;
     margin-left: 5px;
     align-items: center;
     border-radius: 6px;
+    background-color: rgba(2, 24, 43, .10); 
 }
+.drop-file:hover{
+    background-color: rgba(2, 24, 43, .30);
+    transition: all .4s ease-in-out;
+}
+
 .btn-file{
     flex-shrink: 0;
-    background-color: aqua;
-    color: black;
-    border-radius: 3px;
+    background-color: white;
+    border: 1px solid #02182B;
+    color: #02182B;
+    border-radius: 6px;
     padding: 8px 15px;
     margin-right: 20px;
-    font-size: 15px;
-    text-transform: uppercase;
+    font-size: 18px;
+    margin-left: 24px;
+    font-weight: 600
 }
 .name-file{
     font-size: 18px;
@@ -175,6 +183,8 @@ a:focus {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
 .image {
     display: block;
     width: 100%;
@@ -197,7 +207,7 @@ a:focus {
 }
 .btn-edit {
     background-color: #DF9506;
-    margin-left: 90px;
+    margin-left: 98px;
 }
 
 .btn-edit:hover {

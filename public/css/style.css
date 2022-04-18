@@ -174,14 +174,10 @@ a, a:hover, a:focus {
 }
 #content .cont-l .item{
     position: relative;
-    height: 150px;
+    height: 120px;
     background-color: #FFFFFF;
     border-radius: 6px;
-    -webkit-box-shadow: 0 0 1px #000;
-    -o-box-shadow: 0 0 1px #000;
-    -moz-box-shadow: 0 0 1px #000;
-    -ms-box-shadow: 0 0 1px #000;
-    box-shadow: 0 0 1px #000;
+    box-shadow: 4px 4px 4px rgba(185, 185, 185, 30%);
 }
 #sidebar.active ~ #content .cont-l .item{
     height: 150px;
@@ -209,9 +205,14 @@ a, a:hover, a:focus {
     left: 490px;
     height: 50px;
     border-radius: 6px;
-    background-color: #555;
+    background-color: white;
+    color: #02182B;
     font-weight: bold;
     font-size: 20px;
+}
+#content .cont-l .btn:hover{
+    border: 1px solid #DF9506;
+    transition: all .4s ease-in-out;
 }
 #sidebar.active ~ #content .cont-l .btn
 {
@@ -258,10 +259,16 @@ a, a:hover, a:focus {
 }
 #content .cont-r .box{
     border: 1px solid;
-    border-color: aqua;
+    border-color: #DF9506;
     border-radius: 6px;
     cursor: pointer;
 }
+
+#content .cont-r .box:hover{
+    box-shadow:4px 4px 4px rgba(185, 185, 185, 30%) ;
+    transition: all .2s ease-in-out;
+}
+
 #content .cont-r .box .jdl-note{
     font-size: 24px;
     font-weight: bold;
@@ -270,7 +277,9 @@ a, a:hover, a:focus {
 #content .cont-r .box .desc{
     color: #DF9506;
     overflow: hidden;
+    font-weight: 800;
     text-overflow: ellipsis;
+    font-size: 18px;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
@@ -304,4 +313,8 @@ a, a:hover, a:focus {
 }
 .bx-plus-circle{
     cursor: pointer;
+}
+.variasi{
+    position: absolute;
+    right: 0;
 }
