@@ -45,6 +45,7 @@ class RegisController extends Controller
             'alamat' => $field['alamatwisata'],
             'credential' => $path,
         ]);
-        return redirect('/login');
+        toast('Berhasil daftar akun, silahkan login', 'success');
+        return redirect('/login')->withInput();
     }
 }
