@@ -16,6 +16,18 @@
   column-gap: 48px;
   max-height: 400px;
 }
+
+.filename {
+  border: 1px solid #ACC2D5;
+  height: 65px;
+  border-radius: 0.25em;
+  font-size: 1rem;
+  padding: 0.25em;
+  padding:22px 24px;
+  width: 250px;
+  color: rgba(0, 0, 0, 40%);
+}
+
 .form-group:last-child {
   margin: 0;
 }
@@ -72,8 +84,17 @@ input:focus {
   border: none;
 }
 
-#iconupload {
-  align-items: flex-end;
+.iconupload {
+  position: absolute;
+  top: -65px;
+  right: 0px;
+}
+
+.iconupload:hover{
+  background-color: #02182B;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 40%) ;
+  transition: all .3s ease-in-out;
+  border-radius: 6px;
 }
 
 h3 {

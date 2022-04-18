@@ -72,9 +72,12 @@
                     <input type="text" name="alamatwisata" id="alamatwisata"
                            placeholder="Alamat Wisata (Kelurahan, Kota)">
                 </div>
+                <div class="filename">
+                    contoh.png
+                </div>
                 <div class="form-group">
                     <label for="iconupload">
-                        <img src="{{'image/Upload.png'}}" width="88" height="65" style="cursor: pointer;">
+                        <img class="iconupload" src="{{'image/Upload.png'}}" width="88" height="65" style="cursor: pointer;">
                     </label>
                     <input type="file" id="iconupload" name="certificate" style="display: none ;">
                 </div>
@@ -164,6 +167,14 @@
             c.style.display = "inline"
         }
     }
+</script>
+<script>
+    $(function(){
+        $("#iconupload").change(function(event){
+            var x = event.target.files[0].name
+            $(".filename").text(x)
+        });
+    })
 </script>
 </body>
 
