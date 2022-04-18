@@ -28,7 +28,6 @@ use App\Http\Controllers\AdminContentController;
 Route::get('/', function () {
    return view('welcome');
 });
-
 Route::get('/forgot-password', [ForgotPasswordController::class, 'sendEmailView']);
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendEmail']);
 Route::get('/reset/password/{token}', [ForgotPasswordController::class, 'forgotPasswordView'])->name('reset.password');
@@ -67,9 +66,3 @@ Route::group(['prefix' => 'pengelola', 'middleware' => ['isOwner', 'Auth']], (fu
     Route::put('/data-wisata', [WisataController::class, 'updateData']);
     Route::get('/logout', [LogoutController::class, 'logout']);
 }));
-
-
-
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
