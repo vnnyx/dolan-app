@@ -37,6 +37,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisController::class, 'index']);
 Route::post('/register', [RegisController::class, 'store']);
+Route::post('/download', [AdminDashboardController::class, 'download']);
 
 //Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'Auth']], (function () {

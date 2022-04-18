@@ -7,6 +7,7 @@ use App\Models\Submission;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminDashboardController extends Controller
@@ -15,12 +16,8 @@ class AdminDashboardController extends Controller
     {
         $count = DB::table('notes')->count();
         $note = Note::orderBy('id', 'DESC')->get();
-//        $countSubmission = Submission::whereStatus(0)->count();
-//        $submissions = Submission::selectRaw('id,name,location,DATE(created_at) as created_at')->whereStatus(0)->orderBy('created_at', 'DESC')->get()->groupBy('created_at');
-//        return view('dashboardadmin', compact('note', 'count', 'submissions', 'countSubmission'));
         $countWisata = Wisata::all()->count();
-        $detailWisata = Wisata::selectRaw('id, username, nama_wisata, credential, DATE(created_at) as created_at')->orderBy('created_at', 'DESC')->get()->groupBy('created_at');
-//        return $detailWisata;
+        $detailWisata = Wisata::selectRaw('id, username, nama_wisata, alamat, credential, DATE(created_at) as created_at')->orderBy('created_at', 'DESC')->get()->groupBy('created_at');
         return view('dashboardadmin', compact('note', 'count', 'detailWisata', 'countWisata'));
     }
 

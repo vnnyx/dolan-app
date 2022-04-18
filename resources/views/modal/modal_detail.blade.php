@@ -9,10 +9,10 @@
             </div>
             <div class="modal-body">
                 <div class="wrap">
+                    <p>Pemilik Wisata : <strong>{{$wisata->username}}</strong></p>
+                    <br>
                     <img src="{{ $wisata->credential }}" alt="">
                 </div>
-                <button type="submit" class="btn w-100 py-3 text-white" style="background-color: #02182B;border-radius: 8px;"><i class='bx bxs-file-image'></i>Unduh Detail Wisata</button>
-                </form>
             </div>
         </div>
     </div>

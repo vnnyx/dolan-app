@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->string('username');
+            $table->foreign('username')->references('username')->on('users');
             $table->string('title');
             $table->string('message');
             $table->timestamps();

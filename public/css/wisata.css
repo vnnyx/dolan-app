@@ -165,7 +165,7 @@ a:focus {
     margin: 0 20px;
     margin-left: 5px;
     align-items: center;
-    align-items: center;
+    background-color: rgba(2, 24, 43, .10);
 }
 .drop-file:hover .overlay {
     height: 100%;

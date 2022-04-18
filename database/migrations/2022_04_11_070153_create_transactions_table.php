@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nama_wisata');
             $table->foreign('nama_wisata')->references('nama_wisata')->on('wisatas');
             $table->integer('total_ticket');
-            $table->integer('status');
+            $table->integer('status')->default(0);
             $table->string('bukti_pembayaran');
             $table->timestamps();
         });

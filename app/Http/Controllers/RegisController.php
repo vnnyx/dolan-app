@@ -38,12 +38,14 @@ class RegisController extends Controller
 
         $image = $request->certificate->storeOnCloudinaryAs('abp', $request->fileName);
         $path = $image->getSecurePath();
+        $publicId = $image->getPublicId();
 
         Wisata::create([
             'username' => $field['username'],
             'nama_wisata' => $field['namawisata'],
             'alamat' => $field['alamatwisata'],
             'credential' => $path,
+            'public_id' => $publicId
         ]);
         toast('Berhasil daftar akun, silahkan login', 'success');
         return redirect('/login')->withInput();

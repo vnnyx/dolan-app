@@ -11,8 +11,6 @@
                 <div class="wrap">
                     <img src="{{ $data->bukti_pembayaran }}" alt="">
                 </div>
-                <button type="submit" class="btn btn-bukti w-100 py-3 text-white" style="background-color: #02182B;border-radius: 8px;"><i class='bx bxs-file-image'></i> Unduh Bukti Pembayaran</button>
-                </form>
             </div>
         </div>
     </div>
