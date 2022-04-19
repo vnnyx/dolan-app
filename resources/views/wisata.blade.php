@@ -96,7 +96,7 @@
                             <input type="file" id-content="{{$content[0]->id}}" id="update1" name="banner-1"
                                    class="input-text" style="display: none ;">
                             <a data-id="{{$content[0]->id}}" class="btn btn-danger ms-2 delete"
-                               style="margin-top: 25%; color: white"><i
+                               style="margin-top: 21%; color: white"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </div>
                     @endif
@@ -117,7 +117,7 @@
                             <input type="file" id-content="{{$content[1]->id}}" id="update2" name="banner-2"
                                    class="input-text" style="display: none ;">
                             <a data-id="{{$content[1]->id}}" class="btn btn-danger ms-2 delete"
-                               style="margin-top: 25%; color: white"><i
+                               style="margin-top: 21%; color: white"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </div>
                     @endif
@@ -138,7 +138,7 @@
                             <input type="file" id-content="{{$content[2]->id}}" id="update3" name="banner-3"
                                    class="input-text" style="display: none ;">
                             <a data-id="{{$content[2]->id}}" class="btn btn-danger ms-2 delete"
-                               style="margin-top: 25%; color: white"><i
+                               style="margin-top: 21%; color: white"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </div>
                     @endif
