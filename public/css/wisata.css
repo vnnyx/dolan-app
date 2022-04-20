@@ -138,13 +138,10 @@ a:focus {
     transform: scale(1.10);
 }
 /* carousel*/
-.area::placeholder{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
 .area{
     border-radius: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 .wrapper{
     margin: 0 20px;
