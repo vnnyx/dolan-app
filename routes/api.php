@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\AdminDashboardController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\WisataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 
-Route::middleware('Auth:sanctum')->group(function () {
-    Route::post('catatan', [AdminDashboardController::class, 'createNote']);
-    Route::get('/dashboard/catatan', [AdminDashboardController::class, 'index']);
-    Route::put('/dashboard/catatan/{id}', [AdminDashboardController::class, 'updateNote']);
-    Route::delete('/dashboard/catatan/{id}', [AdminDashboardController::class, 'deleteNote']);
+Route::group(['prefix' => 'wisata', 'middleware' => ['jwtAuth']], function (){
+    Route::get('/populer', [WisataController::class, 'wisataPopuler']);
+    Route::get('/baru', [WisataController::class, 'wisataBaru']);
+    Route::get('/{id}', [WisataController::class, 'detailWisata']);
 });
-
-//Route::middleware('Auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});

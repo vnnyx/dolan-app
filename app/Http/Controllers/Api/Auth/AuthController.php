@@ -23,7 +23,7 @@ class AuthController extends Controller
             return WebResponse::webResponse(400, 'BAD REQUEST');
         }
 
-        $token = $user->createToken('mytoken')->plainTextToken;
+        $token = auth()->attempt($request->only('email', 'password'));
 
         $data = [
             'id_user' => $user['id'],
