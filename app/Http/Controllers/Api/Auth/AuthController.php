@@ -26,9 +26,10 @@ class AuthController extends Controller
         $token = auth()->attempt($request->only('email', 'password'));
 
         $data = [
+            'access_token' => $token,
             'id_user' => $user['id'],
             'username' => $user['username'],
-            'token' => $token
+            'email'=>$user['email']
         ];
 
         return WebResponse::webResponse(200, 'OK', $data);
@@ -47,11 +48,13 @@ class AuthController extends Controller
             'password' => bcrypt($field['password'])
         ]);
 
-        $token = $user->createToken('mytoken')->plainTextToken;
+        $token = auth()->attempt($request->only('email', 'password'));
 
         $data = [
-            'data'=>$user,
-            'token'=>$token
+            'access_token'=>$token,
+            'id_user'=>$user['id'],
+            'username'=>$user['username'],
+            'email'=>$user['email']
         ];
 
         return WebResponse::webResponse(200, 'OK', $data);
