@@ -19,18 +19,21 @@ class ContentSeeder extends Seeder
         DB::table('contents')->insert([
             [
                 'username'=>'Yogi Firgiawan',
+                'nama_wisata'=>'Gua Sunyaragi',
                 'content'=>'https://res.cloudinary.com/dxbmfujzo/image/upload/v1650280214/abp/Landmark-Gua-Sunyaragi_zanqnq.jpg',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'username'=>'Yogi Firgiawan',
+                'nama_wisata'=>'Gua Sunyaragi',
                 'content'=>'https://res.cloudinary.com/dxbmfujzo/image/upload/v1650280252/abp/2-3-by-indi_jalanjalan_q7ihng.jpg',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'username'=>'Yogi Firgiawan',
+                'nama_wisata'=>'Gua Sunyaragi',
                 'content'=>'https://res.cloudinary.com/dxbmfujzo/image/upload/v1650280289/abp/Kawasan-Gua-Sunyaragi-Ahmad-Rasyid_z3dhvw.jpg',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
