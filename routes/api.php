@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\WisataController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 
-Route::group(['prefix' => 'wisata', 'middleware' => ['jwtAuth']], function (){
-    Route::get('/populer', [WisataController::class, 'wisataPopuler']);
-    Route::get('/baru', [WisataController::class, 'wisataBaru']);
-    Route::get('/{id}', [WisataController::class, 'detailWisata']);
+Route::group(['prefix' => 'destination', 'middleware' => ['jwtAuth']], function () {
+    Route::get('/popular', [WisataController::class, 'wisataPopuler']);
+    Route::get('/new', [WisataController::class, 'wisataBaru']);
+    Route::get('/detail/{id}', [WisataController::class, 'detailWisata']);
+    Route::get('/', [WisataController::class, 'cariWisata']);
+    Route::post('/favorite/{id}', [WisataController::class, 'addWisataFavorite']);
+    Route::delete('/favorite/{id}', [WisataController::class, 'deleteWisataFavorite']);
+    Route::get('/favorite', [WisataController::class, 'listWisataFavorite']);
 });
+
+Route::get('/history/ticket', [TransactionController::class, 'listHistoryTicket'])->middleware('jwtAuth');
+Route::post('/order', [TransactionController::class, 'order'])->middleware('jwtAuth');
