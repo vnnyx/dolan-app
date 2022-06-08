@@ -23,7 +23,7 @@ class AuthController extends Controller
             return WebResponse::webResponse(400, 'BAD REQUEST');
         }
 
-        $token = auth()->attempt($request->only('email', 'password'));
+        $token = auth('api')->attempt($request->only('email', 'password'));
 
         $data = [
             'access_token' => $token,
@@ -48,7 +48,7 @@ class AuthController extends Controller
             'password' => bcrypt($field['password'])
         ]);
 
-        $token = auth()->attempt($request->only('email', 'password'));
+        $token = auth('api')->attempt($request->only('email', 'password'));
 
         $data = [
             'access_token'=>$token,
