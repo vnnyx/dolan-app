@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('favorite_destinations', function (Blueprint $table) {
             $table->id();
             $table->string('username');
             $table->foreign('username')->references('username')->on('users');
-            $table->string('nama_wisata')->nullable();
+            $table->string('nama_wisata');
             $table->foreign('nama_wisata')->references('nama_wisata')->on('wisatas');
-            $table->string('content');
-            $table->integer('advertisement')->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('favorite_destinations');
     }
 };
