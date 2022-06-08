@@ -7,10 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function login(Request $request): JsonResponse
     {
         $field = $request->validate([
             'email' => 'string|required',
@@ -27,7 +28,7 @@ class AuthController extends Controller
 
         $data = [
             'access_token' => $token,
-            'id_user' => $user['id'],
+            'user_id' => $user['id'],
             'username' => $user['username'],
             'email'=>$user['email']
         ];
@@ -35,7 +36,8 @@ class AuthController extends Controller
         return WebResponse::webResponse(200, 'OK', $data);
     }
 
-    public function register(Request $request){
+    public function register(Request $request): JsonResponse
+    {
         $field = $request->validate([
             'username' => 'required',
             'email' => 'required',
@@ -52,7 +54,7 @@ class AuthController extends Controller
 
         $data = [
             'access_token'=>$token,
-            'id_user'=>$user['id'],
+            'user_id'=>$user['id'],
             'username'=>$user['username'],
             'email'=>$user['email']
         ];
