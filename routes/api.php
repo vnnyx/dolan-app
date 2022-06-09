@@ -33,7 +33,6 @@ Route::group(['prefix' => 'destination', 'middleware' => ['jwtAuth']], function 
 
 Route::get('/history/ticket', [TransactionController::class, 'listHistoryTicket'])->middleware('jwtAuth');
 Route::post('/order', [TransactionController::class, 'order'])->middleware('jwtAuth');
-Route::post('/send-otp', [ForgotPasswordController::class, 'sendEmail']);
 
 Route::post('/send-otp', [ForgotPasswordController::class, 'sendEmail']);
 Route::post('/validate-otp', [ForgotPasswordController::class, 'validateOtp']);
