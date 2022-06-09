@@ -34,10 +34,10 @@ class ForgotPasswordController extends Controller
             'otp' => $otp
         ];
         Mail::to($request->input('email'))->send(new SendOTP($data));
-        return WebResponse::webResponse(200, "OK");
+        return WebResponse::webResponse(200, "OK", "Success send otp to email");
     }
 
-    public function validateOtp(Request $request)
+    public function validateOtp(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'otp' => ['required', 'exists:password_resets,token']
@@ -54,7 +54,7 @@ class ForgotPasswordController extends Controller
         return WebResponse::webResponse(200, "OK", $result);
     }
 
-    public function resetPassword(Request $request)
+    public function resetPassword(Request $request): JsonResponse
     {
         $otpValidate = DB::table('password_resets')->where('token', '=', $request->query('otp'))->first();
         if ($otpValidate == null){
@@ -74,7 +74,7 @@ class ForgotPasswordController extends Controller
             'password' => bcrypt($request->input('password'))
         ]);
         DB::table('password_resets')->where('email', '=', $data->email)->delete();
-        return WebResponse::webResponse(200, "OK", "Change password success $otpValidate");
+        return WebResponse::webResponse(200, "OK", "Success reset password");
 
     }
 }
