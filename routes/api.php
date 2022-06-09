@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\WisataController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\TransactionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,8 @@ Route::group(['prefix' => 'destination', 'middleware' => ['jwtAuth']], function 
 
 Route::get('/history/ticket', [TransactionController::class, 'listHistoryTicket'])->middleware('jwtAuth');
 Route::post('/order', [TransactionController::class, 'order'])->middleware('jwtAuth');
+Route::post('/send-otp', [ForgotPasswordController::class, 'sendEmail']);
+
+Route::post('/send-otp', [ForgotPasswordController::class, 'sendEmail']);
+Route::post('/validate-otp', [ForgotPasswordController::class, 'validateOtp']);
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword']);
