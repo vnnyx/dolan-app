@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -15,13 +16,13 @@ class AuthController extends Controller
     {
         $field = $request->validate([
             'email' => 'string|required',
-            'password' => 'string|required|confirmed|min:8'
+            'password' => 'string|required'
         ]);
 
         $user = User::where('email', $field['email'])->first();
 
         if (!$user || !Hash::check($field['password'], $user->password)) {
-            return WebResponse::webResponse(400, 'BAD REQUEST');
+            return WebResponse::webResponse(400, 'BAD REQUEST', null, 'Check your credential');
         }
 
         $token = auth('api')->attempt($request->only('email', 'password'));
@@ -38,16 +39,19 @@ class AuthController extends Controller
 
     public function register(Request $request): JsonResponse
     {
-        $field = $request->validate([
-            'username' => 'required',
-            'email' => 'required',
-            'password' => ['required', 'min:8']
+        $validate = Validator::Make($request->all(), [
+            'username'=>['required', 'unique:users,username'],
+            'email'=>['required', 'unique:users,email'],
+            'password'=>['required', 'min:8', 'confirmed']
         ]);
+        if ($validate->fails()){
+            return WebResponse::webResponse(400, 'BAD_REQUEST', null, $validate->errors());
+        }
 
         $user = User::create([
-            'username' => $field['username'],
-            'email' => $field['email'],
-            'password' => bcrypt($field['password'])
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password'))
         ]);
 
         $token = auth('api')->attempt($request->only('email', 'password'));

@@ -49,6 +49,9 @@ class WisataController extends Controller
             ->get();
 
         $detail = Wisata::find($id);
+        if ($detail == null){
+            return WebResponse::webResponse(400, 'BAD_REQUEST', null, "Destination not found");
+        }
 
         $data_content = [];
         foreach ($contents as $content) {
