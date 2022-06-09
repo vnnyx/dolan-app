@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
 
-class ForgotPasswordController extends Controller
+class ResetPasswordController extends Controller
 {
     public function sendEmail(Request $request): JsonResponse
     {

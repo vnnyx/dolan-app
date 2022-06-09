@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ListAkunController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -28,10 +28,10 @@ use App\Http\Controllers\AdminContentController;
 Route::get('/', function () {
    return view('welcome');
 });
-Route::get('/forgot-password', [ForgotPasswordController::class, 'sendEmailView']);
-Route::post('/forgot-password', [ForgotPasswordController::class, 'sendEmail']);
-Route::get('/reset/password/{token}', [ForgotPasswordController::class, 'forgotPasswordView'])->name('reset.password');
-Route::put('/reset/password', [ForgotPasswordController::class, 'forgotPassword']);
+Route::get('/forgot-password', [ResetPasswordController::class, 'sendEmailView']);
+Route::post('/forgot-password', [ResetPasswordController::class, 'sendEmail']);
+Route::get('/reset/password/{token}', [ResetPasswordController::class, 'forgotPasswordView'])->name('reset.password');
+Route::put('/reset/password', [ResetPasswordController::class, 'resetPassword']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisController::class, 'index']);

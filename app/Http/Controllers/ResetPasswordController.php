@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-class ForgotPasswordController extends Controller
+class ResetPasswordController extends Controller
 {
 
     public function sendEmailView()
@@ -51,7 +51,7 @@ class ForgotPasswordController extends Controller
         return redirect()->back();
     }
 
-    public function forgotPassword(Request $request)
+    public function resetPassword(Request $request)
     {
         $request->validate([
             'email' => 'required|email|exists:users,email',
