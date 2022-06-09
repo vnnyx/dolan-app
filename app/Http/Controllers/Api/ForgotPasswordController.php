@@ -23,18 +23,20 @@ class ForgotPasswordController extends Controller
             return WebResponse::webResponse(400, "BAD_REQUEST", null, $validator->errors());
         }
 
-        $username = User::query()->where('email', '=', $request->input('email'))->value('username');
+        $user = User::query()->where('email', '=', $request->input('email'))->first();
         $otp = rand(1000, 9999);
         DB::table('password_resets')->insert([
             'email' => $request->input('email'),
             'token' => $otp
         ]);
         $data = [
-            'username' => $username,
-            'otp' => $otp
+            'user_id'=>$user->id,
+            'username' => $user->username,
+            'email'=>$user->email,
+            'otp' => (string)$otp
         ];
         Mail::to($request->input('email'))->send(new SendOTP($data));
-        return WebResponse::webResponse(200, "OK", "Success send otp to email");
+        return WebResponse::webResponse(200, "OK", $data);
     }
 
     public function validateOtp(Request $request): JsonResponse
@@ -47,16 +49,23 @@ class ForgotPasswordController extends Controller
         }
         $result = DB::table('password_resets')
             ->join('users', 'users.email', '=', 'password_resets.email')
-            ->select(['users.id', 'users.username', 'users.email', 'token'])
             ->where('password_resets.token', '=', $request->input('otp'))
-            ->get();
+            ->first(['users.id', 'users.username', 'users.email', 'token']);
 
-        return WebResponse::webResponse(200, "OK", $result);
+        $data = [
+            'user_id'=>$result->id,
+            'username'=>$result->username,
+            'email'=>$result->email,
+            'otp'=>$result->token
+        ];
+
+        return WebResponse::webResponse(200, "OK", $data);
     }
 
     public function resetPassword(Request $request): JsonResponse
     {
-        $otpValidate = DB::table('password_resets')->where('token', '=', $request->query('otp'))->first();
+        $otpValidate = DB::table('password_resets')
+            ->where('token', '=', $request->query('otp'))->first('token');
         if ($otpValidate == null){
             return WebResponse::webResponse(400, "BAD_REQUEST", null, "Invalid OTP");
         }
