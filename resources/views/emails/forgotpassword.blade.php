@@ -1,9 +1,11 @@
 @component('mail::message')
-# Halo {{$data['username']}}
+# Halo {{$username}}
 
-Kami menerima permintaan reset password dari anda. Silahkan klik tombol dibawah ini untuk melakukan reset password
+Kami menerima permintaan reset password dari anda.
 
-@component('mail::button', ['url' => url($data['link'])])
+Silahkan klik tombol dibawah ini untuk melakukan reset password:
+
+@component('mail::button', ['url' => url($link)])
 Reset Password
 @endcomponent
 

@@ -1,14 +1,14 @@
 @component('mail::message')
-    # Halo {{$username}}
+# Halo {{$username}}
 
-    Kami menerima permintaan reset password dari anda. Silahkan gunakan kode dibawah ini untuk melakukan reset password
+Kami menerima permintaan reset password dari anda.
 
-    {{$otp}}
+Silahkan gunakan kode dibawah ini untuk melakukan reset password:
 
+**{{$otp}}**
 
-    Thanks,
-
-    Tim Dolan
+Thanks,<br>
+Tim Dolan
 @endcomponent
 
 
