@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ForgotPasswordMail extends Mailable
+class ResetPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,6 +33,9 @@ class ForgotPasswordMail extends Mailable
         return $this->markdown('emails.forgotpassword')
             ->from(['no-reply-dolan@email.com', 'Dolan'])
             ->subject('Reset Password')
-            ->with('data', $this->data);
+            ->with([
+                'username'=>$this->data['username'],
+                'link'=>$this->data['link']
+            ]);
     }
 }

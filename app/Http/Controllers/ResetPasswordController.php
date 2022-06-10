@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ForgotPasswordMail;
+use App\Mail\ResetPasswordMail;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
@@ -45,7 +45,7 @@ class ResetPasswordController extends Controller
             'email'=>$request->email,
             'username'=>$username
         ];
-        Mail::to($request->email)->send(new ForgotPasswordMail($data));
+        Mail::to($request->email)->send(new ResetPasswordMail($data));
 
         toast('Sukses mengirimkan email verifikasi', 'success');
         return redirect()->back();
