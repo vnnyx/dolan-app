@@ -20,7 +20,7 @@ class WisataController extends Controller
         $result = Content::query()
             ->join('wisatas', 'wisatas.username', '=', 'contents.username')
             ->join('transactions', 'transactions.nama_wisata', '=', 'wisatas.nama_wisata')
-            ->select(['wisatas.deskripsi', 'wisatas.id', 'wisatas.nama_wisata', 'contents.content', 'wisatas.alamat'])
+            ->select(['wisatas.*', 'contents.content'])
             ->groupBy('contents.username')
             ->orderByRaw('sum(total_ticket) desc')
             ->get();
@@ -32,7 +32,7 @@ class WisataController extends Controller
     {
         $result = Content::query()
             ->join('wisatas', 'wisatas.username', '=', 'contents.username')
-            ->select(['wisatas.deskripsi', 'wisatas.id', 'wisatas.nama_wisata', 'contents.content', 'wisatas.alamat'])
+            ->select(['wisatas.*', 'contents.content'])
             ->groupBy('contents.username')
             ->orderBy('wisatas.created_at', 'desc')
             ->get();
@@ -49,9 +49,13 @@ class WisataController extends Controller
             ->get();
 
         $detail = Wisata::find($id);
-        if ($detail == null){
+        if ($detail == null) {
             return WebResponse::webResponse(400, 'BAD_REQUEST', null, "Destination not found");
         }
+
+        $is_favorite = FavoriteDestination::query()
+            ->where('nama_wisata', '=', $detail['nama_wisata'])
+            ->where('username', '=', auth('api')->payload()->get('username'))->get()->count();
 
         $data_content = [];
         foreach ($contents as $content) {
@@ -61,9 +65,16 @@ class WisataController extends Controller
             'destination_id' => $detail['id'],
             'destination_name' => $detail['nama_wisata'],
             'location' => $detail['alamat'],
+            'price' => $detail['harga_tiket'],
             'description' => $detail['deskripsi'],
-            'content' => $data_content
+            'open' => $detail['open'],
+            'close' => $detail['close'],
+            'content' => $data_content,
+            'is_favorite' => $is_favorite,
+            'latitude' => $detail['latitude'],
+            'longitude' => $detail['longitude']
         ];
+
         return WebResponse::webResponse(200, 'OK', $data);
     }
 
@@ -72,7 +83,7 @@ class WisataController extends Controller
         $search = $request->input('search');
         $result = Content::query()
             ->join('wisatas', 'wisatas.username', '=', 'contents.username')
-            ->select(['wisatas.deskripsi', 'wisatas.id', 'wisatas.nama_wisata', 'contents.content', 'wisatas.alamat'])
+            ->select(['wisatas.*', 'contents.content'])
             ->groupBy('contents.username')
             ->where('wisatas.nama_wisata', 'LIKE', "%$search%")
             ->orWhere('wisatas.alamat', 'LIKE', "%$search%")
@@ -94,7 +105,14 @@ class WisataController extends Controller
 
     public function deleteWisataFavorite($id): JsonResponse
     {
-        FavoriteDestination::destroy($id);
+        $wisata = Wisata::query()->find($id)->nama_wisata;
+        $response = FavoriteDestination::query()
+            ->where('nama_wisata', '=', $wisata)
+            ->where('username', '=', auth('api')->payload()->get('username'))
+            ->delete();
+        if ($response == 0) {
+            return WebResponse::webResponse(401, 'BAD_REQUEST');
+        }
         return WebResponse::webResponse(200, 'OK');
     }
 
@@ -103,7 +121,7 @@ class WisataController extends Controller
         $result = FavoriteDestination::query()
             ->join('wisatas', 'wisatas.nama_wisata', '=', 'favorite_destinations.nama_wisata')
             ->join('contents', 'contents.nama_wisata', '=', 'wisatas.nama_wisata')
-            ->select(['wisatas.id', 'wisatas.nama_wisata', 'contents.content', 'wisatas.alamat', 'wisatas.deskripsi'])
+            ->select(['wisatas.*', 'contents.content'])
             ->where('favorite_destinations.username', '=', auth('api')->payload()->get('username'))
             ->groupBy('favorite_destinations.nama_wisata')
             ->orderBy('favorite_destinations.created_at', 'desc')
@@ -116,12 +134,21 @@ class WisataController extends Controller
     {
         $data = [];
         for ($i = 0; $i < sizeof($result); $i++) {
+            $is_favorite = FavoriteDestination::query()
+                ->where('nama_wisata', '=', $result[$i]['nama_wisata'])
+                ->where('username', '=', auth('api')->payload()->get('username'))->get()->count();
             $data[] = [
                 'destination_id' => $result[$i]['id'],
                 'destination_name' => $result[$i]['nama_wisata'],
                 'location' => $result[$i]['alamat'],
+                'price' => $result[$i]['harga_tiket'],
                 'description' => $result[$i]['deskripsi'],
-                'content' => $result[$i]['content']
+                'open' => $result[$i]['open'],
+                'close' => $result[$i]['close'],
+                'content' => $result[$i]['content'],
+                'is_favorite' => $is_favorite,
+                'latitude' => $result[$i]['latitude'],
+                'longitude'=>$result[$i]['longitude']
             ];
         }
         return WebResponse::webResponse(200, 'OK', $data);
