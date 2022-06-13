@@ -23,6 +23,10 @@ class RegisController extends Controller
             'namawisata' => 'required',
             'alamatwisata' => 'required',
             'certificate' => 'required|image|mimes:jpeg,png,jpg',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'open' => 'required',
+            'close' => 'required'
         ]);
 
 
@@ -38,14 +42,16 @@ class RegisController extends Controller
 
         $image = $request->certificate->storeOnCloudinaryAs('abp', $request->fileName);
         $path = $image->getSecurePath();
-        $publicId = $image->getPublicId();
 
         Wisata::create([
             'username' => $field['username'],
             'nama_wisata' => $field['namawisata'],
             'alamat' => $field['alamatwisata'],
             'credential' => $path,
-            'public_id' => $publicId
+            'latitude' => $field['latitude'],
+            'longitude' => $field['longitude'],
+            'open'=>$field['open'],
+            'close'=>$field['close'],
         ]);
         toast('Berhasil daftar akun, silahkan login', 'success');
         return redirect('/login')->withInput();

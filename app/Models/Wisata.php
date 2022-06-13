@@ -17,5 +17,9 @@ class Wisata extends Model
         'stock_tiket',
         'deskripsi',
         'credential',
+        'latitude',
+        'longitude',
+        'open',
+        'close',
     ];
 }

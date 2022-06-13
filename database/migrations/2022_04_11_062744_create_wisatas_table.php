@@ -22,7 +22,11 @@ return new class extends Migration
             $table->bigInteger('harga_tiket')->nullable();
             $table->string('deskripsi')->nullable();
             $table->string('alamat');
+            $table->string('open');
+            $table->string('close');
             $table->string('credential');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }
