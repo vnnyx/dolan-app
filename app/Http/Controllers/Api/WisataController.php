@@ -81,6 +81,9 @@ class WisataController extends Controller
     public function cariWisata(Request $request): JsonResponse
     {
         $search = $request->input('search');
+        if ($search == null){
+            return WebResponse::webResponse(400, 'BAD_REQUEST', $search, 'Key not found');
+        }
         $result = Content::query()
             ->join('wisatas', 'wisatas.username', '=', 'contents.username')
             ->select(['wisatas.*', 'contents.content'])
