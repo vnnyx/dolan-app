@@ -15,17 +15,17 @@ class AuthController extends Controller
     public function login(Request $request): JsonResponse
     {
         $field = $request->validate([
-            'email' => 'string|required',
+            'username' => 'string|required',
             'password' => 'string|required'
         ]);
 
-        $user = User::where('email', $field['email'])->first();
+        $user = User::where('username', $field['username'])->first();
 
         if (!$user || !Hash::check($field['password'], $user->password)) {
             return WebResponse::webResponse(400, 'BAD REQUEST', null, 'Check your credential');
         }
 
-        $token = auth('api')->attempt($request->only('email', 'password'));
+        $token = auth('api')->attempt($request->only('username', 'password'));
 
         $data = [
             'access_token' => $token,
