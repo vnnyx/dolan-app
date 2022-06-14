@@ -80,7 +80,7 @@ class WisataController extends Controller
 
     public function cariWisata(Request $request): JsonResponse
     {
-        $search = $request->input('search');
+        $search = $request->query('search');
         if ($search == null){
             return WebResponse::webResponse(400, 'BAD_REQUEST', $search, 'Key not found');
         }
