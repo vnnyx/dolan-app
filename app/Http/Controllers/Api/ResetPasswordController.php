@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helper\ValidationMessage;
 use App\Helper\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Mail\SendOTP;
@@ -71,7 +72,7 @@ class ResetPasswordController extends Controller
         }
         $validator = Validator::make($request->all(), [
             'password' => ['required', 'confirmed', 'min:8']
-        ]);
+        ], ValidationMessage::message());
         if ($validator->fails()) {
             return WebResponse::webResponse(400, "BAD_REQUEST", null, $validator->errors()->first());
         }

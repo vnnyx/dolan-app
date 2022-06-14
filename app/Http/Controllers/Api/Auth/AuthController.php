@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Helper\ValidationMessage;
 use App\Helper\WebResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class AuthController extends Controller
         $validate = Validator::make($request->all(), [
             'username'=>'required',
             'password'=>'required'
-        ]);
+        ], ValidationMessage::message());
 
         if ($validate->fails()) {
             return WebResponse::webResponse(400, "BAD_REQUEST", null, $validate->errors()->first());
@@ -47,7 +48,7 @@ class AuthController extends Controller
             'username'=>['required', 'unique:users,username'],
             'email'=>['required', 'unique:users,email'],
             'password'=>['required', 'min:8', 'confirmed']
-        ]);
+        ],ValidationMessage::message());
         if ($validate->fails()){
             return WebResponse::webResponse(400, 'BAD_REQUEST', null, $validate->errors()->first());
         }

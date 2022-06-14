@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helper\ValidationMessage;
 use App\Helper\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
@@ -31,7 +32,7 @@ class TransactionController extends Controller
         $validate = Validator::Make($request->all(), [
             'total_amount' => 'required',
             'destination_id' => 'required',
-        ]);
+        ], ValidationMessage::message());
         if ($validate->fails()){
             return WebResponse::webResponse(400, 'BAD_REQUEST', null, $validate->errors()->first());
         }

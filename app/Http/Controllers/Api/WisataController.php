@@ -81,7 +81,7 @@ class WisataController extends Controller
     {
         $search = $request->query('search');
         if ($search == null){
-            return WebResponse::webResponse(400, 'BAD_REQUEST', $search, 'Key not found');
+            return WebResponse::webResponse(400, 'BAD_REQUEST', $search, 'Query tidak ditemukan');
         }
         $result = Content::query()
             ->join('wisatas', 'wisatas.username', '=', 'contents.username')
