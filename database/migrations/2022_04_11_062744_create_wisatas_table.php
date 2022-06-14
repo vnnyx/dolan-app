@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('open');
             $table->string('close');
             $table->string('credential');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->double('latitude');
+            $table->double('longitude');
             $table->timestamps();
         });
     }
