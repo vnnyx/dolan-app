@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 
 class TransactionController extends Controller
 {
-    public function listHistoryTicket()
+    public function listHistoryTicket(): JsonResponse
     {
         $result = Transaction::query()
             ->join('wisatas', 'transactions.nama_wisata', '=', 'wisatas.nama_wisata')
@@ -25,7 +25,7 @@ class TransactionController extends Controller
         return $this->tiketResponse($result);
     }
 
-    public function order(Request $request)
+    public function order(Request $request): JsonResponse
     {
         $field = $request->validate([
             'total_amount' => 'required',
