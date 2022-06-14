@@ -20,7 +20,7 @@ class ResetPasswordController extends Controller
             'email' => ['required', 'exists:users,email']
         ]);
         if ($validator->fails()) {
-            return WebResponse::webResponse(400, "BAD_REQUEST", null, $validator->errors());
+            return WebResponse::webResponse(400, "BAD_REQUEST", null, $validator->errors()->first());
         }
 
         $user = User::query()->where('email', '=', $request->input('email'))->first();
@@ -73,7 +73,7 @@ class ResetPasswordController extends Controller
             'password' => ['required', 'confirmed', 'min:8']
         ]);
         if ($validator->fails()) {
-            return WebResponse::webResponse(400, "BAD_REQUEST", null, $validator->errors());
+            return WebResponse::webResponse(400, "BAD_REQUEST", null, $validator->errors()->first());
         }
         $data = User::find($request->query('id'));
         if(!$data){

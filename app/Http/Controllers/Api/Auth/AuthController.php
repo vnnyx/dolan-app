@@ -14,14 +14,18 @@ class AuthController extends Controller
 {
     public function login(Request $request): JsonResponse
     {
-        $field = $request->validate([
-            'username' => 'string|required',
-            'password' => 'string|required'
+        $validate = Validator::make($request->all(), [
+            'username'=>'required',
+            'password'=>'required'
         ]);
 
-        $user = User::where('username', $field['username'])->first();
+        if ($validate->fails()) {
+            return WebResponse::webResponse(400, "BAD_REQUEST", null, $validate->errors()->first());
+        }
 
-        if (!$user || !Hash::check($field['password'], $user->password)) {
+        $user = User::where('username', $request->input('username'))->first();
+
+        if (!$user || !Hash::check($request->input('password'), $user->password)) {
             return WebResponse::webResponse(400, 'BAD REQUEST', null, 'Check your credential');
         }
 
@@ -45,7 +49,7 @@ class AuthController extends Controller
             'password'=>['required', 'min:8', 'confirmed']
         ]);
         if ($validate->fails()){
-            return WebResponse::webResponse(400, 'BAD_REQUEST', null, $validate->errors());
+            return WebResponse::webResponse(400, 'BAD_REQUEST', null, $validate->errors()->first());
         }
 
         $user = User::create([
