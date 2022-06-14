@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class WisataController extends Controller
 {
@@ -50,7 +49,7 @@ class WisataController extends Controller
 
         $detail = Wisata::find($id);
         if ($detail == null) {
-            return WebResponse::webResponse(400, 'BAD_REQUEST', null, "Destination not found");
+            return WebResponse::webResponse(400, 'BAD_REQUEST', null, "Wisata tidak ditemukan");
         }
 
         $is_favorite = FavoriteDestination::query()

@@ -26,7 +26,7 @@ class AuthController extends Controller
         $user = User::where('username', $request->input('username'))->first();
 
         if (!$user || !Hash::check($request->input('password'), $user->password)) {
-            return WebResponse::webResponse(400, 'BAD REQUEST', null, 'Check your credential');
+            return WebResponse::webResponse(400, 'BAD REQUEST', null, 'Username atau password salah');
         }
 
         $token = auth('api')->attempt($request->only('username', 'password'));

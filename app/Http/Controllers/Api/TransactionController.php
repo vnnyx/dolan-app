@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class TransactionController extends Controller
@@ -27,16 +28,20 @@ class TransactionController extends Controller
 
     public function order(Request $request): JsonResponse
     {
-        $field = $request->validate([
+        $validate = Validator::Make($request->all(), [
             'total_amount' => 'required',
             'destination_id' => 'required',
         ]);
+        if ($validate->fails()){
+            return WebResponse::webResponse(400, 'BAD_REQUEST', null, $validate->errors()->first());
+        }
         $path = $request->proof_of_payment->storeOnCloudinary('abp')->getSecurePath();
-        $nama_wisata = Wisata::query()->select('nama_wisata')->where('id', '=', $field['destination_id'])->value('nama_wisata');
+        $nama_wisata = Wisata::query()->select('nama_wisata')
+            ->where('id', '=', $request->input('destination_id'))->value('nama_wisata');
         Transaction::create([
             'username' => auth('api')->payload()->get('username'),
             'nama_wisata' => $nama_wisata,
-            'total_ticket' => $field['total_amount'],
+            'total_ticket' => $request->input('total_amount'),
             'bukti_pembayaran' => $path
         ]);
 

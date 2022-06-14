@@ -20,7 +20,7 @@ class ResetPasswordController extends Controller
             'email' => ['required', 'exists:users,email']
         ]);
         if ($validator->fails()) {
-            return WebResponse::webResponse(400, "BAD_REQUEST", null, $validator->errors()->first());
+            return WebResponse::webResponse(400, "BAD_REQUEST", null, 'Email tidak terdaftar');
         }
 
         $user = User::query()->where('email', '=', $request->input('email'))->first();
@@ -45,7 +45,7 @@ class ResetPasswordController extends Controller
             'otp' => ['required', 'exists:password_resets,token']
         ]);
         if ($validator->fails()) {
-            return WebResponse::webResponse(400, "BAD_REQUEST", null, "Invalid OTP");
+            return WebResponse::webResponse(400, "BAD_REQUEST", null, "Kode OTP tidak sesuai");
         }
         $result = DB::table('password_resets')
             ->join('users', 'users.email', '=', 'password_resets.email')
@@ -67,7 +67,7 @@ class ResetPasswordController extends Controller
         $otpValidate = DB::table('password_resets')
             ->where('token', '=', $request->query('otp'))->first('token');
         if ($otpValidate == null){
-            return WebResponse::webResponse(400, "BAD_REQUEST", null, "Invalid OTP");
+            return WebResponse::webResponse(400, "BAD_REQUEST", null, "Kode OTP tidak sesuai");
         }
         $validator = Validator::make($request->all(), [
             'password' => ['required', 'confirmed', 'min:8']
@@ -77,13 +77,13 @@ class ResetPasswordController extends Controller
         }
         $data = User::find($request->query('id'));
         if(!$data){
-            return WebResponse::webResponse(400, "BAD_REQUEST", null, "User not found");
+            return WebResponse::webResponse(400, "BAD_REQUEST", null, "User tidak ditemukan");
         }
         $data->update([
             'password' => bcrypt($request->input('password'))
         ]);
         DB::table('password_resets')->where('email', '=', $data->email)->delete();
-        return WebResponse::webResponse(200, "OK", "Success reset password");
+        return WebResponse::webResponse(200, "OK", "Berhasil reset password");
 
     }
 }
