@@ -9,6 +9,7 @@ class ValidationMessage
             'username.required'=>'Username harus diisi',
             'username.unique'=>'Username sudah digunakan',
             'email.required'=>'Email harus diisi',
+            'email.unique'=>'Email sudah digunakan',
             'password.min'=>'Panjang password minimal 8',
             'password.required'=>'Password harus diisi',
             'password.confirmed'=>'Password tidak cocok',
