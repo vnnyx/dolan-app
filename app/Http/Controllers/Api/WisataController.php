@@ -55,6 +55,11 @@ class WisataController extends Controller
         $is_favorite = FavoriteDestination::query()
             ->where('nama_wisata', '=', $detail['nama_wisata'])
             ->where('username', '=', auth('api')->payload()->get('username'))->get()->count();
+        if ($is_favorite == 1){
+            $is_favorite = true;
+        }else{
+            $is_favorite = false;
+        }
 
         $data_content = [];
         foreach ($contents as $content) {
@@ -139,6 +144,11 @@ class WisataController extends Controller
             $is_favorite = FavoriteDestination::query()
                 ->where('nama_wisata', '=', $result[$i]['nama_wisata'])
                 ->where('username', '=', auth('api')->payload()->get('username'))->get()->count();
+            if ($is_favorite == 1){
+                $is_favorite = true;
+            }else{
+                $is_favorite = false;
+            }
             $data[] = [
                 'destination_id' => $result[$i]['id'],
                 'destination_name' => $result[$i]['nama_wisata'],
