@@ -24,7 +24,9 @@ class AuthController extends Controller
             return WebResponse::webResponse(400, "BAD_REQUEST", null, $validate->errors()->first());
         }
 
-        $user = User::where('username', $request->input('username'))->first();
+        $user = User::query()
+            ->where('username', '=', $request->input('username'))
+            ->where('role', '=', 'user')->first();
 
         if (!$user || !Hash::check($request->input('password'), $user->password)) {
             return WebResponse::webResponse(400, 'BAD REQUEST', null, 'Username atau password salah');

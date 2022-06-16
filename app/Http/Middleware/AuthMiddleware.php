@@ -20,9 +20,9 @@ class AuthMiddleware
     public function handle(Request $request, Closure $next)
     {
         try {
-            $user = JWTAuth::parseToken()->authenticate();
+            $user = auth('api')->userOrFail();
         } catch (Exception $e) {
-            if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
+            if ($e instanceof \Tymon\JWTAuth\Exceptions\UserNotDefinedException){
                 return WebResponse::webResponse(401, 'UNAUTHORIZED', null, 'Token Invalid');
             }else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
                 return WebResponse::webResponse(401, 'UNAUTHORIZED', null, 'Token Expired');
