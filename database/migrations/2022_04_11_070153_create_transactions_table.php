@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('nama_wisata')->references('nama_wisata')->on('wisatas');
             $table->integer('total_ticket');
             $table->integer('status')->default(0);
+            $table->string('barcode');
             $table->string('bukti_pembayaran');
             $table->timestamps();
         });

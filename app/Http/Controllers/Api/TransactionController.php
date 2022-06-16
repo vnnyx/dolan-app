@@ -43,7 +43,8 @@ class TransactionController extends Controller
             'username' => auth('api')->payload()->get('username'),
             'nama_wisata' => $nama_wisata,
             'total_ticket' => $request->input('total_amount'),
-            'bukti_pembayaran' => $path
+            'bukti_pembayaran' => $path,
+            'barcode'=>Str::random()
         ]);
 
         return WebResponse::webResponse(200, "OK");
@@ -65,7 +66,7 @@ class TransactionController extends Controller
                 'location' => $result[$i]['alamat'],
                 'date' => $result[$i]['created_at']->isoFormat('dddd, D MMMM Y'),
                 'status' => $status,
-                'barcode' => Str::random(),
+                'barcode' => $result[$i]['barcode'],
             ];
         }
         return WebResponse::webResponse(200, 'OK', $data);

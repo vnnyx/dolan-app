@@ -15,5 +15,6 @@ class Transaction extends Model
         'bukti_pembayaran',
         'total_ticket',
         'status',
+        'barcode',
     ];
 }
