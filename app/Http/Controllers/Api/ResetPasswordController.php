@@ -7,6 +7,7 @@ use App\Helper\WebResponse;
 use App\Http\Controllers\Controller;
 use App\Mail\SendOTP;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -28,7 +29,9 @@ class ResetPasswordController extends Controller
         $otp = rand(1000, 9999);
         DB::table('password_resets')->insert([
             'email' => $request->input('email'),
-            'token' => $otp
+            'token' => $otp,
+            'expired_at'=>Carbon::now()->addMinutes(5),
+            'created_at'=>Carbon::now()
         ]);
         $data = [
             'user_id'=>$user->id,
@@ -45,7 +48,10 @@ class ResetPasswordController extends Controller
         $validator = Validator::make($request->all(), [
             'otp' => ['required', 'exists:password_resets,token']
         ]);
-        if ($validator->fails()) {
+        $expired = DB::table('password_resets')
+            ->where('expired_at', '>=', Carbon::now())
+            ->where('token', '=', $request->input('otp'))->count();
+        if ($validator->fails() || $expired == 0) {
             return WebResponse::webResponse(400, "BAD_REQUEST", null, "Kode OTP tidak sesuai");
         }
         $result = DB::table('password_resets')
@@ -66,6 +72,7 @@ class ResetPasswordController extends Controller
     public function resetPassword(Request $request): JsonResponse
     {
         $otpValidate = DB::table('password_resets')
+            ->where('expired_at', '<=', Carbon::now())
             ->where('token', '=', $request->query('otp'))->first('token');
         if ($otpValidate == null){
             return WebResponse::webResponse(400, "BAD_REQUEST", null, "Kode OTP tidak sesuai");
