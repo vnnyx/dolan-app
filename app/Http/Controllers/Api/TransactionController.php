@@ -55,14 +55,15 @@ class TransactionController extends Controller
         Carbon::setLocale('id');
         $data = [];
         for ($i = 0; $i < sizeof($result); $i++) {
-            if ($result[$i]['created_at'] < Carbon::today()){
-                Transaction::query()->where('id', '=', $result[$i]['id'])->update(['status' => 3]);
-            }
             $status = match ($result[$i]['status']) {
                 0 => "Menunggu",
                 1 => "Aktif",
                 default => "Kadaluarsa",
             };
+            if ($result[$i]['created_at'] < Carbon::today()){
+                Transaction::query()->where('id', '=', $result[$i]['id'])->update(['status' => 3]);
+                $status = "Kadaluarsa";
+            }
             $data[] = [
                 'ticket_id' => $result[$i]['id'],
                 'destination_name' => $result[$i]['nama_wisata'],
