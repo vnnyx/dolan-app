@@ -55,6 +55,9 @@ class TransactionController extends Controller
         Carbon::setLocale('id');
         $data = [];
         for ($i = 0; $i < sizeof($result); $i++) {
+            if ($result[$i]['created_at'] < Carbon::now()){
+                Transaction::query()->where('id', '=', $result[$i]['id'])->update(['status' => 3]);
+            }
             $status = match ($result[$i]['status']) {
                 0 => "Menunggu",
                 1 => "Aktif",
