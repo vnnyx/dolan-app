@@ -21,7 +21,7 @@ use App\Http\Controllers\Api\ResetPasswordController;
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 
-Route::group(['prefix' => 'destination', 'middleware' => ['jwtAuth']], function () {
+Route::group(['prefix' => 'destination', 'middleware' => ['jwtAuth', 'isUser']], function () {
     Route::get('/popular', [WisataController::class, 'wisataPopuler']);
     Route::get('/new', [WisataController::class, 'wisataBaru']);
     Route::get('/detail/{id}', [WisataController::class, 'detailWisata']);
@@ -31,8 +31,8 @@ Route::group(['prefix' => 'destination', 'middleware' => ['jwtAuth']], function 
     Route::get('/favorite', [WisataController::class, 'listWisataFavorite']);
 });
 
-Route::get('/history/ticket', [TransactionController::class, 'listHistoryTicket'])->middleware('jwtAuth');
-Route::post('/order', [TransactionController::class, 'order'])->middleware('jwtAuth');
+Route::get('/history/ticket', [TransactionController::class, 'listHistoryTicket'])->middleware(['jwtAuth', 'isUser']);
+Route::post('/order', [TransactionController::class, 'order'])->middleware(['jwtAuth', 'isUser']);
 
 Route::post('/send-otp', [ResetPasswordController::class, 'sendEmail']);
 Route::post('/validate-otp', [ResetPasswordController::class, 'validateOtp']);
