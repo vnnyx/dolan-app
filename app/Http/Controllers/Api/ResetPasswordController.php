@@ -71,12 +71,6 @@ class ResetPasswordController extends Controller
 
     public function resetPassword(Request $request): JsonResponse
     {
-        $otpValidate = DB::table('password_resets')
-            ->where('expired_at', '<=', Carbon::now())
-            ->where('token', '=', $request->query('otp'))->first('token');
-        if ($otpValidate == null){
-            return WebResponse::webResponse(400, "BAD_REQUEST", null, "Kode OTP tidak sesuai");
-        }
         $validator = Validator::make($request->all(), [
             'password' => ['required', 'confirmed', 'min:8']
         ], ValidationMessage::message());
