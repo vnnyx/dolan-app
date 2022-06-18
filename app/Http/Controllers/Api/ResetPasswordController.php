@@ -51,11 +51,10 @@ class ResetPasswordController extends Controller
         $expired = DB::table('password_resets')
             ->where('expired_at', '>=', Carbon::now())
             ->where('token', '=', $request->input('otp'))->count();
-        if ($validator->fails() || $expired == 0) {
+        if ($validator->fails() || $expired == 0 || $request->query('email') == null) {
             return WebResponse::webResponse(400, "BAD_REQUEST", null, "Kode OTP tidak sesuai");
         }
         DB::table('password_resets')
-            ->where('token', '=', $request->input('otp'))
             ->where('email', '=', $request->query('email'))
             ->delete();
         return WebResponse::webResponse(200, "OK");
