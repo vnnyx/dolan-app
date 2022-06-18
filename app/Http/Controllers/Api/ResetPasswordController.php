@@ -54,19 +54,11 @@ class ResetPasswordController extends Controller
         if ($validator->fails() || $expired == 0) {
             return WebResponse::webResponse(400, "BAD_REQUEST", null, "Kode OTP tidak sesuai");
         }
-        $result = DB::table('password_resets')
-            ->join('users', 'users.email', '=', 'password_resets.email')
-            ->where('password_resets.token', '=', $request->input('otp'))
-            ->first(['users.id', 'users.username', 'users.email', 'token']);
-
-        $data = [
-            'user_id'=>$result->id,
-            'username'=>$result->username,
-            'email'=>$result->email,
-            'otp'=>$result->token
-        ];
-
-        return WebResponse::webResponse(200, "OK", $data);
+        DB::table('password_resets')
+            ->where('token', '=', $request->input('otp'))
+            ->where('email', '=', $request->query('email'))
+            ->delete();
+        return WebResponse::webResponse(200, "OK");
     }
 
     public function resetPassword(Request $request): JsonResponse
@@ -84,7 +76,6 @@ class ResetPasswordController extends Controller
         $data->update([
             'password' => bcrypt($request->input('password'))
         ]);
-        DB::table('password_resets')->where('email', '=', $data->email)->delete();
         return WebResponse::webResponse(200, "OK", "Berhasil reset password");
 
     }
