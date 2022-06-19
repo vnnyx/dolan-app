@@ -89,6 +89,14 @@ class UserSeeder extends Seeder
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
+            [
+                'username'=>'userthree',
+                'email'=>'userthree@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'user',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
         ]);
     }
 }

@@ -19,7 +19,7 @@ class TransaksiSeeder extends Seeder
     {
         DB::table('transactions')->insert([
             [
-                'username'=>'User One',
+                'username'=>'userone',
                 'nama_wisata'=>'Lawang Sewu',
                 'total_ticket'=>10,
                 'barcode'=>Str::random(),
@@ -28,7 +28,7 @@ class TransaksiSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'username'=>'User One',
+                'username'=>'userone',
                 'nama_wisata'=>'Gua Sunyaragi',
                 'total_ticket'=>12,
                 'barcode'=>Str::random(),
@@ -37,7 +37,7 @@ class TransaksiSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'username'=>'User Two',
+                'username'=>'usertwo',
                 'nama_wisata'=>'Lawang Sewu',
                 'total_ticket'=>5,
                 'barcode'=>Str::random(),
@@ -46,7 +46,7 @@ class TransaksiSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'username'=>'User Two',
+                'username'=>'usertwo',
                 'nama_wisata'=>'Lawang Sewu',
                 'total_ticket'=>5,
                 'barcode'=>Str::random(),
@@ -55,7 +55,7 @@ class TransaksiSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'username'=>'User Three',
+                'username'=>'userthree',
                 'nama_wisata'=>'Jurug',
                 'total_ticket'=>100,
                 'barcode'=>Str::random(),
@@ -64,7 +64,7 @@ class TransaksiSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'username'=>'User Three',
+                'username'=>'userthree',
                 'nama_wisata'=>'Gua Sunyaragi',
                 'total_ticket'=>11,
                 'barcode'=>Str::random(),
