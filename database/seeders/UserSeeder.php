@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'username'=>'Admin One',
-                'email'=>'admin1@email.com',
+                'email'=>env('ADMIN_EMAIL'),
                 'password'=>bcrypt('password'),
                 'role'=>'admin',
                 'created_at'=>Carbon::now(),
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'username'=>'Muhammad Aryuska',
-                'email'=>'ryu@email.com',
+                'email'=>env('OWNER_EMAIL'),
                 'password'=>bcrypt('password'),
                 'role'=>'owner',
                 'created_at'=>Carbon::now(),
@@ -59,14 +59,22 @@ class UserSeeder extends Seeder
             ],
             [
                 'username'=>'Firdaus Putra',
-                'email'=>'daus@email.com',
+                'email'=>'firdaus@email.com',
                 'password'=>bcrypt('password'),
                 'role'=>'owner',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
-                'username'=>'User One',
+                'username'=>'Raja Ampat',
+                'email'=>'rajaampat@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'userone',
                 'email'=>'userone@email.com',
                 'password'=>bcrypt('password'),
                 'role'=>'user',
@@ -74,21 +82,13 @@ class UserSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'username'=>'User Two',
+                'username'=>'usertwo',
                 'email'=>'usertwo@email.com',
                 'password'=>bcrypt('password'),
                 'role'=>'user',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
-            [
-                'username'=>'User Three',
-                'email'=>'userthree@email.com',
-                'password'=>bcrypt('password'),
-                'role'=>'user',
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ]
         ]);
     }
 }
