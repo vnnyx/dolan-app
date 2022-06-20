@@ -22,7 +22,7 @@ class WisataController extends Controller
             if ($request->fileContent->extension() != 'jpg' && $request->fileContent->extension() != 'png' && $request->fileContent->extension() != 'jpeg') {
                 alert()->error('Oops...', 'Format file harus .png atau .jpg')->autoClose(0);
             } else {
-                $result = $request->fileContent->storeOnCloudinaryAs('abp', $request->fileName);
+                $result = $request->fileContent->storeOnCloudinaryAs('abp/destination', $request->fileName);
                 Content::create([
                     'username' => auth()->user()->username,
                     'content' => $result->getSecurePath(),

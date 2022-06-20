@@ -40,7 +40,7 @@ class RegisController extends Controller
 
 
 
-        $image = $request->certificate->storeOnCloudinaryAs('abp', $request->fileName);
+        $image = $request->certificate->storeOnCloudinaryAs('abp/certificate', $request->fileName);
         $path = $image->getSecurePath();
 
         Wisata::create([

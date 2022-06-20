@@ -36,7 +36,7 @@ class TransactionController extends Controller
         if ($validate->fails()){
             return WebResponse::webResponse(400, 'BAD_REQUEST', null, $validate->errors()->first());
         }
-        $path = $request->proof_of_payment->storeOnCloudinary('abp')->getSecurePath();
+        $path = $request->proof_of_payment->storeOnCloudinary('abp/proof_of_payment')->getSecurePath();
         $nama_wisata = Wisata::query()->select('nama_wisata')
             ->where('id', '=', $request->input('destination_id'))->value('nama_wisata');
         Transaction::create([
