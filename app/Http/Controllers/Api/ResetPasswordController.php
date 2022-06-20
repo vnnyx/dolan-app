@@ -37,7 +37,6 @@ class ResetPasswordController extends Controller
             'user_id'=>$user->id,
             'username' => $user->username,
             'email'=>$user->email,
-            'otp' => (string)$otp
         ];
         Mail::to($request->input('email'))->send(new SendOTP($data));
         return WebResponse::webResponse(200, "OK", $data);
