@@ -66,8 +66,72 @@ class UserSeeder extends Seeder
                 'updated_at'=>Carbon::now()
             ],
             [
-                'username'=>'Raja Ampat',
-                'email'=>'rajaampat@email.com',
+                'username'=>'Badan Pariwisata',
+                'email'=>'grojokansewu@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'Balai Besar Taman Nasional Bromo',
+                'email'=>'bromo@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'Badan Riset Nasional',
+                'email'=>'kebunraya@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'telagawarna',
+                'email'=>'telagawarna@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'heritage',
+                'email'=>'heritage@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'Perhutani',
+                'email'=>'lawupark@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'Badan Otorita Borobudur',
+                'email'=>'seribubatu@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'sangiran',
+                'email'=>'sangiran@email.com',
+                'password'=>bcrypt('password'),
+                'role'=>'owner',
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now()
+            ],
+            [
+                'username'=>'tanahlot',
+                'email'=>'tanahlot@email.com',
                 'password'=>bcrypt('password'),
                 'role'=>'owner',
                 'created_at'=>Carbon::now(),
