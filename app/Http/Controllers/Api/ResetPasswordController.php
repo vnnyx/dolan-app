@@ -37,9 +37,15 @@ class ResetPasswordController extends Controller
             'user_id'=>$user->id,
             'username' => $user->username,
             'email'=>$user->email,
+            'otp'=>$otp
+        ];
+        $response = [
+            'user_id'=>$user->id,
+            'username' => $user->username,
+            'email'=>$user->email,
         ];
         Mail::to($request->input('email'))->send(new SendOTP($data));
-        return WebResponse::webResponse(200, "OK", $data);
+        return WebResponse::webResponse(200, "OK", $response);
     }
 
     public function validateOtp(Request $request): JsonResponse
