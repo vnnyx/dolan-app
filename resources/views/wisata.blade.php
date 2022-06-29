@@ -121,7 +121,7 @@
                     <div class="drop-file" id="banner3">
                         @if(sizeof($content) < 3) <span class="btn-file">Pilih file</span>
                             <span class="name-file">atau Seret gambar kesini</span>
-                            <input type="file" id="file3" class="input-text" name="banner-3" multiple>
+                            <input type="file" id="file3" class="input-text" name="banner-3">
                             @endif
                             @if(sizeof($content) > 2)
                             <img src="{{ $content[2]->content }}" style="height: 100%; width: 420px">
@@ -171,6 +171,37 @@
                                     <img class="tiket" src="{{ asset('image/Vector2.png') }}" alt="">
                                 </div>
                                 <span class="keterangan">Tiket</span>
+                            </div>
+                            <div class="row mb-3 ml-4">
+                                <label for="">Set Jam Oprasional</label>
+                                <div class="col-6">
+                                    <h1 class="buka">Buka</h1>
+                                    <input type="time" name="jam_oprasional" class=" form-control ml-3 jamop"
+                                        data-datas="{{ $wisata[0]->open }}" value="{{ $wisata[0]->open }}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="" class="tutup">Tutup</label>
+                                <div class=" col">
+                                    <input type="time" name="jam_tutup" class=" form-control jamop2"
+                                        data-datas="{{ $wisata[0]->close }}" value="{{ $wisata[0]->close }}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="" class="latitude">Set Lattitude</label>
+                                <div class=" col">
+                                    <i class='bx bx-current-location loc1'></i>
+                                    <input type="text" name="latitude" class="form-control long" id="latitude"
+                                        data-datas="{{ $wisata[0]->latitude }}" value="{{ $wisata[0]->latitude }}">
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <label for="" class="longitude">Set Longitude</label>
+                                <div class=" col">
+                                    <i class='bx bx-current-location loc2'></i>
+                                    <input type="text" name="longitude" class="form-control la" id="longitude"
+                                        data-datas="{{ $wisata[0]->longitude }}" value="{{ $wisata[0]->longitude }}">
+                                </div>
                             </div>
                             @csrf
                             @method('PUT')
@@ -245,22 +276,48 @@
         })
 
         $('#save').click(function() {
+            let pattern_latitude = new RegExp('^[+-]?(([1-8]?[0-9])(.[0-9]{1,6})?|90(.0{1,6})?)$');
+            let pattern_longitude = new RegExp(
+                '^[+-]?((([1-9]?[0-9]|1[0-7][0-9])(.[0-9]{1,6})?)|180(.0{1,6})?)$')
             if (isNaN($('#harga-tiket').val()) || isNaN($('#stok-tiket').val())) {
                 $('#save').attr('type', 'button')
                 alertValidation('warning', 'Oops...', 'Format harus angka')
-            } else if ($('#harga-tiket').val() === "" && $('#stok-tiket').val() !== "") {
+            } else if ($('#harga-tiket').val() === "" || $('#stok-tiket').val() === "" || $(
+                    '#deskripsi').val() === "" || $('.jamop').val() === "" || $('.jamop2').val() ===
+                "" || $('#latitude').val() === "" || $('#longitude').val() === "") {
+                if ($('#harga-tiket').val() === "") {
+                    alertValidation('warning', 'Oops...', 'Harga tiket tidak boleh kosong')
+                    $('#save').attr('type', 'button')
+                } else if ($('#stok-tiket').val() === "") {
+                    alertValidation('warning', 'Oops...', 'Stok tiket tidak boleh kosong')
+                    $('#save').attr('type', 'button')
+                } else if ($(
+                        '#deskripsi').val() === "") {
+                    alertValidation('warning', 'Oops...', 'Deskripsi tidak boleh kosong')
+                    $('#save').attr('type', 'button')
+                } else if ($('.jamop').val() === "") {
+                    alertValidation('warning', 'Oops...', 'Jam Buka tidak boleh kosong')
+                    $('#save').attr('type', 'button')
+                } else if ($('.jamop2').val() === "") {
+                    alertValidation('warning', 'Oops...', 'Jam tutup tidak boleh kosong')
+                    $('#save').attr('type', 'button')
+                } else if ($('#latitude').val() === "") {
+                    alertValidation('warning', 'Oops...', 'Latitude tidak boleh kosong')
+                    $('#save').attr('type', 'button')
+                } else if ($('#longitude').val() === "") {
+                    alertValidation('warning', 'Oops...', 'Longitude tidak boleh kosong')
+                    $('#save').attr('type', 'button')
+                }
+
+            } else if (pattern_latitude.test($('#latitude').val()) === false) {
+                alertValidation('warning', 'Oops...', 'Latitude tidak sesuai format')
                 $('#save').attr('type', 'button')
-                alertValidation('warning', 'Oops...', 'Harga tiket tidak boleh kosong')
-            } else if ($('#stok-tiket').val() === "" && $('#harga-tiket').val() !== "") {
+            } else if (pattern_longitude.test($('#longitude').val()) === false) {
+                alertValidation('warning', 'Oops...', 'Longitude tidak sesuai format')
                 $('#save').attr('type', 'button')
-                alertValidation('warning', 'Oops...', 'Stok tiket tidak boleh kosong')
-            } else if ($('#deskripsi').val() === "" && $('#harga-tiket').val() !== "" && $(
-                    '#stok-tiket').val() !== "") {
+            } else if ($('#file3')[0].files.length === 0) {
+                alertValidation('warning', 'Oops...', 'Banner tidak boleh kurang dari tiga')
                 $('#save').attr('type', 'button')
-                alertValidation('warning', 'Oops...', 'Deskripsi tidak boleh kosong')
-            } else {
-                $('#save').attr('type', 'button')
-                alertValidation('warning', 'Oops...', 'Data tidak boleh kosong')
             }
         })
 

@@ -58,13 +58,17 @@ class WisataController extends Controller
         $field = $request->validate([
             'stock_tiket'=>'integer',
             'harga_tiket' => 'integer',
-            'deskripsi' => 'string'
+            'deskripsi' => 'string',
         ]);
         $data = Wisata::where('username', '=', auth()->user()->username);
         $data->update([
             'stock_tiket' => $field['stock_tiket'],
             'deskripsi' => $field['deskripsi'],
-            'harga_tiket' => $field['harga_tiket']
+            'harga_tiket' => $field['harga_tiket'],
+            'open' =>$request->input('jam_oprasional'),
+            'close' =>$request->input('jam_tutup'),
+            'longitude' =>$request->input('longitude'),
+            'latitude' =>$request->input('latitude'),
         ]);
 
         return redirect('/pengelola/wisata')->withToastSuccess('Berhasil merubah data wisata');

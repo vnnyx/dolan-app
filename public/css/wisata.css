@@ -242,11 +242,47 @@ a:focus {
 .btn-edit:hover {
     background-color: #C17700;
 }
-
-/*.form-control:focus {*/
-/*    color: #495057;*/
-/*    background-color: #fff;*/
-/*    border-color: red;*/
-/*    outline: 0;*/
-/*    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);*/
-/*}*/
+.jamop  {
+    position: absolute;
+    top: -5px;
+    left: 86px;
+    width: 50%;
+}
+.buka {
+    font-weight: bold;
+    margin-top: 3px;
+    margin-left: 23px;
+    font-size: 17px;
+}
+.tutup{
+    font-size: 17px;
+    margin-left: 233px;
+    font-weight: bold;
+}
+.jamop2{
+    padding-left: -40px;
+    left: 16px;
+    position: absolute;
+    width: 32%;
+}
+.longitude, .latitude{
+    margin-left: 45px;
+}
+.long{
+    margin-left: 80px;
+    width: 34.6%;
+}
+.la{
+    margin-left: 72px;
+    width: 34.6%;
+}
+.loc1{
+    left: 110px;
+    top: 10px;
+    position: absolute;
+}
+.loc2{
+    left: 103px;
+    top: 10px;
+    position: absolute;
+}
