@@ -276,9 +276,9 @@
         })
 
         $('#save').click(function() {
-            let pattern_latitude = new RegExp('^[+-]?(([1-8]?[0-9])(.[0-9]{1,6})?|90(.0{1,6})?)$');
-            let pattern_longitude = new RegExp(
-                '^[+-]?((([1-9]?[0-9]|1[0-7][0-9])(.[0-9]{1,6})?)|180(.0{1,6})?)$')
+            // let pattern_latitude = new RegExp('^[+-]?(([1-8]?[0-9])(.[0-9]{1,6})?|90(.0{1,6})?)$');
+            // let pattern_longitude = new RegExp(
+            //     '^[+-]?((([1-9]?[0-9]|1[0-7][0-9])(.[0-9]{1,6})?)|180(.0{1,6})?)$')
             if (isNaN($('#harga-tiket').val()) || isNaN($('#stok-tiket').val())) {
                 $('#save').attr('type', 'button')
                 alertValidation('warning', 'Oops...', 'Format harus angka')
@@ -309,10 +309,10 @@
                     $('#save').attr('type', 'button')
                 }
 
-            } else if (pattern_latitude.test($('#latitude').val()) === false) {
+            } else if (!isFinite($('#latitude').val()) && !Math.abs($('#latitude').val()) <= 90) {
                 alertValidation('warning', 'Oops...', 'Latitude tidak sesuai format')
                 $('#save').attr('type', 'button')
-            } else if (pattern_longitude.test($('#longitude').val()) === false) {
+            } else if (!isFinite($('#longitude').val()) && !Math.abs($('#latitude').val()) <= 180) {
                 alertValidation('warning', 'Oops...', 'Longitude tidak sesuai format')
                 $('#save').attr('type', 'button')
             } else if ($('#file3')[0].files.length === 0) {
@@ -326,12 +326,18 @@
             const deskripsi = $('#deskripsi').attr('data-datas');
             const stok_tiket = $('#stok-tiket').attr('data-datas');
             const harga_tiket = $('#harga-tiket').attr('data-datas');
+            const open = $('.jamop').attr('data-datas');
+            const close = $('.jamop2').attr('data-datas');
+            const latitude = $('#latitude').attr('data-datas');
+            const longitude = $('#longitude').attr('data-datas');
             if (deskripsi !== $('#deskripsi').val() || stok_tiket !== $('#stok-tiket').val() ||
-                harga_tiket !== $('#harga-tiket').val()) {
+                harga_tiket !== $('#harga-tiket').val() || open !== $('.jamop').val() || close !== $('.jamop2').val() || latitude !== $('#latitude').val() || longitude !== $('#longitude').val()) {
                 $(':input[type="submit"]').prop('disabled', false)
-                if (isNaN($('#harga-tiket').val()) && isNaN($('#stok-tiket').val())) {
+                if (isNaN($('#harga-tiket').val()) && isNaN($('#stok-tiket').val()) && isNaN($('#latitude').val()) && isNaN($('#latitude').val())) {
                     $('#stok-tiket').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
                     $('#harga-tiket').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
+                    $('#latitude').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
+                    $('#longitude').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
                 } else if (isNaN($('#harga-tiket').val()) && !isNaN($('#stok-tiket').val())) {
                     $('#harga-tiket').css('box-shadow', '0 0 0 0.2rem rgb(255 0 0 / 25%')
                     $('#stok-tiket').css('box-shadow', '')
